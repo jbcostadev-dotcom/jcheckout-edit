@@ -1,0 +1,137 @@
+.modal {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    padding: 20px;
+    display: none;
+    align-items: center;
+}
+
+#modal_content {
+    padding: 20px;
+    background: white;
+    width: 100%;
+    max-width: 668px;
+    border-radius: 8px;
+    margin: 0 auto;
+    color: #666666;
+    margin-top: 100px;
+}
+
+@media (max-width: 300px){
+    #modal_content {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px){
+    #modal_content {
+        margin-top: 30px;
+    }
+}
+
+#modal_header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#modal_header > div:first-child {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#modal_header > div:last-child {
+    text-align: right;
+}
+
+#modal_footer {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+}
+
+#modal_btn {
+    font-size: 16px;
+    color: #0433ff;
+    border: 2px solid #0433ff;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+    border-radius: 3px;
+    padding: 8px 10px 8px 10px;
+    height: 44px;
+    font-weight: bold;
+    cursor: pointer;
+    max-width: 244px;
+    width: 100%;
+}
+
+#modal_btn.success {
+    background: #40cd28;
+    border: none;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+    width: 100%;
+    max-width: 140px;
+}
+
+#modal_body {
+    padding: 40px 6px;
+}
+
+#modal__itens__after {
+    display: none;
+}
+
+.modal.show {
+    display: block;
+}
+
+#modal_loading {
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+
+.modal.show #modal__itens__after {
+    display: block;
+}
+
+.modal.show #modal_loading {
+    display: none;
+}
+
+.modal .form-control{
+    padding: 12px 10px;
+    outline: none;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: 1px solid #666666;
+}
+
+@media (max-width: 700px){
+    .modal .form-control{
+        width: 100%;
+    }
+}
+
+#address__content.multiple{
+    border-bottom: 1px solid #f1f1f1;
+    padding: 8px 0;
+}
+
+#address__content.multiple:last-child{
+    border-bottom: none;
+}
+
+#error__payment__content__itens > span{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#error__payment__content__itens > span:last-child{
+    padding-bottom: 0;
+}

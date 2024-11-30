@@ -1,0 +1,86 @@
+.bhf #header-middle .feather-wrapper {
+    padding-left: 300px;
+    padding-right: 300px;
+    min-height: 50px
+}
+
+.bhf #header-bottom {
+    height: auto
+}
+
+.bhf #h_brand {
+    float: left;
+    margin-left: -320px;
+    width: inherit
+}
+
+.bhf #h_search {
+    float: left;
+    width: 99%
+}
+
+.bhf #h_cart {
+    float: right
+}
+
+.bhf #h_user {
+    float: right;
+    margin-right: -220px
+}
+
+.bhf #h_cart {
+    margin-right: -300px;
+    margin-top: -10px
+}
+
+.bhf #h_trendingtopics .lst-item {
+    display: inline-block;
+    width: auto
+}
+
+.bhf #h_trendingtopics .lst-lnk {
+    display: inline-block
+}
+
+.bhf #h_trendingtopics .lst-lnk:hover {
+    background: #7247a7
+}
+
+.bhf #h_main-menu .mmn-sidebar {
+    background: inherit
+}
+
+.bhf #h_main-menu {
+    top: -inherit;
+    float: left;
+    width: 20%
+}
+
+.bhf #h_trendingtopics {
+    float: right;
+    width: 80%
+}
+
+.bhf #header-bottom, .bhf #header-middle, .bhf #header-top {
+    width: 1280px;
+    margin: 0 auto;
+    display: block
+}
+
+.bhf #h_main-menu .mmn-sdb-title {
+    display: block;
+    font-size: 13px;
+    float: left;
+    padding-top: 15px
+}
+
+.bhf #h_main-menu .mmn-sdb-ico {
+    float: left
+}
+
+.bhf #h_main-menu .mmn-link {
+    position: static;
+    width: 200px;
+    display: block;
+    padding-left: 30px
+}

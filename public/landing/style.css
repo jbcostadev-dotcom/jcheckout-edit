@@ -1,0 +1,199 @@
+/*
+  X9 product page by Chai Lee
+  I do not own any of these images. 
+  This simply a demo product landing page for my portfolio.
+  Thanks for stopping by!
+*/
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    /* height: 100vh; */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 65%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-fluid {
+    margin: 0 5%;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+
+button:focus {
+    /* outline: 1px solid #fff;
+    outline-offset: -4px; */
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+.box-shadow-default {
+    -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.35);
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.35);
+}
+
+header .container-fluid {
+    padding: 30px 0;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+header .logo img {
+    width: 6.5rem;
+    height: auto;
+}
+
+header a {
+    color: #4C44C1;
+    text-decoration: none;
+}
+
+header .menu a {
+    text-transform: uppercase;
+    padding: 0 15px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    transition: color ease-in-out .2s;
+}
+
+header .menu a:hover {
+    color: #6066F2;
+}
+
+header .header-buttons .blue-btn {
+    background: #6066F2;
+    padding: 12px 35px;
+    margin-right: 25px;
+    color: #fff;
+    border-radius: 35px;
+    text-transform: uppercase;
+}
+
+header .header-buttons .blue-btn .fas {
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+header .header-buttons .orange-btn{
+    background: #FEA83B;
+    padding: 12px 60px;
+    color: #fff;
+    border-radius: 35px;
+    text-transform: uppercase;
+}
+
+#top-jumbo {
+    height: 1000px;
+    background: linear-gradient(to bottom, #fff 10%, #6150b4,#292131);
+}
+
+#top-jumbo .left-side {
+    width: 37%;
+}
+
+#top-jumbo .left-side .large-number{
+    font-size: 14.125rem;
+    font-weight: 700;
+    opacity: .3;
+    /* color: #FEA83B; */
+}
+
+#top-jumbo .left-side .info-container h1{
+    color: #fff;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+    position: relative;
+    top: -12px;
+}
+
+#top-jumbo .left-side .info-container p{
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 500;
+    color: #aaacaf;
+    margin-bottom: 40px;
+}
+
+#top-jumbo .left-side .info-container .email-area{
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 10px;
+}
+
+#top-jumbo .left-side .info-container .email-area .fas {
+    font-size: 1.75rem;
+    position: relative;
+    top: 5px;
+    margin-left: 5px;
+    opacity: .7;
+    color: #fff;
+}
+
+#top-jumbo .left-side .info-container .email-area input[type="email"] {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 200px;
+    outline: none;
+    opacity: .7;
+    font-size: 1rem;
+}
+
+#top-jumbo .left-side .info-container .email-area button{
+    background: #4C44C1;
+    padding: 20px 50px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    border-radius: 50px;
+}
+
+
+#top-jumbo .right-side {
+    width: 63%;
+}
+
+#top-jumbo .right-side img {
+    margin-left: 20px;
+    width: 51.35rem;
+    height: auto;
+    box-shadow: 0 8px 6px -6px #333;
+}

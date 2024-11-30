@@ -1,0 +1,1 @@
+class LinkBundler{hideQuantityEditor(e=!1){e||(this.setVariantIds(),this.toBeHiddenVariantIds=getCookie("hide-selector").split(","))}setVariantIds(){var e=window.location.href;if(e.includes("hide-selector")){var t=new URL(e).pathname.split("hide-selector")[1].replace("=","").split("&");return setCookieCartx("hide-selector",t[0].split(","),1),t}return[]}}export{LinkBundler};
