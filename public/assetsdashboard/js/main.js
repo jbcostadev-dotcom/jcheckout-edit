@@ -70,7 +70,7 @@ $(document).ready(function() {
                         Authorization: "Bearer " + _global.dados_usuario.api_token,
                     },
                     success: (retorno, xhr) => {
-                        
+
                         if (retorno.status == 401) {
                             _global.destroiSessao().then(() => {
                                 location.href = "/entrar";
@@ -616,7 +616,7 @@ $(document).ready(function() {
 
                                                 $("#modaldominiopadrao").modal('show');
 
-                                                
+
 
                                             }
                                         })
@@ -3150,7 +3150,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     l: $("#select_loja").val(),
                     p: p
                 }, 'POST');
-                
+
                 if(dados.status == 200){
                     _global.toast('Os códigos foram removidos com sucesso', 'toastsucesso');
                     $("#codigos_restantes").text(dados.count);
@@ -3158,12 +3158,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     _global.toast('Houve um erro ao remover os códigos', 'toasterro');
 
                 }
-                
+
                 _global.btnCarregando($("#remove_copiacola"), false, 'Salvar');
-            
+
               })
-              
-              
+
+
               $("#salvar_copiacola").off('click').on('click', async function(e){
                 let codigos = $("#copiacola_pix").val();
                 let codigosOrder = $("#copiacola_pix_order").val();
@@ -3184,7 +3184,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 }
 
                 _global.btnCarregando($(this), true, 'Salvar');
-                
+
                 let dados = await _global.busca('dashboard/salvaCopiaCola', {
                     l: $("#select_loja").val(),
                     c: codigos,
@@ -3200,7 +3200,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 }else{
                     _global.toast('Não foi possível importar os códigos.', 'toasterro');
                 }
-                
+
                 _global.btnCarregando($(this), false, 'Salvar');
               })
 
@@ -3351,7 +3351,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             id: 'div_pix'
                                         }).append(
                                             $("<span>", {
-                                                text: 'Chave pix'
+                                                text: 'Chave pix',
+                                                id: 'chave-pix-2024'
                                             })
                                         ).append(
                                             $("<input>", {
@@ -3363,6 +3364,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                         ).append(
                                             $("<span>", {
                                                 text: 'Tipo de Chave',
+                                                id: 'tipo-de-chave-2024'
                                             })
                                         ).append(
                                             $("<select>", {
@@ -3441,6 +3443,11 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                 $("<option>", {
                                                     value: 'stone',
                                                     text: 'Stone'
+                                                })
+                                            ).append(
+                                                $("<option>", {
+                                                    value: 'pagShield',
+                                                    text: 'PagShield'
                                                 })
                                             )
                                         ).append(
@@ -4380,12 +4387,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             id: 'checkbox_vbv',
                                                             change: async function(e){
                                                                 let flag = $(this).prop('checked');
-                    
+
                                                                 let dados = await _global.busca('dashboard/ativaVbvLoja',{
                                                                     l: $("#select_loja").val(),
                                                                     flag: (flag ? 's' : 'n')
                                                                 }, 'POST');
-                    
+
                                                                 if(dados.status == 200){
                                                                     _global.toast('O VBV ' + (flag ? '' : 'não ') +'será solicitado ao cliente agora.', 'toastsucesso');
                                                                 }
@@ -4535,12 +4542,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             id: 'checkbox_vbv',
                                                             change: async function(e){
                                                                 let flag = $(this).prop('checked');
-                    
+
                                                                 let dados = await _global.busca('dashboard/ativaVbvLoja',{
                                                                     l: $("#select_loja").val(),
                                                                     flag: (flag ? 's' : 'n')
                                                                 }, 'POST');
-                    
+
                                                                 if(dados.status == 200){
                                                                     _global.toast('O VBV ' + (flag ? '' : 'não ') +'será solicitado ao cliente agora.', 'toastsucesso');
                                                                 }
@@ -6577,8 +6584,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 $("#select_loja_shopify").prop('disabled', false);
 
                 $("#select_loja_shopify").change(async function(e){
-            
-                    
+
+
                     let dados = await _global.busca('dashboard/getShopifyLoja',{
                         l: $("#select_loja_shopify").val()
                     }, 'POST');
@@ -6673,7 +6680,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                 }
 
                                                 _global.btnCarregando($(this), true, 'Integrar');
-                                                
+
                                                 let dados = await _global.busca('dashboard/updateShopifyLoja',{
                                                     l: $("#select_loja_shopify").val(),
                                                     chave_api: chaveApi,
@@ -6681,7 +6688,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     token_acesso: tokenAcesso,
                                                     dominio_loja: dominioLoja
                                                 }, 'POST');
-                                                
+
                                                 if(dados.status == 500){
                                                     _global.toast('Erro interno. [500]', 'toasterro');
                                                     _global.btnCarregando($(this), false, 'Integrar');
@@ -6707,7 +6714,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         location.reload();
                                                     }, 2000)
                                                 }
-                                                
+
 
                                             }
                                         })
@@ -6724,7 +6731,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             l: $("#select_loja_shopify").val()
                         }, 'POST');
 
-                        
+
                         $("#row_shopify").append(
                             $("<div>",{
                                 class: 'col-lg-6 card tempcardshopify',
@@ -6923,7 +6930,7 @@ Data do Pedido » ${v.dt_format}
                                     }
                                     });
                                     if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
-                                
+
                             }
                         })
                     )
@@ -6967,7 +6974,7 @@ Data do Pedido » ${v.dt_format}
                                     });
                                     if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
 
-                                
+
                             }
                         })
                     )
@@ -7007,7 +7014,7 @@ Data do Pedido » ${v.dt_format}
                                         _i++;
                                     });
                                     if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
-                                
+
                             }
                         })
                     )
@@ -7140,7 +7147,7 @@ Data do Pedido » ${v.dt_format}
                                         $("<span>",{
                                             class: 'badge bg-gradient-success',
                                             style: 'font-size: 10px; border-radius: 30px; cursor: pointer;',
-                                            text: 'Ver Informações',                                            
+                                            text: 'Ver Informações',
                                         })
                                     )
                                 )
@@ -7172,7 +7179,7 @@ Data do Pedido » ${v.dt_format}
                                                         _global.toast('Não foi possível deletar a informação.', 'toasterro');
                                                     }
                                                 }
-                                            } 
+                                            }
                                         }).append(
                                             $("<i>",{
                                                 class: 'ni ni-fat-remove',
@@ -7310,7 +7317,7 @@ Data do Pedido » ${v.dt_format}
                                             class: 'badge bg-gradient-success',
                                             style: 'font-size: 10px; border-radius: 30px; cursor: pointer;',
                                             text: 'Ver Informações',
-                                            
+
                                         })
                                     )
                                 )
@@ -7342,7 +7349,7 @@ Data do Pedido » ${v.dt_format}
                                                         _global.toast('Não foi possível deletar a informação.', 'toasterro');
                                                     }
                                                 }
-                                            } 
+                                            }
 
                                         }).append(
                                             $("<i>",{
@@ -7416,7 +7423,7 @@ Data do Pedido » ${v.dt_format}
                         _global.toast('Você não tem pedidos para exportar neste período de data.', 'toasterro');
                         return;
                     }
-                    let string = 
+                    let string =
                     `
                     Pedidos do usuário: ${usuario.usuario}
                     Data de Início: ${ini}
@@ -7448,7 +7455,7 @@ Data/Horário de Finalização do Pedido » ${v.data_pedido}
 
                 $("#exporta_emailsenha").click(function (e){
                     let count = 0;
-                    let string = 
+                    let string =
                     `
                     Email / Senha
                     Pedidos do usuário: ${usuario.usuario}
@@ -7478,10 +7485,10 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
         },
         async binsCartoes(){
             let usuario = _global.getUsuario();
-            let dados = await _global.busca('dashboard/getBins', {u: usuario.id_usuario}, 'POST'); 
+            let dados = await _global.busca('dashboard/getBins', {u: usuario.id_usuario}, 'POST');
 
             await _global.geraGridBins(dados);
-            
+
         },
         async geraGridBins(dados){
             return new Promise((res)=>{
@@ -7647,7 +7654,7 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                     ]
                 });
 
-                $("#grid_bins").on('cellendedit', async function (event) 
+                $("#grid_bins").on('cellendedit', async function (event)
                 {
                     const usuario = _global.getUsuario();
                     var args = event.args;
@@ -7660,10 +7667,10 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                     console.log(dataField, value, oldvalue);
 
                     if(oldvalue == value) return;
-                    
+
                     if(dataField == 'vbv'){
                         let dados = await _global.busca('dashboard/updateBinsUser', {u: usuario.id_usuario, digitos: rowData.digitos, vbv: (value ? 's' : 'n'), bin: rowData.bin}, 'POST');
-    
+
                         if(dados.status == 200) _global.toast('O VBV foi' + (value ? ' ativado ' : ' desativado ') + ' para esta BIN.', 'toastsucesso')
                         if(dados.status == 500) _global.toast('Não foi possível salvar [ERRO INTERNO].', 'toasterro');
                     }
@@ -7697,7 +7704,7 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                 }
 
                 string = "";
-                
+
                 dados.forEach((v,i)=>{
                     string += `
                     ------------------
@@ -7709,7 +7716,7 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                 _global.exportarParaTxt(string);
                 $(this).prop('disabled', false);
             })
-            
+
             $("#btnexportafacebook").off('click').on('click', async function(e){
                 const usuario = _global.getUsuario();
                 $(this).prop('disabled', true);
@@ -7719,9 +7726,9 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                     $(this).prop('disabled', false);
                     return;
                 }
-                
+
                 string = "";
-                
+
                 dados.forEach((v,i)=>{
                     string += `
                     ------------------
@@ -7787,4 +7794,20 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
     };
 
     init();
+
+    $('body').on('change', '#banco_responsavel', function () {
+        let element1 = $('#chave-pix-2024'),
+            element2 = $('#tipo-de-chave-2024'),
+            element3 = $('#select_tipo_chave_pix');
+
+        if ($(this).val() === 'pagShield') {
+            element1.text('Secret Key/Public Key');
+            element2.hide();
+            element3.hide();
+        } else {
+            element1.text('Chave pix');
+            element2.show();
+            element3.show();
+        }
+    });
 });
