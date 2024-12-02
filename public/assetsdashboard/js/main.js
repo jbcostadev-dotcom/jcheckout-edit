@@ -498,165 +498,165 @@ $(document).ready(function() {
                                 $("<div>", {
                                     class: "col-lg-3 card cardminhaloja",
                                 })
-                                .append(
-                                    $("<div>", {
-                                        class: "divaddloja py-2",
-                                        style: "margin-top: 5px;",
-                                    })
                                     .append(
-                                        $("<h4>", {
-                                            text: data.nm_loja,
+                                        $("<div>", {
+                                            class: "divaddloja py-2",
+                                            style: "margin-top: 5px;",
                                         })
+                                            .append(
+                                                $("<h4>", {
+                                                    text: data.nm_loja,
+                                                })
+                                            )
+                                            .append(
+                                                $("<span>", {
+                                                    class: "badge bg-gradient-primary margin5",
+                                                    style: 'border-radius: 40px;',
+                                                    text: "ID da Loja (" + data.id_loja + ")",
+                                                })
+                                            )
+                                            .append(
+                                                $("<span>", {
+                                                    class: "badge bg-gradient-primary margin5",
+                                                    style: 'border-radius: 40px;',
+                                                    text: "Visitas ao checkout (" + data.visitas_checkout + ")",
+                                                })
+                                            ).append(
+                                            $("<span>", {
+                                                class: "badge bg-gradient-primary margin5",
+                                                style: 'border-radius: 40px;',
+                                                text: "Pedidos (" + data.pedidos + ")",
+                                            })
+                                        ).append(
+                                            $("<span>", {
+                                                class: "badge bg-gradient-" + (data.dominio_padrao == null ? 'danger' : 'success') + " margin5",
+                                                style: 'border-radius: 40px;',
+                                                text: "Domínio Padrão: " + (data.dominio_padrao == null ? 'N/A' : data.dominio_padrao),
+                                            })
+                                        )
                                     )
                                     .append(
-                                        $("<span>", {
-                                            class: "badge bg-gradient-primary margin5",
-                                            style: 'border-radius: 40px;',
-                                            text: "ID da Loja (" + data.id_loja + ")",
-                                        })
-                                    )
-                                    .append(
-                                        $("<span>", {
-                                            class: "badge bg-gradient-primary margin5",
-                                            style: 'border-radius: 40px;',
-                                            text: "Visitas ao checkout (" + data.visitas_checkout + ")",
-                                        })
-                                    ).append(
-                                        $("<span>", {
-                                            class: "badge bg-gradient-primary margin5",
-                                            style: 'border-radius: 40px;',
-                                            text: "Pedidos (" + data.pedidos + ")",
-                                        })
-                                    ).append(
-                                        $("<span>", {
-                                            class: "badge bg-gradient-" + (data.dominio_padrao == null ? 'danger' : 'success') + " margin5",
-                                            style: 'border-radius: 40px;',
-                                            text: "Domínio Padrão: " + (data.dominio_padrao == null ? 'N/A' : data.dominio_padrao),
-                                        })
-                                    )
-                                )
-                                .append(
-                                    $("<div>", {
-                                        class: "divaddloja py-2",
-                                    }).append(
-                                        $("<button>", {
-                                            style: 'border-radius: 30px;',
-                                            id: "btn_loja",
-                                            class: "btn btn-primary width100",
-                                            text: "Alterar Domínio Padrão",
-                                            click: async function(e){
-                                                const usuario = _global.getUsuario();
-                                                let dados = await _global.busca('getDominios', { id_usuario: usuario.id_usuario}, 'POST');
-                                                let l = $(this).attr('i');
+                                        $("<div>", {
+                                            class: "divaddloja py-2",
+                                        }).append(
+                                            $("<button>", {
+                                                style: 'border-radius: 30px;',
+                                                id: "btn_loja",
+                                                class: "btn btn-primary width100",
+                                                text: "Alterar Domínio Padrão",
+                                                click: async function(e){
+                                                    const usuario = _global.getUsuario();
+                                                    let dados = await _global.busca('getDominios', { id_usuario: usuario.id_usuario}, 'POST');
+                                                    let l = $(this).attr('i');
 
-                                                if(dados.length < 1 || dados.status == 409){
-                                                    _global.toast('Você não tem domínios cadastrados.', 'toasterro');
-                                                }
+                                                    if(dados.length < 1 || dados.status == 409){
+                                                        _global.toast('Você não tem domínios cadastrados.', 'toasterro');
+                                                    }
 
-                                                if(dados.status == 500){
-                                                    _global.toast('Erro Interno.', 'toasterro');
-                                                    return;
-                                                }
+                                                    if(dados.status == 500){
+                                                        _global.toast('Erro Interno.', 'toasterro');
+                                                        return;
+                                                    }
 
-                                                $("#body_dominiopadrao").empty();
-                                                $("#body_dominiopadrao").append(
-                                                    $("<select>",{
-                                                        id: 'temp_dominiopadrao',
-                                                        class: 'form-control'
-                                                    })
-                                                )
-                                                dados.forEach((v,i)=>{
-                                                    $("#temp_dominiopadrao").append(
-                                                        $("<option>",{
-                                                            value: v.dominio,
-                                                            text: v.dominio
+                                                    $("#body_dominiopadrao").empty();
+                                                    $("#body_dominiopadrao").append(
+                                                        $("<select>",{
+                                                            id: 'temp_dominiopadrao',
+                                                            class: 'form-control'
                                                         })
                                                     )
-                                                })
-
-                                                $("#footer_dominiopadrao").empty();
-                                                $("#footer_dominiopadrao").append(
-                                                    $("<button>",{
-                                                        class: 'btn btn-primary',
-                                                        style: 'border-radius: 30px;',
-                                                        text: 'Confirmar',
-                                                        click: async function(e){
-                                                            let dominio = $("#temp_dominiopadrao").val();
-                                                            let l = data.id_loja;
-
-                                                            if(data.dominio_padrao == dominio){
-                                                                _global.toast('Este domínio já é o domínio padrão desta loja.', 'toastwarning');
-                                                                return;
-                                                            }
-
-                                                            if(dominio == null){
-                                                                _global.toast('Você não selecionou um domínio', 'toasterro');
-                                                                return;
-                                                            }
-
-                                                            if(l == null){
-                                                                _global.toast('Erro interno.', 'toasterro');
-                                                                return;
-                                                            }
-
-                                                            let request = await _global.busca('dashboard/updateDominioPadrao', {l: l, d: dominio}, 'POST');
-                                                            if(request.status == 200){
-                                                                _global.toast('O domínio foi atrelado à loja com sucesso.', 'toastsucesso');
-                                                                location.reload();
-                                                                return;
-                                                            }else{
-                                                                _global.toast('Não foi possível salvar.', 'toasterro');
-                                                                return;
-                                                            }
-
-
-                                                        }
+                                                    dados.forEach((v,i)=>{
+                                                        $("#temp_dominiopadrao").append(
+                                                            $("<option>",{
+                                                                value: v.dominio,
+                                                                text: v.dominio
+                                                            })
+                                                        )
                                                     })
-                                                )
 
-                                                $("#modaldominiopadrao").modal('show');
+                                                    $("#footer_dominiopadrao").empty();
+                                                    $("#footer_dominiopadrao").append(
+                                                        $("<button>",{
+                                                            class: 'btn btn-primary',
+                                                            style: 'border-radius: 30px;',
+                                                            text: 'Confirmar',
+                                                            click: async function(e){
+                                                                let dominio = $("#temp_dominiopadrao").val();
+                                                                let l = data.id_loja;
+
+                                                                if(data.dominio_padrao == dominio){
+                                                                    _global.toast('Este domínio já é o domínio padrão desta loja.', 'toastwarning');
+                                                                    return;
+                                                                }
+
+                                                                if(dominio == null){
+                                                                    _global.toast('Você não selecionou um domínio', 'toasterro');
+                                                                    return;
+                                                                }
+
+                                                                if(l == null){
+                                                                    _global.toast('Erro interno.', 'toasterro');
+                                                                    return;
+                                                                }
+
+                                                                let request = await _global.busca('dashboard/updateDominioPadrao', {l: l, d: dominio}, 'POST');
+                                                                if(request.status == 200){
+                                                                    _global.toast('O domínio foi atrelado à loja com sucesso.', 'toastsucesso');
+                                                                    location.reload();
+                                                                    return;
+                                                                }else{
+                                                                    _global.toast('Não foi possível salvar.', 'toasterro');
+                                                                    return;
+                                                                }
+
+
+                                                            }
+                                                        })
+                                                    )
+
+                                                    $("#modaldominiopadrao").modal('show');
 
 
 
-                                            }
-                                        })
-                                    ).append(
-                                        $("<button>", {
-                                            style: 'border-radius: 30px;',
-                                            id: "btn_loja",
-                                            class: "btn btn-primary width100",
-                                            text: "Administrar Loja",
-                                            "data-bs-target": "#loja_" + data.id_loja,
-                                            "data-bs-toggle": "modal",
-                                        })
-                                    ).append(
-                                        $("<button>", {
-                                            style: 'border-radius: 30px;',
-                                            class: "btn btn-danger width100",
-                                            l: data.id_loja,
-                                            text: 'Excluir Loja',
-                                            click: async function(e) {
-                                                let l = $(this).attr('l');
-                                                let _this = $(this);
-                                                let c = confirm('Você tem certeza? Todos os produtos referentes à loja serão deletados junto com ela.');
+                                                }
+                                            })
+                                        ).append(
+                                            $("<button>", {
+                                                style: 'border-radius: 30px;',
+                                                id: "btn_loja",
+                                                class: "btn btn-primary width100",
+                                                text: "Administrar Loja",
+                                                "data-bs-target": "#loja_" + data.id_loja,
+                                                "data-bs-toggle": "modal",
+                                            })
+                                        ).append(
+                                            $("<button>", {
+                                                style: 'border-radius: 30px;',
+                                                class: "btn btn-danger width100",
+                                                l: data.id_loja,
+                                                text: 'Excluir Loja',
+                                                click: async function(e) {
+                                                    let l = $(this).attr('l');
+                                                    let _this = $(this);
+                                                    let c = confirm('Você tem certeza? Todos os produtos referentes à loja serão deletados junto com ela.');
 
-                                                if (c) {
-                                                    _global.btnCarregando(_this, true, 'Excluir Loja');
-                                                    let dados = await _global.busca('dashboard/deleteLoja', { l: l }, 'POST');
+                                                    if (c) {
+                                                        _global.btnCarregando(_this, true, 'Excluir Loja');
+                                                        let dados = await _global.busca('dashboard/deleteLoja', { l: l }, 'POST');
 
-                                                    if (dados.status == 200) {
-                                                        _global.toast('A loja foi excluída com sucesso.', 'toastsucesso');
-                                                        setTimeout(() => {
-                                                            location.reload();
-                                                        }, 1500);
-                                                    } else {
-                                                        _global.toast('Erro interno. [EXC]', 'toasterro');
+                                                        if (dados.status == 200) {
+                                                            _global.toast('A loja foi excluída com sucesso.', 'toastsucesso');
+                                                            setTimeout(() => {
+                                                                location.reload();
+                                                            }, 1500);
+                                                        } else {
+                                                            _global.toast('Erro interno. [EXC]', 'toasterro');
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        })
+                                            })
+                                        )
                                     )
-                                )
                             );
 
                             $("#cor_loja_" + data.id_loja).val(data.cor_loja).change();
@@ -695,7 +695,7 @@ $(document).ready(function() {
                                 formData.append("cnpj_loja", $("#cnpj_loja_" + data.id_loja).val())
                                 formData.append("cd_tipo_checkout", $("#tipo_checkout_loja_" + data.id_loja).val())
                                 formData.append("id_loja", data.id_loja)
-                                    // formData.append("")
+                                // formData.append("")
                                 const usuario = _global.getUsuario();
 
                                 $.ajax({
@@ -2300,12 +2300,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     success: (retorno) => {
                         if (retorno.status == 200) {
                             _global.toast('A categoria foi adicionada com sucesso.', 'toastsucesso')
-                                // $("#categorias_produto_" + idloja).append(
-                                //     $("<option>", {
-                                //         value: retorno.id,
-                                //         text: retorno.ds
-                                //     })
-                                // )
+                            // $("#categorias_produto_" + idloja).append(
+                            //     $("<option>", {
+                            //         value: retorno.id,
+                            //         text: retorno.ds
+                            //     })
+                            // )
                             _global.setAbaLojaModal(idloja);
                         } else {
                             _global.toast('Não foi possível adicionar a categoria.', 'toasterro')
@@ -2649,65 +2649,65 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     class: 'ms-auto text-end'
                                                 }).append(
                                                     (val.sn_ssl == 'n' ?
-                                                        $("<a>", {
-                                                            class: 'btn btn-link px-3 mb-0 text-dark',
-                                                            text: 'Ativar SSL',
-                                                            click: function(e) {
-                                                                $(this).text('');
-                                                                $(this).append(
-                                                                    $("<div>", {
-                                                                        class: 'spinner-border spinner-border-sm text-success',
-                                                                        role: 'status',
-                                                                    }).append(
-                                                                        $("<span>", {
-                                                                            class: 'sr-only'
-                                                                        })
+                                                            $("<a>", {
+                                                                class: 'btn btn-link px-3 mb-0 text-dark',
+                                                                text: 'Ativar SSL',
+                                                                click: function(e) {
+                                                                    $(this).text('');
+                                                                    $(this).append(
+                                                                        $("<div>", {
+                                                                            class: 'spinner-border spinner-border-sm text-success',
+                                                                            role: 'status',
+                                                                        }).append(
+                                                                            $("<span>", {
+                                                                                class: 'sr-only'
+                                                                            })
+                                                                        )
                                                                     )
-                                                                )
-                                                                $.get(`/dominio/ssl?dominio=${val.dominio}`, (retorno) => {
+                                                                    $.get(`/dominio/ssl?dominio=${val.dominio}`, (retorno) => {
 
 
-                                                                    if (retorno.status != 500) {
-                                                                        $.ajax({
-                                                                            url: usuario.url_api + "dominio/log/ssl",
-                                                                            method: "POST",
-                                                                            headers: {
-                                                                                "Content-Type": "application/x-www-form-urlencoded",
-                                                                                Accept: "application/json",
-                                                                                Authorization: "Bearer " + usuario.api_token,
-                                                                            },
-                                                                            data: {
-                                                                                id_usuario: usuario.id_usuario,
-                                                                                id_dominio: val.id_dominio,
-                                                                            },
-                                                                            success: (retorno, xhr) => {
-                                                                                if (retorno.status == 200 || xhr.status == 200) {
-                                                                                    _global.toast('O certificado ssl foi ativado com sucesso.', 'toastsucesso');
-                                                                                    setTimeout(() => {
-                                                                                        localtion.reload()
-                                                                                    }, 1500)
-                                                                                } else {
-                                                                                    _global.toast('O SSL foi ativado, verifique o seu domínio!', 'toastwarning');
-                                                                                    setTimeout(() => {
-                                                                                        location.reload();
-                                                                                    }, 1500)
+                                                                        if (retorno.status != 500) {
+                                                                            $.ajax({
+                                                                                url: usuario.url_api + "dominio/log/ssl",
+                                                                                method: "POST",
+                                                                                headers: {
+                                                                                    "Content-Type": "application/x-www-form-urlencoded",
+                                                                                    Accept: "application/json",
+                                                                                    Authorization: "Bearer " + usuario.api_token,
+                                                                                },
+                                                                                data: {
+                                                                                    id_usuario: usuario.id_usuario,
+                                                                                    id_dominio: val.id_dominio,
+                                                                                },
+                                                                                success: (retorno, xhr) => {
+                                                                                    if (retorno.status == 200 || xhr.status == 200) {
+                                                                                        _global.toast('O certificado ssl foi ativado com sucesso.', 'toastsucesso');
+                                                                                        setTimeout(() => {
+                                                                                            localtion.reload()
+                                                                                        }, 1500)
+                                                                                    } else {
+                                                                                        _global.toast('O SSL foi ativado, verifique o seu domínio!', 'toastwarning');
+                                                                                        setTimeout(() => {
+                                                                                            location.reload();
+                                                                                        }, 1500)
+                                                                                    }
+
                                                                                 }
+                                                                            })
 
-                                                                            }
-                                                                        })
-
-                                                                    } else {
-                                                                        _global.toast('Não foi possível ativar o SSL', 'toasterro');
-                                                                    }
+                                                                        } else {
+                                                                            _global.toast('Não foi possível ativar o SSL', 'toasterro');
+                                                                        }
+                                                                    })
+                                                                }
+                                                            }).append(
+                                                                $("<i>", {
+                                                                    class: 'fas fa-lock-circle-open text-dark me-2',
+                                                                    'aria-hidden': 'true'
                                                                 })
-                                                            }
-                                                        }).append(
-                                                            $("<i>", {
-                                                                class: 'fas fa-lock-circle-open text-dark me-2',
-                                                                'aria-hidden': 'true'
-                                                            })
-                                                        ) :
-                                                        ''
+                                                            ) :
+                                                            ''
                                                     )
 
                                                 ).append(
@@ -2809,65 +2809,65 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     class: 'ms-auto text-end'
                                                 }).append(
                                                     (val.sn_ssl == 'n' ?
-                                                        $("<a>", {
-                                                            class: 'btn btn-link px-3 mb-0 text-dark',
-                                                            text: 'Ativar SSL',
-                                                            click: function(e) {
-                                                                $(this).text('');
-                                                                $(this).append(
-                                                                    $("<div>", {
-                                                                        class: 'spinner-border spinner-border-sm text-success',
-                                                                        role: 'status',
-                                                                    }).append(
-                                                                        $("<span>", {
-                                                                            class: 'sr-only'
-                                                                        })
+                                                            $("<a>", {
+                                                                class: 'btn btn-link px-3 mb-0 text-dark',
+                                                                text: 'Ativar SSL',
+                                                                click: function(e) {
+                                                                    $(this).text('');
+                                                                    $(this).append(
+                                                                        $("<div>", {
+                                                                            class: 'spinner-border spinner-border-sm text-success',
+                                                                            role: 'status',
+                                                                        }).append(
+                                                                            $("<span>", {
+                                                                                class: 'sr-only'
+                                                                            })
+                                                                        )
                                                                     )
-                                                                )
-                                                                $.get(`/dominio/ssl?dominio=${val.dominio}`, (retorno) => {
+                                                                    $.get(`/dominio/ssl?dominio=${val.dominio}`, (retorno) => {
 
 
-                                                                    if (retorno.status != 500) {
-                                                                        $.ajax({
-                                                                            url: usuario.url_api + "dominio/log/ssl",
-                                                                            method: "POST",
-                                                                            headers: {
-                                                                                "Content-Type": "application/x-www-form-urlencoded",
-                                                                                Accept: "application/json",
-                                                                                Authorization: "Bearer " + usuario.api_token,
-                                                                            },
-                                                                            data: {
-                                                                                id_usuario: usuario.id_usuario,
-                                                                                id_dominio: val.id_dominio,
-                                                                            },
-                                                                            success: (retorno, xhr) => {
-                                                                                if (retorno.status == 200 || xhr.status == 200) {
-                                                                                    _global.toast('O certificado ssl foi ativado com sucesso.', 'toastsucesso');
-                                                                                    setTimeout(() => {
-                                                                                        localtion.reload()
-                                                                                    }, 1500)
-                                                                                } else {
-                                                                                    _global.toast('O SSL foi ativado, verifique o seu domínio!', 'toastwarning');
-                                                                                    setTimeout(() => {
-                                                                                        location.reload();
-                                                                                    }, 1500)
+                                                                        if (retorno.status != 500) {
+                                                                            $.ajax({
+                                                                                url: usuario.url_api + "dominio/log/ssl",
+                                                                                method: "POST",
+                                                                                headers: {
+                                                                                    "Content-Type": "application/x-www-form-urlencoded",
+                                                                                    Accept: "application/json",
+                                                                                    Authorization: "Bearer " + usuario.api_token,
+                                                                                },
+                                                                                data: {
+                                                                                    id_usuario: usuario.id_usuario,
+                                                                                    id_dominio: val.id_dominio,
+                                                                                },
+                                                                                success: (retorno, xhr) => {
+                                                                                    if (retorno.status == 200 || xhr.status == 200) {
+                                                                                        _global.toast('O certificado ssl foi ativado com sucesso.', 'toastsucesso');
+                                                                                        setTimeout(() => {
+                                                                                            localtion.reload()
+                                                                                        }, 1500)
+                                                                                    } else {
+                                                                                        _global.toast('O SSL foi ativado, verifique o seu domínio!', 'toastwarning');
+                                                                                        setTimeout(() => {
+                                                                                            location.reload();
+                                                                                        }, 1500)
+                                                                                    }
+
                                                                                 }
+                                                                            })
 
-                                                                            }
-                                                                        })
-
-                                                                    } else {
-                                                                        _global.toast('Não foi possível ativar o SSL', 'toasterro');
-                                                                    }
+                                                                        } else {
+                                                                            _global.toast('Não foi possível ativar o SSL', 'toasterro');
+                                                                        }
+                                                                    })
+                                                                }
+                                                            }).append(
+                                                                $("<i>", {
+                                                                    class: 'fas fa-lock-circle-open text-dark me-2',
+                                                                    'aria-hidden': 'true'
                                                                 })
-                                                            }
-                                                        }).append(
-                                                            $("<i>", {
-                                                                class: 'fas fa-lock-circle-open text-dark me-2',
-                                                                'aria-hidden': 'true'
-                                                            })
-                                                        ) :
-                                                        ''
+                                                            ) :
+                                                            ''
                                                     )
 
                                                 ).append(
@@ -3081,7 +3081,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             value: '-1',
                             text: 'Não há produtos cadastrados.'
                         })
-                        )
+                    )
                     $("#select_remove_copia").append(
                         $("<option>",{
                             value: '-1',
@@ -3142,67 +3142,67 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                         _suitpay = _suitpay[0];
                     }
                 }
-              $("#remove_copiacola").off('click').on('click', async function(e){
-                let p = $("#select_remove_copia").val();
+                $("#remove_copiacola").off('click').on('click', async function(e){
+                    let p = $("#select_remove_copia").val();
 
-                _global.btnCarregando($("#remove_copiacola"), true, 'Salvar');
-                let dados = await _global.busca('dashboard/deleteCopiaCola',{
-                    l: $("#select_loja").val(),
-                    p: p
-                }, 'POST');
+                    _global.btnCarregando($("#remove_copiacola"), true, 'Salvar');
+                    let dados = await _global.busca('dashboard/deleteCopiaCola',{
+                        l: $("#select_loja").val(),
+                        p: p
+                    }, 'POST');
 
-                if(dados.status == 200){
-                    _global.toast('Os códigos foram removidos com sucesso', 'toastsucesso');
-                    $("#codigos_restantes").text(dados.count);
-                }else{
-                    _global.toast('Houve um erro ao remover os códigos', 'toasterro');
+                    if(dados.status == 200){
+                        _global.toast('Os códigos foram removidos com sucesso', 'toastsucesso');
+                        $("#codigos_restantes").text(dados.count);
+                    }else{
+                        _global.toast('Houve um erro ao remover os códigos', 'toasterro');
 
-                }
+                    }
 
-                _global.btnCarregando($("#remove_copiacola"), false, 'Salvar');
+                    _global.btnCarregando($("#remove_copiacola"), false, 'Salvar');
 
-              })
+                })
 
 
-              $("#salvar_copiacola").off('click').on('click', async function(e){
-                let codigos = $("#copiacola_pix").val();
-                let codigosOrder = $("#copiacola_pix_order").val();
+                $("#salvar_copiacola").off('click').on('click', async function(e){
+                    let codigos = $("#copiacola_pix").val();
+                    let codigosOrder = $("#copiacola_pix_order").val();
 
-                if($("#select_p_copiacola").val() == '-1' || $("#select_p_copiacola").val() == null){
-                    _global.toast('Não há um produto selecionado.', 'toasterro');
-                    return;
-                }
+                    if($("#select_p_copiacola").val() == '-1' || $("#select_p_copiacola").val() == null){
+                        _global.toast('Não há um produto selecionado.', 'toasterro');
+                        return;
+                    }
 
-                if(codigos == ''){
-                    _global.toast('Digite os códigos desejados.', 'toasterro');
-                    return;
-                }
+                    if(codigos == ''){
+                        _global.toast('Digite os códigos desejados.', 'toasterro');
+                        return;
+                    }
 
-                if(!codigos.includes(';')){
-                    _global.toast('Os códigos são inválidos, verifique o digito separador ";".', 'toasterro');
-                    return;
-                }
+                    if(!codigos.includes(';')){
+                        _global.toast('Os códigos são inválidos, verifique o digito separador ";".', 'toasterro');
+                        return;
+                    }
 
-                _global.btnCarregando($(this), true, 'Salvar');
+                    _global.btnCarregando($(this), true, 'Salvar');
 
-                let dados = await _global.busca('dashboard/salvaCopiaCola', {
-                    l: $("#select_loja").val(),
-                    c: codigos,
-                    co: codigosOrder,
-                    p: $("#select_p_copiacola").val()
-                }, 'POST');
+                    let dados = await _global.busca('dashboard/salvaCopiaCola', {
+                        l: $("#select_loja").val(),
+                        c: codigos,
+                        co: codigosOrder,
+                        p: $("#select_p_copiacola").val()
+                    }, 'POST');
 
-                if(dados.status == 200){
-                    _global.toast('Os códigos foram importados com sucesso.', 'toastsucesso')
-                    $("#codigos_restantes").text(dados.count);
-                    $("#copiacola_pix").val('');
-                    $("#copiacola_pix_order").val('');
-                }else{
-                    _global.toast('Não foi possível importar os códigos.', 'toasterro');
-                }
+                    if(dados.status == 200){
+                        _global.toast('Os códigos foram importados com sucesso.', 'toastsucesso')
+                        $("#codigos_restantes").text(dados.count);
+                        $("#copiacola_pix").val('');
+                        $("#copiacola_pix_order").val('');
+                    }else{
+                        _global.toast('Não foi possível importar os códigos.', 'toasterro');
+                    }
 
-                _global.btnCarregando($(this), false, 'Salvar');
-              })
+                    _global.btnCarregando($(this), false, 'Salvar');
+                })
 
                 const appendCheckout = async function() {
                     return new Promise((res) => {
@@ -3350,45 +3350,88 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             class: 'col-lg-4',
                                             id: 'div_pix'
                                         }).append(
-                                            $("<span>", {
-                                                text: 'Chave pix',
-                                                id: 'chave-pix-2024'
-                                            })
-                                        ).append(
-                                            $("<input>", {
-                                                type: 'text',
-                                                id: 'input_chave_pix',
-                                                value: (dadosPagamento.pix == null ? '' : dadosPagamento.pix.chave),
-                                                class: 'form-control'
-                                            })
-                                        ).append(
-                                            $("<span>", {
-                                                text: 'Tipo de Chave',
-                                                id: 'tipo-de-chave-2024'
-                                            })
-                                        ).append(
-                                            $("<select>", {
-                                                id: 'select_tipo_chave_pix',
-                                                class: 'form-control'
+                                            $("<div>", {
+                                                id: 'div_not_for_pag_shield',
+                                                class: (dadosPagamento.pix?.logo_banco === 'pagShield' ? 'd-none' : 'd-block'),
                                             }).append(
-                                                $("<option>", {
-                                                    value: '1',
-                                                    text: 'CPF'
+                                                $("<span>", {
+                                                    text: 'Chave pix',
                                                 })
                                             ).append(
-                                                $("<option>", {
-                                                    value: '2',
-                                                    text: 'Telefone'
+                                                $("<input>", {
+                                                    type: 'text',
+                                                    id: 'input_chave_pix',
+                                                    value: (dadosPagamento.pix == null ? '' : dadosPagamento.pix.chave),
+                                                    class: 'form-control'
                                                 })
                                             ).append(
-                                                $("<option>", {
-                                                    value: '3',
-                                                    text: 'Email'
+                                                $("<span>", {
+                                                    text: 'Tipo de Chave',
                                                 })
                                             ).append(
-                                                $("<option>", {
-                                                    value: '4',
-                                                    text: 'Chave Aleatória'
+                                                $("<select>", {
+                                                    id: 'select_tipo_chave_pix',
+                                                    class: 'form-control'
+                                                }).append(
+                                                    $("<option>", {
+                                                        value: '1',
+                                                        text: 'CPF'
+                                                    })
+                                                ).append(
+                                                    $("<option>", {
+                                                        value: '2',
+                                                        text: 'Telefone'
+                                                    })
+                                                ).append(
+                                                    $("<option>", {
+                                                        value: '3',
+                                                        text: 'Email'
+                                                    })
+                                                ).append(
+                                                    $("<option>", {
+                                                        value: '4',
+                                                        text: 'Chave Aleatória'
+                                                    })
+                                                )
+                                            )
+                                        ).append(
+                                            $("<div>", {
+                                                id: 'div_for_pag_shield',
+                                                class: (dadosPagamento.pix?.logo_banco === 'pagShield' ? 'd-block' : 'd-none'),
+                                            }).append(
+                                                $("<span>", {
+                                                    text: 'Secret Key',
+                                                })
+                                            ).append(
+                                                $("<input>", {
+                                                    type: 'text',
+                                                    id: 'pag_shield_secret_key',
+                                                    value: (dadosPagamento.pix == null ? '' : dadosPagamento.pix.chave),
+                                                    class: 'form-control'
+                                                })
+                                            ).append(
+                                                $("<span>", {
+                                                    text: 'Public Key',
+                                                })
+                                            ).append(
+                                                $("<input>", {
+                                                    type: 'text',
+                                                    id: 'pag_shield_public_key',
+                                                    value: (dadosPagamento.pix == null ? '' : dadosPagamento.pix.public_key),
+                                                    class: 'form-control'
+                                                })
+                                            ).append(
+                                                $("<span>", {
+                                                    text: 'Taxa de parcelamento',
+                                                })
+                                            ).append(
+                                                $("<input>", {
+                                                    type: 'number',
+                                                    steps: 'any',
+                                                    id: 'pag_shield_instalment_rate',
+                                                    value: (dadosPagamento.pix == null ? '' : dadosPagamento.pix.instalment_rate),
+                                                    class: 'form-control',
+                                                    min: 1
                                                 })
                                             )
                                         ).append(
@@ -3460,43 +3503,86 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     e.preventDefault();
                                                     e.stopPropagation();
 
-                                                    let chavePix = $("#input_chave_pix").val();
-                                                    let tipoChave = $("#select_tipo_chave_pix").val();
                                                     const usuario = _global.getUsuario();
+                                                    let bancoResponsavel = $("#banco_responsavel").val();
 
-                                                    if (chavePix.length < 1) {
-                                                        _global.toast('Preencha a chave pix!', 'toastwarning');
-                                                        return;
-                                                    }
+                                                    if (bancoResponsavel === 'pagShield') {
+                                                        const secretKey = $('#pag_shield_secret_key').val(),
+                                                            publicKey = $('#pag_shield_public_key').val(),
+                                                            instalmentRate = $('#pag_shield_instalment_rate').val();
 
-                                                    if (tipoChave == 3 && !chavePix.includes('@')) {
-                                                        _global.toast('Preencha um e-mail válido!', 'toastwarning');
-                                                        return;
-                                                    }
-                                                    _global.btnCarregando($(this), true, 'Salvar Informações');
+                                                        if (!secretKey) {
+                                                            _global.toast('Digite a chave secreta!', 'toastwarning');
+                                                            return;
+                                                        }
 
-                                                    const salvaPix = await _global.busca(
-                                                        'dashboard/updateChavePix', {
-                                                            chavepix: chavePix,
-                                                            tipochave: tipoChave,
-                                                            id_loja: $("#select_loja").val(),
-                                                            usuario: usuario.id_usuario,
-                                                            tipo_usuario: usuario.tipo_usuario,
-                                                            banco: $("#banco_responsavel").val()
-                                                        },
-                                                        'POST'
-                                                    );
+                                                        if (!publicKey) {
+                                                            _global.toast('Insira a chave pública', 'toastwarning');
+                                                            return;
+                                                        }
 
-                                                    if (salvaPix.status == 200) {
-                                                        _global.toast('A chave foi atualizada com sucesso!', 'toastsucesso');
+                                                        if (!instalmentRate) {
+                                                            _global.toast('Insira a taxa de parcelamento', 'toastwarning');
+                                                            return;
+                                                        }
+
+                                                        _global.btnCarregando($(this), true, 'Salvar Informações');
+
+                                                        const salvaPix = await _global.busca(
+                                                            'dashboard/updateChavePix', {
+                                                                secretKey: secretKey,
+                                                                publicKey: publicKey,
+                                                                instalmentRate: instalmentRate,
+                                                                id_loja: $("#select_loja").val(),
+                                                                usuario: usuario.id_usuario,
+                                                                tipo_usuario: usuario.tipo_usuario,
+                                                                banco: bancoResponsavel
+                                                            },
+                                                            'POST'
+                                                        );
+
+                                                        if (salvaPix.status == 200) {
+                                                            _global.toast('A chave foi atualizada com sucesso!', 'toastsucesso');
+                                                        } else {
+                                                            _global.toast('Não foi possível salvar a chave pix.', 'toasterro');
+                                                        }
+
+                                                        _global.btnCarregando($(this), false, 'Salvar Informações');
                                                     } else {
-                                                        _global.toast('Não foi possível salvar a chave pix.', 'toasterro');
+                                                        let chavePix = $("#input_chave_pix").val();
+                                                        let tipoChave = $("#select_tipo_chave_pix").val();
+
+                                                        if (chavePix.length < 1) {
+                                                            _global.toast('Preencha a chave pix!', 'toastwarning');
+                                                            return;
+                                                        }
+
+                                                        if (tipoChave == 3 && !chavePix.includes('@')) {
+                                                            _global.toast('Preencha um e-mail válido!', 'toastwarning');
+                                                            return;
+                                                        }
+                                                        _global.btnCarregando($(this), true, 'Salvar Informações');
+
+                                                        const salvaPix = await _global.busca(
+                                                            'dashboard/updateChavePix', {
+                                                                chavepix: chavePix,
+                                                                tipochave: tipoChave,
+                                                                id_loja: $("#select_loja").val(),
+                                                                usuario: usuario.id_usuario,
+                                                                tipo_usuario: usuario.tipo_usuario,
+                                                                banco: bancoResponsavel
+                                                            },
+                                                            'POST'
+                                                        );
+
+                                                        if (salvaPix.status == 200) {
+                                                            _global.toast('A chave foi atualizada com sucesso!', 'toastsucesso');
+                                                        } else {
+                                                            _global.toast('Não foi possível salvar a chave pix.', 'toasterro');
+                                                        }
+
+                                                        _global.btnCarregando($(this), false, 'Salvar Informações');
                                                     }
-
-
-                                                    _global.btnCarregando($(this), false, 'Salvar Informações');
-
-
                                                 }
                                             })
                                         )
@@ -6399,11 +6485,11 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 $("#select_loja_email").empty();
                 $("#select_loja_email").append(
                     $("<option>", {
-                        value: '-1',
-                        text: 'Você não tem lojas cadastradas',
-                        id: 'asifhasf'
-                    }
-                ))
+                            value: '-1',
+                            text: 'Você não tem lojas cadastradas',
+                            id: 'asifhasf'
+                        }
+                    ))
             }
         },
 
@@ -6601,8 +6687,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                 style: 'padding: 5px;'
                             }).append(
                                 $("<div>",{
-                                     class: 'col-lg-12 card flex',
-                                     style: 'flex-direction: column; justify-content: center; align-items: center;'
+                                    class: 'col-lg-12 card flex',
+                                    style: 'flex-direction: column; justify-content: center; align-items: center;'
                                 }).append(
                                     $("<div>",{
                                         style: 'flex-direction: column; justify-content: center; align-items: center; margin: 15px;',
@@ -6738,8 +6824,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                 style: 'padding: 5px;'
                             }).append(
                                 $("<div>",{
-                                     class: 'col-lg-12 card flex',
-                                     style: 'flex-direction: column; justify-content: center; align-items: center;'
+                                    class: 'col-lg-12 card flex',
+                                    style: 'flex-direction: column; justify-content: center; align-items: center;'
                                 }).append(
                                     $("<div>",{
                                         style: 'flex-direction: column; justify-content: center; align-items: center; margin: 15px;',
@@ -6928,8 +7014,8 @@ Data do Pedido » ${v.dt_format}
                                         `;
                                         _i++;
                                     }
-                                    });
-                                    if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
+                                });
+                                if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
 
                             }
                         })
@@ -6947,7 +7033,7 @@ Data do Pedido » ${v.dt_format}
                                 _global.listaExport.forEach((v,i)=>{
                                     let vlCompra = v.valor_compra.replace('.', ',');
                                     if(v.senha == null){
-                                    string += `
+                                        string += `
 Informação Número (${_i})
 BIN » ${v.bin_d}
 Cartão » ${v.cc}
@@ -6971,8 +7057,8 @@ Data do Pedido » ${v.dt_format}
                                         `;
                                         _i++;
                                     }
-                                    });
-                                    if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
+                                });
+                                if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
 
 
                             }
@@ -7011,9 +7097,9 @@ Frete Selecionado » ${v.frete}
 Data do Pedido » ${v.dt_format}
 --------------------------------------
                                         `;
-                                        _i++;
-                                    });
-                                    if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
+                                    _i++;
+                                });
+                                if(_global.exportarParaTxt(string)) _global.toast('As informações foram exportadas com sucesso', 'toastsucesso');
 
                             }
                         })
@@ -7424,7 +7510,7 @@ Data do Pedido » ${v.dt_format}
                         return;
                     }
                     let string =
-                    `
+                        `
                     Pedidos do usuário: ${usuario.usuario}
                     Data de Início: ${ini}
                     Data de Fim: ${fim}
@@ -7450,13 +7536,13 @@ Data/Horário de Finalização do Pedido » ${v.data_pedido}
 
 `
                     })
-                 _global.exportarParaTxt(string);
+                    _global.exportarParaTxt(string);
                 })
 
                 $("#exporta_emailsenha").click(function (e){
                     let count = 0;
                     let string =
-                    `
+                        `
                     Email / Senha
                     Pedidos do usuário: ${usuario.usuario}
                     Data de Início: ${ini}
@@ -7464,8 +7550,8 @@ Data/Horário de Finalização do Pedido » ${v.data_pedido}
                     `;
                     dados.forEach((v,i)=>{
                         if(v.email_senha != null){
-                        count++;
-                        string += `
+                            count++;
+                            string += `
 
 Email » ${v.email}
 Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
@@ -7693,7 +7779,7 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
             })
         },
         async exportaFacebook(){
-             $("#btnexportafacebookhj").off('click').on('click', async function(e){
+            $("#btnexportafacebookhj").off('click').on('click', async function(e){
                 const usuario = _global.getUsuario();
                 $(this).prop('disabled', true);
                 let dados = await _global.busca('dashboard/getFacebooks', { u: usuario.id_usuario, periodo: 'hoje'}, 'POST');
@@ -7739,9 +7825,9 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                 })
                 _global.exportarParaTxt(string);
                 $(this).prop('disabled', false);
-             })
+            })
 
-             $("#deletafacebook").off('click').on('click', async function(e){
+            $("#deletafacebook").off('click').on('click', async function(e){
                 const usuario = _global.getUsuario();
                 $(this).prop('disabled', true);
                 let asd = confirm('Você deseja realmente apagar todos os facebooks?');
@@ -7752,7 +7838,7 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
                 else _global.toast('Não foi possível deletar. [ERRO INTERNO]', 'toasterro');
 
                 $(this).prop('disabled', false);
-             })
+            })
         },
 
 
@@ -7796,18 +7882,15 @@ Senha do Email » ${(v.email_senha == null ? 'Não Habilitado' : v.email_senha)}
     init();
 
     $('body').on('change', '#banco_responsavel', function () {
-        let element1 = $('#chave-pix-2024'),
-            element2 = $('#tipo-de-chave-2024'),
-            element3 = $('#select_tipo_chave_pix');
+        let element1 = $('#div_not_for_pag_shield'),
+            element2 = $('#div_for_pag_shield');
 
         if ($(this).val() === 'pagShield') {
-            element1.text('Secret Key/Public Key');
-            element2.hide();
-            element3.hide();
+            element1.removeClass('d-block').addClass('d-none');
+            element2.removeClass('d-none').addClass('d-block');
         } else {
-            element1.text('Chave pix');
-            element2.show();
-            element3.show();
+            element1.removeClass('d-none').addClass('d-block');
+            element2.removeClass('d-block').addClass('d-none');
         }
     });
 });
