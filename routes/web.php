@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DominioController;
 use App\Http\Middleware\VerificaToken;
@@ -16,6 +17,9 @@ Route::get('/devloja', [DominioController::class, 'devLoja']);
 
 Route::post('/autenticaUsuario', [LoginController::class, 'autenticaUsuario']);
 Route::get('/entrar', [LoginController::class, 'indexLogin']);
+//added sign up page
+//need to add functionality
+Route::get('/inscreve', [SignupController::class, 'indexSignup']);
 Route::get('/statusApi', [LoginController::class, 'statusApi']);
 
 Route::get('/destroiSessao', [LoginController::class, 'destroiSessao']);

@@ -654,6 +654,7 @@ class CheckoutController extends Controller
             return response()->json(['status' => 200]);
         } catch(\Exception $e){
             return response()->json(['status' => 500]);
+			
         }
     }
 }

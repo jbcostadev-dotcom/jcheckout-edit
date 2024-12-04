@@ -946,6 +946,8 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Nº do Pedido</th>
+                                                 <!-- Added status column, need to add propety to row -->
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center;">Status</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center;">Produto</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Quantidade</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Valor do Carrinho</th>
