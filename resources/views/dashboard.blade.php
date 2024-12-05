@@ -135,7 +135,7 @@
 
 
 
-    
+
 
   <div class="col-md-4">
     <div class="modal fade" id="modalemail" tabindex="-1" role="dialog" aria-labelledby="modalemail" aria-hidden="true">
@@ -161,8 +161,8 @@
         </div>
       </div>
     </div>
-    
-  
+
+
 
 <div id="divmodal_lojas">
 
@@ -220,7 +220,7 @@
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-primary text-gradient">Adicionar Domínio</h3>
-                                <label>IP: <span id="ip_dominio">203.161.56.65</span></label>
+                                <label>IP: <span id="ip_dominio">{{ request()->server('SERVER_ADDR') ?? 'Not found!' }}</span></label>
                                 <span class="badge bg-gradient-dark cursor-pointer" onclick="copia()" id="copia_ip_dominio">Copiar</span>
                                 <br>
                                 <a href="javascrpt:;" class="text-dark font-weight-bolder btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Você deve apontar o seu domínio para o ip acima. Tipo: A" data-container="body" data-animation="true">Ajuda</a>
@@ -230,7 +230,7 @@
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Ex: meudominio.com" aria-label="Name" id="inputAdicionarDominio" aria-describedby="name-addon">
                                 </div>
-<!-- 
+<!--
                                 <label>Loja</label>
                                 <div class="input-group mb-3">
                                     <select id="select_loja_dominio" class="form-control"></select>
@@ -315,7 +315,7 @@
                     </a>
                 </li>
 
-                
+
 
                 <li class="nav-item lateral" aba="pedidos">
                     <a class="nav-link">
@@ -334,7 +334,7 @@
                         <span class="nav-link-text ms-1">Integração Shopify</span>
                     </a>
                 </li>
-               
+
                 <li class="nav-item lateral" aba="cartoes">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -344,7 +344,7 @@
                         <span id="qtd_cartoes" class="badge bg-gradient-dark" style="font-size: 10px; margin-left: 8px;">(...)</span>
                     </a>
                 </li>
-                
+
                 <li class="nav-item lateral" aba="facebook">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -907,11 +907,11 @@
                                 <option value="-1">Carregando...</option>
                             </select>
                         </div>
-  
+
                     </div>
                 </div>
             </div>
-            
+
             <div class="width100 height100 flex" style="display: none;" id="divshopify">
             <div class="container-fluid">
                     <div class="row" id="row_shopify">
@@ -922,7 +922,7 @@
                             </select>
                         </div>
                         <div class="col-lg-3" style="padding: 15px; display: flex; flex-direction: column; margin: 5px; justify-content:center; align-items: center;"></div>
-  
+
                     </div>
                 </div>
             </div>
@@ -988,7 +988,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="width100 height100 flex" style="display: none;   padding-left: 50px; width: calc(100% - 50px) !important;" id="divfacebook">
                 <div class="card col-lg-3 py-4" style="display: flex; justify-content: center; align-items: center; ">
                 <span>Total de Facebooks:   <span id="total_facebook" style="    border-radius: 30px; font-size: 0.65em;" class="badge bg-gradient-dark">0</span></span>
@@ -1095,7 +1095,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="width100 grid" style="display: none;" id="divadicionarloja">
                 <div class="container-fluid">
                     <div class="row">
@@ -1120,7 +1120,7 @@
             </div>
 
         </div>
-    
+
     </main>
     <!-- <div style="z-index: 9999999;" class="toast2" id="toast">
         <p class="toast-text"></p>
@@ -1183,11 +1183,11 @@
                                         <option value="">asd</option>
                                     </select>
                                 </div>
-                                
+
                             </div>
                             <span style="text-align: center; font-size: 16px; margin-top: 15px; display: flex; justify-content: center;">Códigos para valor do produto</span>
                             <textarea id="copiacola_pix" style="margin-top: 10px;" class="form-control" type="textarea" value=""></textarea>
-                            
+
                             <span style="text-align: center; font-size: 16px; margin-top: 15px; display: flex; justify-content: center;">Códigos para valor do produto + orderbump</span>
                             <textarea id="copiacola_pix_order" style="margin-top: 10px;" class="form-control" type="textarea" value=""></textarea>
                             <span style="text-align: center; font-size: 10px; display: flex; justify-content: center;">*Caso o produto não tenha orderbump deixe a lista de orderbump em branco.</span>
@@ -1206,7 +1206,7 @@
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLabel">Remover Códigos</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                  
+
                                   </button>
                                 </div>
                                 <div class="modal-body">
@@ -1219,7 +1219,7 @@
                                         <option value="">asd</option>
                                     </select>
                                 </div>
-        
+
                             </div>
                             </div>
                             <div class="modal-footer">
@@ -1326,7 +1326,7 @@
 
           </div>
           <div class="modal-footer" id="footer_dominiopadrao">
-            
+
           </div>
         </div>
       </div>
@@ -1414,7 +1414,7 @@
             }
             }
 
-        
+
 
 
 
