@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://cdn.yampi.me/favicon/favicon.png">
 
   <!-- custom meta tag -->
-    
+
   <!-- ROBOTS -->
   <meta name="robots" content="noindex,nofollow" />
 
@@ -36,7 +36,7 @@
   <link href="//static.xx.fbcdn.net" rel="dns-prefetch" />
 
       <link href="//buyer.yampi.io" rel="dns-prefetch" />
-  
+
 
   <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <!-- Taboola Pixel Code -->
@@ -54,7 +54,7 @@
   </script>
   <!-- End of Taboola Pixel Code -->
 <script>
-    _tfa.push({notify: 'event', name: 'make_purchase', id: {{$data['pixeltaboola']}}, revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0)}}, currency: 'BRL', quantity: {{$data['quantidade']}}});
+    _tfa.push({notify: 'event', name: 'make_purchase', id: {{$data['pixeltaboola']}}, revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor'] ?? 0) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0)}}, currency: 'BRL', quantity: {{$data['quantidade']}}});
 </script>
 <!-- End of Taboola Pixel Code -->
 
@@ -179,9 +179,9 @@ li.checkout-step:nth-child(1) > div:nth-child(2):after {
     text-indent:-9999px;
 }
 
-.checkout-step.enabled .connect, .checkout-step.enabled .holder-icon {   
+.checkout-step.enabled .connect, .checkout-step.enabled .holder-icon {
   background: linear-gradient(0deg, #f18000 0%, #f18000 100%); /* cor dos 3 icones */
-} 
+}
 
 .checkout-step .connect {
     background-color: #004AA; /* cor dos circulos apagados */
@@ -436,7 +436,7 @@ background: #999;
 
 .holder-cols-checkout .box-checkout.box-resume {
     width: auto;
-    margin: 0 -1px 20px;    
+    margin: 0 -1px 20px;
     padding-left: 14px;
     padding-right: 14px;
     border: 0;
@@ -481,7 +481,7 @@ background: #999;
 
 .holder-cols-checkout .box-checkout.box-resume {
     width: auto;
-    margin: 0 -1px 20px;    
+    margin: 0 -1px 20px;
     padding-left: 14px;
     padding-right: 14px;
     border: 0;
@@ -528,7 +528,7 @@ background: #999;
 
    font-size: 13.5px;
 
-}   
+}
 
 /* TEXTO - 12x NO CARTÃO */
 
@@ -570,7 +570,7 @@ background: #999;
 
   .checkout-step .holder-icon {
     border-radius: 20%;
-}    
+}
     .btn-copy-paste {
     background-color: {{$data['cor_loja']}};
 }
@@ -668,9 +668,9 @@ background: #999;
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
-	
+
 			gtag('config', 'G-3W1H0TVXYW', { 'groups': 'checkout' });
-		
+
 	window.yampi.google.analytics.version.push('4');
 </script>
 
@@ -683,9 +683,9 @@ background: #999;
 
 			ga('create', 'UA-231467125-1', 'auto');
 
-		
+
 					ga('send', 'pageview');
-			
+
 	// Internal tracker
 	ga('create', 'UA-45745009-5', {name: 'bubbTracker'});
 	ga('create', 'UA-45745009-32', {name: 'checkout'});
@@ -722,10 +722,10 @@ background: #999;
 	'https://connect.facebook.net/en_US/fbevents.js');
 </script>
 
-	
+
 
 <script>
-    <?php 
+    <?php
     if(!empty($data['pixelfb'])){
         for($i = 1; $i <= 6; $i++){
             if($data['pixelfb']['pixel_' . $i] != null){
@@ -748,8 +748,8 @@ background: #999;
 <script>
     window.dataLayer = window.dataLayer || [];
 
-    
-            
+
+
         var orderData = {
             'pageCategory': 'orderPlaced',
             'order': {
@@ -772,7 +772,7 @@ background: #999;
                 'address_info': {"hashed_first_name":"50ad41624c25e493aa1dc7f4ab32bdc5a3b0b78ecc35b539936e3fea7c565af7","hashed_last_name":"c42edefc75871e4ce2146fcda67d03dda05cc26fdf93b17b55f42c1eadfdc322","hashed_street_address":"46a84a269926a668f28d16686512960ecd4f69bb482399d7772f0500a8f17a5e","city":"Balne\u00e1rio Cambori\u00fa","state":"SC","postal_code":"88330900","country_code":"BR"},
                 'items': [
                                 {
-                    
+
                     "product": {
                         "id": "45155129786673",
                         "sku": "69508assad72",
@@ -800,11 +800,11 @@ background: #999;
 
         window.checkout.orderPlaced = orderData.order;
 
-    
+
 </script>
 <script>
 
-	
+
 </script>
 <script>
             var enhanced_conversion_data = {
@@ -822,9 +822,9 @@ background: #999;
                     }
                             };
         </script>
-    
-                
-    
+
+
+
 
 <script>
 	window.gandalf = {
@@ -863,19 +863,19 @@ background: #999;
 
 <body class="liord2 checkout-finalization custom-checkout mercadopago centered-logo">
 
-  
+
   <div class="inner-body">
 
     <header class="clearfix" style="background: {{ $data['cor_loja'] }};">
 	<div class="container clearfix">
-        
+
 		<div class="inner-header -center">
 			<div class="holder-logo pull-left hcenter flex default ">
 				<a
 					id="header-logo"
 					href="#"
 				>
-        
+
 					<div class="logo">
 													<img
 								src="http://{{$data['img_loja']}}"
@@ -933,12 +933,12 @@ background: #999;
 							</div><!-- /.cart-qtd -->
 						</div><!-- /.holder-icon -->
 					</a>
-				
+
 							</div>
 		</div><!-- /.inner-header -->
 
 		<nav>
-			
+
 			<div class="icon-arrow">
 				<i class="fa fa-angle-left"></i>
 			</div>
@@ -956,7 +956,7 @@ background: #999;
     <div class="content clearfix">
         	<div class="container clearfix text-center checkout-finalization">
 
-		
+
 							<div class="flex around finalization-pix">
             <div class="container-title">
     <div class="-container">
@@ -1028,7 +1028,7 @@ background: #999;
 <div class="qr-code">
     <div class="-holder" style="margin-top: 10px;">
         <div class="medium c-text -desktop -real">
-        
+
             <div class="-top-info f15 mb40">
                 Abra seu aplicativo de pagamento onde você utiliza o Pix e escolha a opção
                 <span class="inline-block bold yampi-purple">Ler QR Code</span>
@@ -1038,13 +1038,13 @@ background: #999;
                 <span class="-nowrap f14">Aponte a câmera do seu celular</span>
             </div>
         </div>
-        
+
         <img
             src="{{$data['qrcode']}}"
             alt="QR Code PIX"
             class="-desktop -real"
         >
-        
+
 
         <div class="price-total mt3">
             <span class="-text black-80">Valor do Pix:</span>
@@ -1107,7 +1107,7 @@ background: #999;
             </a>
         </div>
     </div>
-    @else 
+    @else
         <div style="display: flex; width: 100%; height: 100%; justify-content:center; align-items: center;">
             <h2 style="padding: 50px; font-size: 1.5em;">{{'Pagamento não configurado!'}}</h2>
         </div>
@@ -1116,7 +1116,7 @@ background: #999;
     </div>
 						</div><!-- /.container clearfix -->
 
-        
+
             </div><!-- /.content clearfix -->
 
     <footer class="-mobile-center">
@@ -1206,17 +1206,17 @@ background: #999;
                         <span class="line-break hide"></span>
                                     </div>
             </div>
-        
+
                     <div class="store-info-holder">
                                     <div class="-store-name">
                         {{$data['nm_loja']}}:
                         {{$data['email_loja']}}
                     </div>
-                
-                
+
+
                             </div>
-        
-        
+
+
                     <div class="security-label">
                 <svg width="89" height="19" viewBox="0 0 89 19" fill="#898792" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 14.1875V8.5C9.75 8.05127 9.38623 7.6875 8.9375 7.6875L2.4375 7.6875C1.98877 7.6875 1.625 8.05127 1.625 8.5L1.625 14.1875C1.625 14.6362 1.98877 15 2.4375 15H8.9375C9.38623 15 9.75 14.6362 9.75 14.1875ZM11.375 8.5V14.1875C11.375 15.5337 10.2837 16.625 8.9375 16.625H2.4375C1.09131 16.625 -5.8844e-08 15.5337 0 14.1875L2.48609e-07 8.5C3.07453e-07 7.15381 1.09131 6.0625 2.4375 6.0625L8.9375 6.0625C10.2837 6.0625 11.375 7.15381 11.375 8.5Z"/>
@@ -1254,7 +1254,7 @@ background: #999;
   <script src="https://cdn.yampi.me/jquery/jquery.js"></script>
   <script src="//awesome-assets.yampi.me/checkout/build/mix/assets/js/app.js?id=9c1c7c0a3e1f4bf1c94cd50f2f29b575"></script>
   <script>
-<?php 
+<?php
             if($data['resumo_aberto']){
                 echo '
                     setTimeout(() => {
@@ -1278,10 +1278,10 @@ fbq('track', 'Purchase',
             il: $("#__l").val()
     },(r)=>{
         console.log("|           ^_^          |");
-    })   
+    })
 
     $("#btn_copia").click(function(e){
-        
+
         $.post('/checkout/pixc',{
             hash: $('[a_hash="h_checkout"]').attr('hash')
         },(r)=>{
@@ -1306,6 +1306,6 @@ fbq('track', 'Purchase',
 
 
 
-	  
+
 </body>
 </html>
