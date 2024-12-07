@@ -6053,7 +6053,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 await _global.busca(
                                                                     "dashboard/updatePreferencias",
                                                                     {
-                                                                        redirectLink,
+                                                                        c: 'redirect_link',
+                                                                        v: redirectLink,
+                                                                        id_loja: $("#select_loja").val()
                                                                     },
                                                                     "POST"
                                                                 );
@@ -6097,6 +6099,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             style: "margin-bottom: 1rem",
                                                                             type: "text",
                                                                             id: "redirectLinkInput",
+                                                                            value: preferencias.redirect_link,
                                                                         }
                                                                     )
                                                                 )
@@ -6108,6 +6111,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             "<button>",
                                                                             {
                                                                                 class: "btn btn-outline-secondary",
+                                                                                style: "border-top-left-radius: unset; border-bottom-left-radius: unset;",
                                                                                 type: "submit",
                                                                                 text: "Save",
                                                                             }
