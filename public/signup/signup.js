@@ -1,6 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+    const apiBaseUrl = document.querySelector("meta[name='api-base-url']").getAttribute('content');
     const signupButton = document.querySelector("#signupButton");
     const closeButton = document.querySelector("#close");
     const toast = document.querySelector("#toast");
@@ -33,11 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const formData = new FormData(formSignup);
-        const { email, password, cpassword } = Object.fromEntries(
+        const {email, password, cpassword} = Object.fromEntries(
             formData.entries()
         );
-
-        console.log({ email, password, cpassword });
 
         if (!email || !password || !cpassword) {
             showToast("Um ou mais campos estão vazios");
@@ -55,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Sending to existing login endpoint
             //need to implement the signup endpoint and logic in the backend
-            const response = await fetch("/autenticaUsuario", {
+            const response = await fetch(`${apiBaseUrl}inscreve`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -68,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await response.json();
 
-            if (data.status === 200) {
+            if (data.status === 201) {
                 //show success toast and redirect
                 showToast("As senhas não correspondem", "success", "/gestor");
                 return;

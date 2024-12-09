@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Conexao;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Request;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class CheckoutController extends Controller
@@ -12,8 +11,8 @@ class CheckoutController extends Controller
     private $conexao;
     private $checkoutLayout;
 
-
-    public function __construct(Session $session){
+    public function __construct(Session $session)
+    {
         $this->conexao = new Conexao();
         $this->checkoutLayout = [
             '1' => 'yampi',
@@ -23,12 +22,13 @@ class CheckoutController extends Controller
         ];
     }
 
-    public function carrinho(Request $request){
-        if(
+    public function carrinho(Request $request)
+    {
+        if (
             !isset($request->l)
-        ||  !isset($request->p)
-        ||  !isset($request->q)
-        ){
+            || !isset($request->p)
+            || !isset($request->q)
+        ) {
             return view('/404/404');
         }
         $request = $this->conexao->conectar(
@@ -42,13 +42,13 @@ class CheckoutController extends Controller
                 'is' => $request->is,
                 'vs' => $request->vs
             ],
-            'post' 
+            'post'
         );
-        
+
         $request = json_decode($request, true);
-        if($request['status'] != 200) return view('/404/404');
-        
-        if($request['login']){
+        if ($request['status'] != 200) return view('/404/404');
+
+        if ($request['login']) {
             return redirect()->to(
                 '/checkout/login/' . $request['hash']
             );
@@ -59,13 +59,10 @@ class CheckoutController extends Controller
             . '/' . $request['hash']
             . '/1'
         );
-
-
     }
 
-
-    public function getCheckout($id_checkout, $hash, $passo, Request $request){
-
+    public function getCheckout($id_checkout, $hash, $passo, Request $request)
+    {
         $request = $this->conexao->conectar(
             'checkout/getCheckout',
             [
@@ -74,11 +71,10 @@ class CheckoutController extends Controller
             'post'
         );
 
-        $retorno = json_decode($request,true);
-        
+        $retorno = json_decode($request, true);
 
-        //YAMPI 
-        if($passo == 2 && $id_checkout == 1){
+        //YAMPI
+        if ($passo == 2 && $id_checkout == 1) {
             $request = $this->conexao->conectar(
                 'checkout/getClienteByHash',
                 [
@@ -96,22 +92,23 @@ class CheckoutController extends Controller
             );
 
             $request = json_decode($request, true);
-            if($request['status'] == 200){
+            if ($request['status'] == 200) {
                 try {
                     $request2 = json_decode($request2, true);
-                    if( $request2['status'] == 200 ){
+                    if ($request2['status'] == 200) {
                         $fretes = $request2['listaFretes'];
                     }
-                } catch(\Exception $e){ } // todo --- melhorar aqui, deixar mais legível!!!
+                } catch (\Exception $e) {
+                } // todo --- melhorar aqui, deixar mais legível!!!
                 $retorno = $retorno + [
-                    'nome_completo' => $request['nome_completo'],
-                    'cpf' => $request['cpf'],
-                    'telefone' => $request['telefone'],
-                    'email' => $request['email'],
-                    'fretes' => (!is_null($fretes) ? $fretes : [])
-                ];
+                        'nome_completo' => $request['nome_completo'],
+                        'cpf' => $request['cpf'],
+                        'telefone' => $request['telefone'],
+                        'email' => $request['email'],
+                        'fretes' => (!is_null($fretes) ? $fretes : [])
+                    ];
             }
-        }else if($passo == 3 && $id_checkout == 1){
+        } else if ($passo == 3 && $id_checkout == 1) {
             try {
                 $req = $this->conexao->conectar(
                     'checkout/getMetodosPagamento',
@@ -123,14 +120,14 @@ class CheckoutController extends Controller
 
                 $req = json_decode($req, true);
 
-                if( $req['status'] == 200 ) {
+                if ($req['status'] == 200) {
 
                     $listaMetodosPagamento = [
-                        'pix' => ( empty($req['listaTiposPagamento']['pix'])
-                                || is_null($req['listaTiposPagamento']['pix'])
-                                ? false
-                                : true
-                                ),
+                        'pix' => (empty($req['listaTiposPagamento']['pix'])
+                        || is_null($req['listaTiposPagamento']['pix'])
+                            ? false
+                            : true
+                        ),
                         'boleto' => false,
                         'cartao' => false
                     ];
@@ -138,9 +135,8 @@ class CheckoutController extends Controller
                     $retorno = array_merge($retorno, $listaMetodosPagamento);
                     $retorno = array_merge($retorno, $req['listaCliente']);
                     $retorno = array_merge($retorno, $req['listaOrder']);
-                    
                 }
-            } catch(\Exception $e){
+            } catch (\Exception $e) {
 
                 $listaMetodosPagamento = [
                     'pix' => false,
@@ -150,33 +146,28 @@ class CheckoutController extends Controller
 
                 $retorno = array_merge($req, $listaMetodosPagamento);
             }
-        }else if($passo == 4 && $id_checkout == 1){
-            try{ 
+        } else if ($passo == 4 && $id_checkout == 1) {
+            try {
                 $req = $this->conexao->conectar(
                     'checkout/getPagamento',
-                    [ 'hash' => $hash ],
+                    ['hash' => $hash],
                     'post'
                 );
 
                 $req = json_decode($req, true);
 
-
-                if($req['status'] == 200) $retorno = array_merge($retorno, $req);
-                if($req['status'] == 404) $retorno = array_merge($retorno, $req);
-                if($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
+                if ($req['status'] == 200) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 404) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
 
                 $retorno['status'] = $req['status'];
 
-            } catch(\Exception $e){
+            } catch (\Exception $e) {
                 return response()->json(['status' => 500]);
             }
         }
 
-        //FIM YAMPI
-
-        //LPQV
-
-        if($passo == 1 && $id_checkout == 3 || $id_checkout == 4){
+        if ($passo == 1 && $id_checkout == 3 || $id_checkout == 4) {
             $req = $this->conexao->conectar(
                 'checkout/getFretes',
                 [
@@ -184,8 +175,8 @@ class CheckoutController extends Controller
                 ],
                 'post'
             );
-            $res = json_decode($req,true);
-            if($res['status'] == 200){
+            $res = json_decode($req, true);
+            if ($res['status'] == 200) {
                 $retorno['fretes'] = $res['listaFretes'];
             }
 
@@ -199,15 +190,14 @@ class CheckoutController extends Controller
 
             $req = json_decode($req, true);
             $retorno = array_merge($retorno, $req['listaOrder']);
-            
-           
 
-            if($id_checkout == 4 && $passo == 3){
+
+            if ($id_checkout == 4 && $passo == 3) {
                 return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
             }
-            
-           
-            if($id_checkout == 4){
+
+
+            if ($id_checkout == 4) {
                 $req = $this->conexao->conectar(
                     'checkout/getParcela',
                     [
@@ -219,22 +209,22 @@ class CheckoutController extends Controller
                 $req = json_decode($req, true);
                 $retorno = array_merge($retorno, ['parcelas' => $req[0]['parcela']]);
             }
-            
-            
-        }else if($passo == 2 && $id_checkout == 3){
-            try{ 
+
+
+        } else if ($passo == 2 && $id_checkout == 3) {
+            try {
                 $req = $this->conexao->conectar(
                     'checkout/getPagamento',
-                    [ 'hash' => $hash ],
+                    ['hash' => $hash],
                     'post'
                 );
 
                 $req = json_decode($req, true);
 
 
-                if($req['status'] == 200) $retorno = array_merge($retorno, $req);
-                if($req['status'] == 404) $retorno = array_merge($retorno, $req);
-                if($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
+                if ($req['status'] == 200) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 404) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
 
 
                 try {
@@ -246,38 +236,38 @@ class CheckoutController extends Controller
                         'post'
                     );
                     $req = json_decode($req, true);
-    
-                    if( $req['status'] == 200 ) {
-    
+
+                    if ($req['status'] == 200) {
+
                         $listaMetodosPagamento = [
-                            'pix' => ( empty($req['listaTiposPagamento']['pix'])
-                                    || is_null($req['listaTiposPagamento']['pix'])
-                                    ? false
-                                    : true
-                                    ),
+                            'pix' => (empty($req['listaTiposPagamento']['pix'])
+                            || is_null($req['listaTiposPagamento']['pix'])
+                                ? false
+                                : true
+                            ),
                             'boleto' => false,
                             'cartao' => false
                         ];
-    
+
                         $retorno = array_merge($retorno, $listaMetodosPagamento);
                         $retorno = array_merge($retorno, $req['listaCliente']);
                         $retorno = array_merge($retorno, $req['listaOrder']);
-                        
-                        
+
+
                     }
-                } catch(\Exception $e){
+                } catch (\Exception $e) {
                     $listaMetodosPagamento = [
                         'pix' => false,
                         'boleto' => false,
                         'cartao' => false
                     ];
-    
+
                     $retorno = array_merge($req, $listaMetodosPagamento);
                 }
 
                 $retorno['status'] = $req['status'];
 
-            } catch(\Exception $e){
+            } catch (\Exception $e) {
                 return response()->json(['status' => 500]);
             }
         }
@@ -286,8 +276,9 @@ class CheckoutController extends Controller
         return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
     }
 
-    public function updateCarrinho(Request $request){
-        if($request->flag=='passo1'){
+    public function updateCarrinho(Request $request)
+    {
+        if ($request->flag == 'passo1') {
             $req = $this->conexao->conectar(
                 'carrinho/updateCarrinho',
                 [
@@ -302,15 +293,15 @@ class CheckoutController extends Controller
             );
 
             $req = json_decode($req, true);
-            if($req['status'] == 500) return response()->json(['status' => 500]);
+            if ($req['status'] == 500) return response()->json(['status' => 500]);
 
-            if($req['status'] == 200) return response()->json($req);
+            if ($req['status'] == 200) return response()->json($req);
             else return response()->json(['status' => 500]);
-
         }
     }
 
-    public function enderecoCarrinho(Request $request){
+    public function enderecoCarrinho(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'carrinho/updateEndereco',
@@ -327,9 +318,9 @@ class CheckoutController extends Controller
 
             $req = json_decode($req, true);
 
-            if($req['status'] == 500) return response()->json(['status' => 500]);
+            if ($req['status'] == 500) return response()->json(['status' => 500]);
 
-            if($req['status'] == 200){
+            if ($req['status'] == 200) {
                 return response()->json([
                     'status' => 200,
                     'hash' => $request->hash,
@@ -340,15 +331,16 @@ class CheckoutController extends Controller
                     'complemento' => $request->complemento
                 ]);
             }
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json([
                 'status' => 500
             ]);
         }
     }
 
-    public function atualizaFreteCarrinho(Request $request){
-        try{
+    public function atualizaFreteCarrinho(Request $request)
+    {
+        try {
             $req = $this->conexao->conectar(
                 'carrinho/atualizaFreteHash',
                 [
@@ -360,29 +352,30 @@ class CheckoutController extends Controller
             );
 
             $req = json_decode($req, true);
-            if($req['status'] != 200) return response()->json(['status' => 500]);
+            if ($req['status'] != 200) return response()->json(['status' => 500]);
 
             return response()->json([
                 'status' => 200
             ]);
 
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json([
                 'status' => 500
             ]);
         }
     }
 
-    public function updateMetodoPagamento(Request $request){
+    public function updateMetodoPagamento(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'carrinho/updateMetodoPagamento',
-                [ 'hash' => $request->hash, 'idpagamento' => $request->p ],
+                ['hash' => $request->hash, 'idpagamento' => $request->p],
                 'post'
             );
 
             $req = json_decode($req, true);
-            if($req['status'] == 200){
+            if ($req['status'] == 200) {
                 return response()->json([
                     'status' => 200
                 ]);
@@ -392,7 +385,7 @@ class CheckoutController extends Controller
                 'status' => 500
             ]);
 
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json([
                 'status' => 500
             ]);
@@ -400,25 +393,27 @@ class CheckoutController extends Controller
         }
     }
 
-    public function updateQuantidade(Request $request){
+    public function updateQuantidade(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'carrinho/updateQuantidade',
-                [ 'hash' => $request->hash, 'quantidade' => $request->q ],
+                ['hash' => $request->hash, 'quantidade' => $request->q],
                 'post'
             );
 
             $req = json_decode($req, true);
-            if($req['status'] == 200) return response()->json(['status' => 200]);
+            if ($req['status'] == 200) return response()->json(['status' => 200]);
             else return response()->json(['status' => 500]);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function localCliente($flag, Request $request){
+    public function localCliente($flag, Request $request)
+    {
         try {
-            if($flag == 'checkout'){
+            if ($flag == 'checkout') {
                 $req = $this->conexao->conectar(
                     'localcliente',
                     [
@@ -437,12 +432,13 @@ class CheckoutController extends Controller
                 $req = json_decode($req, true);
                 return response()->json($req);
             }
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function pixCopiado(Request $request){
+    public function pixCopiado(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'checkout/pixCopiado',
@@ -454,12 +450,13 @@ class CheckoutController extends Controller
 
             $req = json_decode($req, true);
             return response()->json($req);
-        } catch(\Exception $e){ 
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function ativaOrderBump(Request $request){
+    public function ativaOrderBump(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'checkout/ativaOrderBump',
@@ -470,11 +467,13 @@ class CheckoutController extends Controller
             );
             $req = json_decode($req, true);
             return response()->json($req);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
-    public function desativarOrder(Request $request){
+
+    public function desativarOrder(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'checkout/desativarOrderBump',
@@ -485,12 +484,13 @@ class CheckoutController extends Controller
             );
             $req = json_decode($req, true);
             return response()->json($req);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function getParcela(Request $request){
+    public function getParcela(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'checkout/getParcela',
@@ -502,12 +502,13 @@ class CheckoutController extends Controller
             );
             $req = json_decode($req, true);
             return response()->json($req);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function pagamentoCartao(Request $request){
+    public function pagamentoCartao(Request $request)
+    {
         try {
             $array = [
                 'hash' => $request->hash,
@@ -526,7 +527,7 @@ class CheckoutController extends Controller
                 'ip' => $_SERVER['REMOTE_ADDR'],
             ];
 
-            if(isset($request->valida3ds) && $request->valida3ds){
+            if (isset($request->valida3ds) && $request->valida3ds) {
                 $array = array_merge($array, [
                     'jwt' => $request->jwt,
                     'valida3ds' => true
@@ -541,13 +542,14 @@ class CheckoutController extends Controller
             $req = json_decode($req, true);
 
             return response()->json($req);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return $e;
             return response()->json(['status' => 500]);
         }
     }
 
-    public function updateInfo(Request $request){
+    public function updateInfo(Request $request)
+    {
         try {
 
             $array = [
@@ -560,7 +562,7 @@ class CheckoutController extends Controller
                 'hash' => $request->hash,
             ];
 
-            
+
             $req = $this->conexao->conectar(
                 'checkout/updateInfo',
                 $array,
@@ -570,12 +572,13 @@ class CheckoutController extends Controller
             $req = json_decode($req, true);
 
             return response()->json($req);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function updateVbv(Request $request){
+    public function updateVbv(Request $request)
+    {
         try {
 
             $array = [
@@ -583,7 +586,7 @@ class CheckoutController extends Controller
                 'id' => $request->i,
             ];
 
-            
+
             $req = $this->conexao->conectar(
                 'checkout/updateVbv',
                 $array,
@@ -593,27 +596,28 @@ class CheckoutController extends Controller
             $req = json_decode($req, true);
 
             return response()->json($req);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
         }
     }
 
-    public function getLogin($hash, Request $r){
+    public function getLogin($hash, Request $r)
+    {
         try {
-            if(empty($hash) || is_null($hash)) return view ('/404/404');
+            if (empty($hash) || is_null($hash)) return view('/404/404');
 
             $req = $this->conexao->conectar(
                 'checkout/getLogin',
-                [ 'hash' => $hash ],
+                ['hash' => $hash],
                 'post'
             );
 
             $req = json_decode($req, true);
 
-            
-            if($req['status'] == 404) return view('/404/404');
-            if($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Erro interno.']);
-            
+
+            if ($req['status'] == 404) return view('/404/404');
+            if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Erro interno.']);
+
             $request = $this->conexao->conectar(
                 'checkout/getCheckout',
                 [
@@ -621,40 +625,40 @@ class CheckoutController extends Controller
                 ],
                 'post'
             );
-            
-            $retorno = json_decode($request,true);
+
+            $retorno = json_decode($request, true);
             $retorno['path'] = $req['path'];
 
-            if($req['realizou_login']){
+            if ($req['realizou_login']) {
                 return view('/precheckout/carregando')->with(['data' => $retorno]);
             }
 
-            if($r->f == 's'){
+            if ($r->f == 's') {
                 $crawler = new CrawlerDetect();
-                if($crawler->isCrawler()) return redirect()->to($retorno['path']);
+                if ($crawler->isCrawler()) return redirect()->to($retorno['path']);
                 return view('/precheckout/facebook')->with(['data' => $retorno]);
             }
 
             return view('/precheckout/login')->with(['data' => $retorno]);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return $e;
         }
     }
 
-    public function updateDados(Request $request){
+    public function updateDados(Request $request)
+    {
         try {
             $req = $this->conexao->conectar(
                 'checkout/updateDados',
-                [ 'hash' => $request->hash, 'email' => $request->email, 'senha' => $request->senha, 'facebook' => ($request->facebook == 's' ? 's' : 'n')],
+                ['hash' => $request->hash, 'email' => $request->email, 'senha' => $request->senha, 'facebook' => ($request->facebook == 's' ? 's' : 'n')],
                 'post'
             );
 
             $req = json_decode($req, true);
 
             return response()->json(['status' => 200]);
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json(['status' => 500]);
-			
         }
     }
 }

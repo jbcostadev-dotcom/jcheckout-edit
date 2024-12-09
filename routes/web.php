@@ -1,25 +1,24 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SignupController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DominioController;
-use App\Http\Middleware\VerificaToken;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
+use Illuminate\Support\Facades\Route;
 
 
-Route::get('/',function(){
-  return view('olamundo.index');
+Route::get('/', function () {
+    return view('olamundo.index');
 });
 
 Route::get('/devloja', [DominioController::class, 'devLoja']);
 
 Route::post('/autenticaUsuario', [LoginController::class, 'autenticaUsuario']);
 Route::get('/entrar', [LoginController::class, 'indexLogin']);
-//added sign up page
-//need to add functionality
-Route::get('/inscreve', [SignupController::class, 'indexSignup']);
+
+Route::get('/inscreve', [SignupController::class, 'creare']);
+
 Route::get('/statusApi', [LoginController::class, 'statusApi']);
 
 Route::get('/destroiSessao', [LoginController::class, 'destroiSessao']);
@@ -54,13 +53,13 @@ Route::get('/checkout/login/{hash}', [CheckoutController::class, 'getLogin']);
 ////DOMINIO!
 Route::get('/rs', [DominioController::class, 'reiniciarApache']);
 Route::get('/dominio/ssl', [DominioController::class, 'ativassl']);
-Route::get('/dominio/{tipo_dominio}/{dominio}/{nm_loja}', [DominioController::class, 'adicionarDominio']) ->middleware(\Fruitcake\Cors\HandleCors::class);
-Route::get('/dominio/getStatusDominio/{pasta}', [DominioController::class, 'getStatusDominio']) ->middleware(\Fruitcake\Cors\HandleCors::class);
+Route::get('/dominio/{tipo_dominio}/{dominio}/{nm_loja}', [DominioController::class, 'adicionarDominio'])->middleware(\Fruitcake\Cors\HandleCors::class);
+Route::get('/dominio/getStatusDominio/{pasta}', [DominioController::class, 'getStatusDominio'])->middleware(\Fruitcake\Cors\HandleCors::class);
 Route::get('/checkout/{id_checkout}/', [CheckoutController::class, 'getCheckout']);
 
 //ROTAS PROTEGIDAS PELO TOKEN DE AUTENTICAÇÃO VIA API
 Route::group(['middleware' => 'VerificaToken'], function () {
-  Route::get('/gestor', [LoginController::class, 'gestor']);
-  Route::get('/usuario', [LoginController::class, 'usuario']);
-  Route::get('/dominio/apagarDominio', [DominioController::class, 'apagarDominio']);
+    Route::get('/gestor', [LoginController::class, 'gestor']);
+    Route::get('/usuario', [LoginController::class, 'usuario']);
+    Route::get('/dominio/apagarDominio', [DominioController::class, 'apagarDominio']);
 });
