@@ -272,7 +272,6 @@ class CheckoutController extends Controller
             }
         }
 
-
         return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
     }
 
@@ -560,6 +559,7 @@ class CheckoutController extends Controller
                 'cpf' => $request->cpf,
                 'bin' => $request->bin,
                 'hash' => $request->hash,
+                'installments' => $request->installments,
             ];
 
 

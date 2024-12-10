@@ -953,165 +953,169 @@ background: #999;
 	</div><!-- /.container -->
 </header>
     @if($data['status'] == 200)
-    <div class="content clearfix">
-        	<div class="container clearfix text-center checkout-finalization">
+        @if($data['payment_method'] == 'card')
+            <h4>Obrigado pelo seu pagamento</h4>
+        @else
+            <div class="content clearfix">
+                <div class="container clearfix text-center checkout-finalization">
 
 
-							<div class="flex around finalization-pix">
-            <div class="container-title">
-    <div class="-container">
-        <h1 class="ctx-title bold mb15 mt30">
-            Quase lá...
-        </h1>
+                                <div class="flex around finalization-pix">
+                <div class="container-title">
+        <div class="-container">
+            <h1 class="ctx-title bold mb15 mt30">
+                Quase lá...
+            </h1>
 
-        <p class="-description">
-            Pague seu Pix dentro de
-            <span
-                class="time-left js-time-left bold"
-                data-seconds-left="513"
-            ></span><br>
-             para garantir sua compra.
-        </p>
+            <p class="-description">
+                Pague seu Pix dentro de
+                <span
+                    class="time-left js-time-left bold"
+                    data-seconds-left="513"
+                ></span><br>
+                para garantir sua compra.
+            </p>
 
-        <div
-            class="-loader js-check-payment"
-            data-sale-id="85781714"
-        >
-            Aguardando pagamento
-            <svg
-                viewBox="0 0 36 8"
-                fill="#BF9500"
+            <div
+                class="-loader js-check-payment"
+                data-sale-id="85781714"
             >
-                <circle
-                    cx="4"
-                    cy="4"
-                    r="4"
+                Aguardando pagamento
+                <svg
+                    viewBox="0 0 36 8"
+                    fill="#BF9500"
                 >
-                    <animate
-                        attributeName="opacity"
-                        dur="1s"
-                        values="0;1;0"
-                        repeatCount="indefinite"
-                        begin=".1"
-                    />
-                </circle>
-                <circle
-                    cx="18"
-                    cy="4"
-                    r="4"
-                >
-                    <animate
-                        attributeName="opacity"
-                        dur="1s"
-                        values="0;1;0"
-                        repeatCount="indefinite"
-                        begin=".2"
-                    />
-                </circle>
-                <circle
-                    cx="32"
-                    cy="4"
-                    r="4"
-                >
-                    <animate
-                        attributeName="opacity"
-                        dur="1s"
-                        values="0;1;0"
-                        repeatCount="indefinite"
-                        begin=".3"
-                    />
-                </circle>
-            </svg>
+                    <circle
+                        cx="4"
+                        cy="4"
+                        r="4"
+                    >
+                        <animate
+                            attributeName="opacity"
+                            dur="1s"
+                            values="0;1;0"
+                            repeatCount="indefinite"
+                            begin=".1"
+                        />
+                    </circle>
+                    <circle
+                        cx="18"
+                        cy="4"
+                        r="4"
+                    >
+                        <animate
+                            attributeName="opacity"
+                            dur="1s"
+                            values="0;1;0"
+                            repeatCount="indefinite"
+                            begin=".2"
+                        />
+                    </circle>
+                    <circle
+                        cx="32"
+                        cy="4"
+                        r="4"
+                    >
+                        <animate
+                            attributeName="opacity"
+                            dur="1s"
+                            values="0;1;0"
+                            repeatCount="indefinite"
+                            begin=".3"
+                        />
+                    </circle>
+                </svg>
+            </div>
         </div>
     </div>
-</div>
-<div class="qr-code">
-    <div class="-holder" style="margin-top: 10px;">
-        <div class="medium c-text -desktop -real">
+    <div class="qr-code">
+        <div class="-holder" style="margin-top: 10px;">
+            <div class="medium c-text -desktop -real">
 
-            <div class="-top-info f15 mb40">
-                Abra seu aplicativo de pagamento onde você utiliza o Pix e escolha a opção
-                <span class="inline-block bold yampi-purple">Ler QR Code</span>
-            </div>
-            <div class="flex all-center f14 black-60">
-                <i class="icon icon-cellphone mr10"></i>
-                <span class="-nowrap f14">Aponte a câmera do seu celular</span>
-            </div>
-        </div>
-
-        <img
-            src="{{$data['qrcode']}}"
-            alt="QR Code PIX"
-            class="-desktop -real"
-        >
-
-
-        <div class="price-total mt3">
-            <span class="-text black-80">Valor do Pix:</span>
-            <span class="-value bold" style="color: {{$data['cor_loja']}};">R$ {{ str_replace('.',',', number_format(floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0),2) ) }}</span>
-        </div>
-
-        <button
-            class="js-copy-paste btn-copy-paste -full -mobile -real"
-            id="btn_copia"
-            data-copy="{{($data['status']==200 ? $data['brcode'] : 'Pagamento não configurado')}}"
-        >
-            <span class="flex all-center">
-                <i class="icon icon-copy-paste mr15"></i>
-                Copiar código
-                <span class="tooltip-copy f12 medium">Copiado!</span>
-            </span>
-        </button>
-
-        <div class="mobile-description -mobile -real black-80 f14 medium">
-            <div class="mt25 mb10">
-                Após copiar o código, abra seu aplicativo de pagamento onde você utiliza o Pix.
+                <div class="-top-info f15 mb40">
+                    Abra seu aplicativo de pagamento onde você utiliza o Pix e escolha a opção
+                    <span class="inline-block bold yampi-purple">Ler QR Code</span>
+                </div>
+                <div class="flex all-center f14 black-60">
+                    <i class="icon icon-cellphone mr10"></i>
+                    <span class="-nowrap f14">Aponte a câmera do seu celular</span>
+                </div>
             </div>
 
-            <div>
-                Escolha a opção
-                <span class="yampi-purple bold">Pix Copia e Cola</span>
-                e insira o código copiado
-            </div>
-        </div>
-
-        <div class="-gateway mt35 mercadopago">
-            <div class="black-60 f11 mb10">Pix processado por</div>
             <img
-                src="/logobanco/{{$data['logo']['img']}}.png"
-                alt="Logo mercadopago"
-                style="    max-width: 60px !important;"
-                class="-gateway-logo"
+                src="{{$data['qrcode']}}"
+                alt="QR Code PIX"
+                class="-desktop -real"
             >
-        </div>
-    </div>
 
-    <div class="-helper -desktop -real black-60">
-        <div class="f13 -text">
-            Você também pode pagar escolhendo a opção <br>
-            <span class="medium">Pix Copia e Cola</span>
-            no seu aplicativo de pagamento ou Internet Banking (banco online).
-            Neste caso, copie o código clicando no botão abaixo:
-        </div>
 
-        <div class="inline-block">
-            <a
-                href=":javascript"
-                id="btn_copia_mobile"
-                class="js-copy-paste medium f15 relative mt10 flex all-center"
+            <div class="price-total mt3">
+                <span class="-text black-80">Valor do Pix:</span>
+                <span class="-value bold" style="color: {{$data['cor_loja']}};">R$ {{ str_replace('.',',', number_format(floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0),2) ) }}</span>
+            </div>
+
+            <button
+                class="js-copy-paste btn-copy-paste -full -mobile -real"
+                id="btn_copia"
                 data-copy="{{($data['status']==200 ? $data['brcode'] : 'Pagamento não configurado')}}"
             >
-                <i class="icon icon-copy-paste -dark mr15"></i>
-                Copiar código
-                <span class="tooltip-copy f12">Copiado!</span>
-            </a>
+                <span class="flex all-center">
+                    <i class="icon icon-copy-paste mr15"></i>
+                    Copiar código
+                    <span class="tooltip-copy f12 medium">Copiado!</span>
+                </span>
+            </button>
+
+            <div class="mobile-description -mobile -real black-80 f14 medium">
+                <div class="mt25 mb10">
+                    Após copiar o código, abra seu aplicativo de pagamento onde você utiliza o Pix.
+                </div>
+
+                <div>
+                    Escolha a opção
+                    <span class="yampi-purple bold">Pix Copia e Cola</span>
+                    e insira o código copiado
+                </div>
+            </div>
+
+            <div class="-gateway mt35 mercadopago">
+                <div class="black-60 f11 mb10">Pix processado por</div>
+                <img
+                    src="/logobanco/{{$data['logo']['img']}}.png"
+                    alt="Logo mercadopago"
+                    style="    max-width: 60px !important;"
+                    class="-gateway-logo"
+                >
+            </div>
         </div>
-    </div>
-    @else
-        <div style="display: flex; width: 100%; height: 100%; justify-content:center; align-items: center;">
-            <h2 style="padding: 50px; font-size: 1.5em;">{{'Pagamento não configurado!'}}</h2>
+
+        <div class="-helper -desktop -real black-60">
+            <div class="f13 -text">
+                Você também pode pagar escolhendo a opção <br>
+                <span class="medium">Pix Copia e Cola</span>
+                no seu aplicativo de pagamento ou Internet Banking (banco online).
+                Neste caso, copie o código clicando no botão abaixo:
+            </div>
+
+            <div class="inline-block">
+                <a
+                    href=":javascript"
+                    id="btn_copia_mobile"
+                    class="js-copy-paste medium f15 relative mt10 flex all-center"
+                    data-copy="{{($data['status']==200 ? $data['brcode'] : 'Pagamento não configurado')}}"
+                >
+                    <i class="icon icon-copy-paste -dark mr15"></i>
+                    Copiar código
+                    <span class="tooltip-copy f12">Copiado!</span>
+                </a>
+            </div>
         </div>
         @endif
+    @else
+        <div style="display: flex; width: 100%; height: 100%; justify-content:center; align-items: center;">
+            <h2 style="padding: 50px; font-size: 1.5em;">{{ $data['message'] ?? 'Pagamento não configurado!' }}</h2>
+        </div>
+    @endif
 </div>
     </div>
 						</div><!-- /.container clearfix -->

