@@ -7662,6 +7662,22 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             class: "my-auto",
                                         }).append(
                                             $("<h6>", {
+                                                class: "mb-0 text-sm",
+                                                text: v.status,
+                                            })
+                                        )
+                                    )
+                                )
+                            )
+                            .append(
+                                $("<td>").append(
+                                    $("<div>", {
+                                        class: "d-flex px-2 centraliza",
+                                    }).append(
+                                        $("<div>", {
+                                            class: "my-auto",
+                                        }).append(
+                                            $("<h6>", {
                                                 class: "mb-0 h6pedidos",
                                                 text: v.titulo,
                                             })
