@@ -6053,9 +6053,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 await _global.busca(
                                                                     "dashboard/updatePreferencias",
                                                                     {
-                                                                        c: 'redirect_link',
+                                                                        c: "redirect_link",
                                                                         v: redirectLink,
-                                                                        id_loja: $("#select_loja").val()
+                                                                        id_loja:
+                                                                            $(
+                                                                                "#select_loja"
+                                                                            ).val(),
                                                                     },
                                                                     "POST"
                                                                 );
@@ -8394,6 +8397,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
 
             if (_l.length > 0) {
                 _l[0].forEach((v, i) => {
+                    //v.status is null for some reason
+                    //need to check backend I believe
+                    console.log("pedidos v", v);
+
                     $("#table_pedidos").append(
                         $("<tr>", {
                             id: "pedido_" + v.id_carrinho,
@@ -8409,6 +8416,24 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<h6>", {
                                                 class: "mb-0 text-sm",
                                                 text: v.id_carrinho,
+                                            })
+                                        )
+                                    )
+                                )
+                            )
+                            .append(
+                                $("<td>").append(
+                                    $("<div>", {
+                                        class: "d-flex px-2 centraliza",
+                                    }).append(
+                                        $("<div>", {
+                                            class: "my-auto",
+                                        }).append(
+                                            $("<h6>", {
+                                                class: "mb-0 text-sm",
+                                                text:
+                                                    v.status ||
+                                                    "Status Unavailable",
                                             })
                                         )
                                     )
