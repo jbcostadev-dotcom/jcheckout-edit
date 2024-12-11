@@ -31,19 +31,24 @@ class CheckoutController extends Controller
         ) {
             return view('/404/404');
         }
-        $request = $this->conexao->conectar(
-            'carrinho/novo',
-            [
-                'id_loja' => $request->l,
-                'id_produto' => $request->p,
-                'quantidade' => $request->q,
-                'variacao' => (!is_null($request->v) ? $request->v : null),
-                'shopify' => $request->shopify,
-                'is' => $request->is,
-                'vs' => $request->vs
-            ],
-            'post'
-        );
+
+        $request = $this->conexao->conectar('carrinho/novo', [
+            'id_loja' => $request->l,
+            'id_produto' => $request->p,
+            'quantidade' => $request->q,
+            'variacao' => (!is_null($request->v) ? $request->v : null),
+            'shopify' => $request->shopify,
+            'is' => $request->is,
+            'vs' => $request->vs,
+            'utm' => [
+                'source' => $request->query('utm_source'),
+                'campaign' => $request->query('utm_campaign'),
+                'medium' => $request->query('utm_medium'),
+                'content' => $request->query('utm_content'),
+                'term' => $request->query('utm_term'),
+                'xcod' => $request->query('xcod'),
+            ]
+        ], 'post');
 
         $request = json_decode($request, true);
         if ($request['status'] != 200) return view('/404/404');
