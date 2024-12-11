@@ -5594,7 +5594,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         class: "btn btn-primary",
                                                         style: "border-radius: 30px;",
                                                         text: "UTMIFY",
-                                                        disabled: true,
+                                                        "data-bs-toggle":
+                                                            "modal",
+                                                        "data-bs-target":
+                                                            "#modalUtmify",
                                                     })
                                                 )
                                             )
@@ -6622,6 +6625,83 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                 $("#salvar_pixel_taboola", false, "Salvar")
                             );
                         });
+
+                        //MODAL FOR UTMIFY
+                        let modalUtmify = `<div class="modal fade" id="modalUtmify" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">UTMIFY</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                            <h6 style="text-align: center; font-size: 13px;">O evento de compra(purchase) é disparado ao cliente finalizar o pedido.</h6>
+                            <label>API Key</label>
+                            <input type="text" class="form-control margin5" id="input-utmify" placeholder="xxxxx" value="${
+                                //need to save in the backend first
+                                //then need to fectch
+                                //property name not decided, so using placeholder property
+                                dadosPagamento.placeholderProperty ?? ""
+                            }"/>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Fechar</button>
+                              <button type="button" id="salvar_utmify" class="btn bg-gradient-primary">Salvar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>`;
+                        $("#div_ads").append(modalUtmify);
+
+                        $("#salvar_utmify").click(async function (e) {
+                            if ($("#input-utmify").val() == "") {
+                                _global.toast(
+                                    "Insira a chave API UTMIFY",
+                                    "toasterro"
+                                );
+                                return;
+                            }
+
+                            return console.log(
+                                $("#input-utmify").val(),
+                                "utmify secret"
+                            );
+
+                            _global.btnCarregando(
+                                $("#salvar_pixel_taboola"),
+                                true,
+                                "Salvar"
+                            );
+                            let dados = await _global.busca(
+                                "dashboard/salvaPixelTaboola",
+                                {
+                                    p1: $("#taboola_pixel1").val(),
+                                    id_loja: $("#select_loja").val(),
+                                },
+                                "POST"
+                            );
+
+                            if (dados.status == 200) {
+                                _global.toast(
+                                    "As informações foram salvas.",
+                                    "toastsucesso"
+                                );
+                            }
+                            if (dados.status == 500) {
+                                _global.toast(
+                                    "Não foi possível salvar as informações",
+                                    "toasterro"
+                                );
+                            }
+
+                            _global.btnCarregando(
+                                $("#salvar_pixel_taboola", false, "Salvar")
+                            );
+                        });
+
+                        //UTMIFY MODAL ENDS
 
                         $("#div_cartao_loja").empty();
 
