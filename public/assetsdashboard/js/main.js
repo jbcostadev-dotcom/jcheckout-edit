@@ -6521,6 +6521,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                         </div>
                       </div>`;
                         $("#div_ads").append(modalFacebook);
+
                         $("#salvar_pixel_fb").click(async function (e) {
                             _global.btnCarregando(
                                 $("#salvar_pixel_fb"),
@@ -6639,12 +6640,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             <div class="modal-body">
                             <h6 style="text-align: center; font-size: 13px;">O evento de compra(purchase) é disparado ao cliente finalizar o pedido.</h6>
                             <label>API Key</label>
-                            <input type="text" class="form-control margin5" id="input-utmify" placeholder="xxxxx" value="${
-                                //need to save in the backend first
-                                //then need to fectch
-                                //property name not decided, so using placeholder property
-                                dadosPagamento.placeholderProperty ?? ""
-                            }"/>
+                            <input type="text" class="form-control margin5" id="input-utmify" placeholder="xxxxx" value="${dadosPagamento.pixelUtmify ?? ""}"/>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -6664,20 +6660,15 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                 return;
                             }
 
-                            return console.log(
-                                $("#input-utmify").val(),
-                                "utmify secret"
-                            );
-
                             _global.btnCarregando(
-                                $("#salvar_pixel_taboola"),
+                                $("#salvar_utmify"),
                                 true,
                                 "Salvar"
                             );
                             let dados = await _global.busca(
-                                "dashboard/salvaPixelTaboola",
+                                "dashboard/savePixelUtmify",
                                 {
-                                    p1: $("#taboola_pixel1").val(),
+                                    api_key: $("#input-utmify").val(),
                                     id_loja: $("#select_loja").val(),
                                 },
                                 "POST"
@@ -6697,11 +6688,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             }
 
                             _global.btnCarregando(
-                                $("#salvar_pixel_taboola", false, "Salvar")
+                                $("#salvar_utmify", false, "Salvar")
                             );
                         });
-
-                        //UTMIFY MODAL ENDS
 
                         $("#div_cartao_loja").empty();
 
