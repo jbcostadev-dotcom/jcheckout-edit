@@ -161,12 +161,14 @@ class CheckoutController extends Controller
 
                 $req = json_decode($req, true);
 
-                if ($req['status'] == 200) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 200) {
+                    if ($req['payment_method'] === 'card' && $retorno['redirect_link']) return redirect()->away($retorno['redirect_link']);
+
+                    $retorno = array_merge($retorno, $req);
+                }
+
                 if ($req['status'] == 404) $retorno = array_merge($retorno, $req);
                 if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
-
-                $retorno['status'] = $req['status'];
-
             } catch (\Exception $e) {
                 return response()->json(['status' => 500]);
             }

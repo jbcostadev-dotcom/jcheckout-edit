@@ -4890,9 +4890,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 $("<input>", {
                                                                     type: "text",
                                                                     id: "public-key-input",
-                                                                    value:
-                                                                        dadosPagamento?.public_key ??
-                                                                        "",
+                                                                    value: dadosPagamento?.pix?.public_key ?? "",
                                                                     class: "form-control",
                                                                 })
                                                             )
@@ -4906,9 +4904,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 $("<input>", {
                                                                     type: "number",
                                                                     id: "instalment-rate-input",
-                                                                    value:
-                                                                        dadosPagamento?.instalment_rate ??
-                                                                        "",
+                                                                    value: dadosPagamento?.pix?.instalment_rate ?? "",
                                                                     class: "form-control",
                                                                     step: "any",
                                                                 })
@@ -5001,11 +4997,11 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     $(
                                                                         "#select_loja"
                                                                     ).val();
-                                                                const chavePix =
+                                                                const chavepix =
                                                                     $(
                                                                         "#input_chave_pix"
                                                                     ).val();
-                                                                const tipoChave =
+                                                                const tipochave =
                                                                     $(
                                                                         "#select_tipo_chave_pix"
                                                                     ).val();
@@ -5038,7 +5034,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     isPagshieldSelected
                                                                 ) {
                                                                     if (
-                                                                        !chavePix.length
+                                                                        !chavepix.length
                                                                     ) {
                                                                         _global.toast(
                                                                             "a chave secreta é obrigatória",
@@ -5068,7 +5064,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     }
                                                                 } else {
                                                                     if (
-                                                                        chavePix.length <
+                                                                        chavepix.length <
                                                                         1
                                                                     ) {
                                                                         _global.toast(
@@ -5079,9 +5075,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     }
 
                                                                     if (
-                                                                        tipoChave ==
+                                                                        tipochave ==
                                                                             3 &&
-                                                                        !chavePix.includes(
+                                                                        !chavepix.includes(
                                                                             "@"
                                                                         )
                                                                     ) {
@@ -5095,12 +5091,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
 
                                                                 const commonPayload =
                                                                     {
-                                                                        chavePix,
-                                                                        tipoChave,
-                                                                        id_loja:
-                                                                            idLoja,
-                                                                        usuario:
-                                                                            id_usuario,
+                                                                        chavepix,
+                                                                        tipochave,
+                                                                        id_loja: idLoja,
+                                                                        usuario: id_usuario,
                                                                         tipo_usuario,
                                                                         banco,
                                                                     };
@@ -5118,12 +5112,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             ? {
                                                                                   ...commonPayload,
                                                                                   instalmentRate,
-                                                                                  secretKey:
-                                                                                      chavePix,
-                                                                                  publicKey:
-                                                                                      Number(
-                                                                                          publicKey
-                                                                                      ),
+                                                                                  secretKey: chavepix,
+                                                                                  publicKey: publicKey,
                                                                               }
                                                                             : commonPayload,
                                                                         "POST"
@@ -7404,11 +7394,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     });
 
                     if (
-                        dadosPagamento.status == 200 &&
-                        dadosPagamento.pix != undefined
+                        dadosPagamento.status == 200 && dadosPagamento.pix
                     ) {
                         $("#select_tipo_chave_pix")
-                            .val(dadosPagamento.pix.id)
+                            .val(dadosPagamento?.pix?.id_tipo_chave)
                             .change();
                     }
 
@@ -8626,7 +8615,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                 class: "mb-0 text-sm",
                                                 text:
                                                     v.status ||
-                                                    "Status Unavailable",
+                                                    "Unpaid",
                                             })
                                         )
                                     )
