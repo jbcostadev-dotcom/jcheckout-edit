@@ -4471,7 +4471,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
 
                 $("#copiacola_pix").val("");
 
-                if (dadosPagamento.log.length > 0) {
+                //needed to fix error with optional chaining
+                if (dadosPagamento?.log?.length > 0) {
                     let lista = [];
                     lista[1] = [];
 
@@ -4798,6 +4799,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     class: "col-lg-4",
                                                     id: "div_pix",
                                                 })
+                                                    //text will be changed to Secret key when pag shield selected, and restored when not
                                                     .append(
                                                         $("<span>", {
                                                             text: "Chave pix",
@@ -4819,38 +4821,96 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         })
                                                     )
                                                     .append(
-                                                        $("<span>", {
-                                                            text: "Tipo de Chave",
-                                                            id: "tipo-de-chave-2024",
+                                                        $("<div>", {
+                                                            id: "div_non_pagshield",
                                                         })
+                                                            //will be hidden when pag shield selected with parent div
+                                                            .append(
+                                                                $("<span>", {
+                                                                    text: "Tipo de Chave",
+                                                                    id: "tipo-de-chave-2024",
+                                                                })
+                                                            )
+                                                            .append(
+                                                                $("<select>", {
+                                                                    id: "select_tipo_chave_pix",
+                                                                    class: "form-control",
+                                                                })
+                                                                    .append(
+                                                                        $(
+                                                                            "<option>",
+                                                                            {
+                                                                                value: "1",
+                                                                                text: "CPF",
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                    .append(
+                                                                        $(
+                                                                            "<option>",
+                                                                            {
+                                                                                value: "2",
+                                                                                text: "Telefone",
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                    .append(
+                                                                        $(
+                                                                            "<option>",
+                                                                            {
+                                                                                value: "3",
+                                                                                text: "Email",
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                    .append(
+                                                                        $(
+                                                                            "<option>",
+                                                                            {
+                                                                                value: "4",
+                                                                                text: "Chave Aleatória",
+                                                                            }
+                                                                        )
+                                                                    )
+                                                            )
                                                     )
                                                     .append(
-                                                        $("<select>", {
-                                                            id: "select_tipo_chave_pix",
-                                                            class: "form-control",
+                                                        $("<div>", {
+                                                            id: "div_pagshield",
+                                                            class: "d-none",
                                                         })
+                                                            //pag shield public key and interest rate
                                                             .append(
-                                                                $("<option>", {
-                                                                    value: "1",
-                                                                    text: "CPF",
+                                                                $("<span>", {
+                                                                    text: "Public Key",
+                                                                    id: "public-key",
                                                                 })
                                                             )
                                                             .append(
-                                                                $("<option>", {
-                                                                    value: "2",
-                                                                    text: "Telefone",
+                                                                $("<input>", {
+                                                                    type: "text",
+                                                                    id: "public-key-input",
+                                                                    value:
+                                                                        dadosPagamento?.public_key ??
+                                                                        "",
+                                                                    class: "form-control",
                                                                 })
                                                             )
                                                             .append(
-                                                                $("<option>", {
-                                                                    value: "3",
-                                                                    text: "Email",
+                                                                $("<span>", {
+                                                                    text: "Instalment Rate",
+                                                                    id: "instalment-rate",
                                                                 })
                                                             )
                                                             .append(
-                                                                $("<option>", {
-                                                                    value: "4",
-                                                                    text: "Chave Aleatória",
+                                                                $("<input>", {
+                                                                    type: "number",
+                                                                    id: "instalment-rate-input",
+                                                                    value:
+                                                                        dadosPagamento?.instalment_rate ??
+                                                                        "",
+                                                                    class: "form-control",
+                                                                    step: "any",
                                                                 })
                                                             )
                                                     )
@@ -4937,41 +4997,114 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 e.preventDefault();
                                                                 e.stopPropagation();
 
-                                                                let chavePix =
+                                                                const idLoja =
+                                                                    $(
+                                                                        "#select_loja"
+                                                                    ).val();
+                                                                const chavePix =
                                                                     $(
                                                                         "#input_chave_pix"
                                                                     ).val();
-                                                                let tipoChave =
+                                                                const tipoChave =
                                                                     $(
                                                                         "#select_tipo_chave_pix"
                                                                     ).val();
-                                                                const usuario =
+
+                                                                const banco =
+                                                                    $(
+                                                                        "#banco_responsavel"
+                                                                    ).val();
+
+                                                                const isPagshieldSelected =
+                                                                    banco ===
+                                                                    "pagShield";
+
+                                                                const publicKey =
+                                                                    $(
+                                                                        "#public-key-input"
+                                                                    ).val();
+                                                                const instalmentRate =
+                                                                    $(
+                                                                        "#instalment-rate-input"
+                                                                    ).val();
+
+                                                                const {
+                                                                    id_usuario,
+                                                                    tipo_usuario,
+                                                                } =
                                                                     _global.getUsuario();
 
                                                                 if (
-                                                                    chavePix.length <
-                                                                    1
+                                                                    isPagshieldSelected
                                                                 ) {
-                                                                    _global.toast(
-                                                                        "Preencha a chave pix!",
-                                                                        "toastwarning"
-                                                                    );
-                                                                    return;
+                                                                    if (
+                                                                        !chavePix.length
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "a chave secreta é obrigatória",
+                                                                            "toastwarning"
+                                                                        );
+                                                                        return;
+                                                                    }
+
+                                                                    if (
+                                                                        !publicKey.length
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "a chave pública é obrigatória",
+                                                                            "toastwarning"
+                                                                        );
+                                                                        return;
+                                                                    }
+
+                                                                    if (
+                                                                        !instalmentRate.length
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "taxa de parcelamento é obrigatória",
+                                                                            "toastwarning"
+                                                                        );
+                                                                        return;
+                                                                    }
+                                                                } else {
+                                                                    if (
+                                                                        chavePix.length <
+                                                                        1
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "Preencha a chave pix!",
+                                                                            "toastwarning"
+                                                                        );
+                                                                        return;
+                                                                    }
+
+                                                                    if (
+                                                                        tipoChave ==
+                                                                            3 &&
+                                                                        !chavePix.includes(
+                                                                            "@"
+                                                                        )
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "Preencha um e-mail válido!",
+                                                                            "toastwarning"
+                                                                        );
+                                                                        return;
+                                                                    }
                                                                 }
 
-                                                                if (
-                                                                    tipoChave ==
-                                                                        3 &&
-                                                                    !chavePix.includes(
-                                                                        "@"
-                                                                    )
-                                                                ) {
-                                                                    _global.toast(
-                                                                        "Preencha um e-mail válido!",
-                                                                        "toastwarning"
-                                                                    );
-                                                                    return;
-                                                                }
+                                                                const commonPayload =
+                                                                    {
+                                                                        chavePix,
+                                                                        tipoChave,
+                                                                        id_loja:
+                                                                            idLoja,
+                                                                        usuario:
+                                                                            id_usuario,
+                                                                        tipo_usuario,
+                                                                        banco,
+                                                                    };
+
                                                                 _global.btnCarregando(
                                                                     $(this),
                                                                     true,
@@ -4981,23 +5114,16 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 const salvaPix =
                                                                     await _global.busca(
                                                                         "dashboard/updateChavePix",
-                                                                        {
-                                                                            chavepix:
-                                                                                chavePix,
-                                                                            tipochave:
-                                                                                tipoChave,
-                                                                            id_loja:
-                                                                                $(
-                                                                                    "#select_loja"
-                                                                                ).val(),
-                                                                            usuario:
-                                                                                usuario.id_usuario,
-                                                                            tipo_usuario:
-                                                                                usuario.tipo_usuario,
-                                                                            banco: $(
-                                                                                "#banco_responsavel"
-                                                                            ).val(),
-                                                                        },
+                                                                        isPagshieldSelected
+                                                                            ? {
+                                                                                  ...commonPayload,
+                                                                                  instalmentRate,
+                                                                                  publicKey:
+                                                                                      Number(
+                                                                                          publicKey
+                                                                                      ),
+                                                                              }
+                                                                            : commonPayload,
                                                                         "POST"
                                                                     );
 
@@ -6478,39 +6604,33 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             <h6 style="text-align: center; font-size: 13px;">Suportamos múltiplos ID's de Pixel! O evento de compra(purchase) é disparado ao cliente finalizar o pedido.</h6>
                             <label>Pixel 1</label>
                             <input type="text" class="form-control margin5" id="fb_pixel1" placeholder="ID do Pixel 1" value="${
-                                dadosPagamento.fbpixel[0] != undefined
-                                    ? dadosPagamento.fbpixel[0].pixel_1 ?? ""
-                                    : ""
+                                //neede to fix error with conditional chaining
+                                dadosPagamento?.fbpixel?.[0]?.pixel_1 ?? ""
                             }"/>
                             <label>Pixel 2</label>
                             <input type="text" class="form-control margin5" id="fb_pixel2" placeholder="ID do Pixel 2" value="${
-                                dadosPagamento.fbpixel[0] != undefined
-                                    ? dadosPagamento.fbpixel[0].pixel_2 ?? ""
-                                    : ""
+                                //neede to fix error with conditional chaining
+                                dadosPagamento?.fbpixel?.[0]?.pixel_2 ?? ""
                             }"/>
                             <label>Pixel 3</label>
                             <input type="text" class="form-control margin5" id="fb_pixel3" placeholder="ID do Pixel 3" value="${
-                                dadosPagamento.fbpixel[0] != undefined
-                                    ? dadosPagamento.fbpixel[0].pixel_3 ?? ""
-                                    : ""
+                                //neede to fix error with conditional chaining
+                                dadosPagamento?.fbpixel?.[0]?.pixel_3 ?? ""
                             }"/>
                             <label>Pixel 4</label>
                             <input type="text" class="form-control margin5" id="fb_pixel4" placeholder="ID do Pixel 4" value="${
-                                dadosPagamento.fbpixel[0] != undefined
-                                    ? dadosPagamento.fbpixel[0].pixel_4 ?? ""
-                                    : ""
+                                //neede to fix error with conditional chaining
+                                dadosPagamento?.fbpixel?.[0]?.pixel_4 ?? ""
                             }"/>
                             <label>Pixel 5</label>
                             <input type="text" class="form-control margin5" id="fb_pixel5" placeholder="ID do Pixel 5" value="${
-                                dadosPagamento.fbpixel[0] != undefined
-                                    ? dadosPagamento.fbpixel[0].pixel_5 ?? ""
-                                    : ""
+                                //neede to fix error with conditional chaining
+                                dadosPagamento?.fbpixel?.[0]?.pixel_5 ?? ""
                             }"/>
                             <label>Pixel 6</label>
                             <input type="text" class="form-control margin5" id="fb_pixel6" placeholder="ID do Pixel 6" value="${
-                                dadosPagamento.fbpixel[0] != undefined
-                                    ? dadosPagamento.fbpixel[0].pixel_6 ?? ""
-                                    : ""
+                                //neede to fix error with conditional chaining
+                                dadosPagamento?.fbpixel?.[0]?.pixel_6 ?? ""
                             }"/>
                             </div>
                             <div class="modal-footer">
@@ -6640,7 +6760,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             <div class="modal-body">
                             <h6 style="text-align: center; font-size: 13px;">O evento de compra(purchase) é disparado ao cliente finalizar o pedido.</h6>
                             <label>API Key</label>
-                            <input type="text" class="form-control margin5" id="input-utmify" placeholder="xxxxx" value="${dadosPagamento.pixelUtmify ?? ""}"/>
+                            <input type="text" class="form-control margin5" id="input-utmify" placeholder="xxxxx" value="${
+                                dadosPagamento.pixelUtmify ?? ""
+                            }"/>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -11688,18 +11810,18 @@ Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
 
     //pagSheild integration ui modification
     $("body").on("change", "#banco_responsavel", function () {
-        let element1 = $("#chave-pix-2024"),
-            element2 = $("#tipo-de-chave-2024"),
-            element3 = $("#select_tipo_chave_pix");
+        const commonInput = $("#chave-pix-2024");
+        const nonPagshieldDiv = $("#div_non_pagshield");
+        const pagshieldDiv = $("#div_pagshield");
 
         if ($(this).val() === "pagShield") {
-            element1.text("Secret Key/Public Key");
-            element2.hide();
-            element3.hide();
+            commonInput.text("Secret Key");
+            nonPagshieldDiv.hide();
+            pagshieldDiv.removeClass("d-none");
         } else {
-            element1.text("Chave pix");
-            element2.show();
-            element3.show();
+            commonInput.text("Chave pix");
+            nonPagshieldDiv.show();
+            pagshieldDiv.addClass("d-none");
         }
     });
 });
