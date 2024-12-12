@@ -5118,6 +5118,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             ? {
                                                                                   ...commonPayload,
                                                                                   instalmentRate,
+                                                                                  secretKey:
+                                                                                      chavePix,
                                                                                   publicKey:
                                                                                       Number(
                                                                                           publicKey
