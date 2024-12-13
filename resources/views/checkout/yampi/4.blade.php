@@ -1113,7 +1113,19 @@ background: #999;
         @endif
     @else
         <div style="display: flex; width: 100%; height: 100%; justify-content:center; align-items: center;">
-            <h2 style="padding: 50px; font-size: 1.5em;">{{ $data['message'] ?? 'Pagamento não configurado!' }}</h2>
+            <h2 style="padding: 50px; font-size: 1.5em;">
+                @isset($data['message'])
+                    @if(is_array($data['message']))
+                        @foreach($data['message'] as $msg)
+                            {{ $msg }} <br>
+                        @endforeach
+                    @else
+                        {{ $data['message'] }}
+                    @endif
+                @else
+                    Pagamento não configurado!
+                @endif
+            </h2>
         </div>
     @endif
 </div>

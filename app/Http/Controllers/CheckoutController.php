@@ -259,8 +259,6 @@ class CheckoutController extends Controller
                         $retorno = array_merge($retorno, $listaMetodosPagamento);
                         $retorno = array_merge($retorno, $req['listaCliente']);
                         $retorno = array_merge($retorno, $req['listaOrder']);
-
-
                     }
                 } catch (\Exception $e) {
                     $listaMetodosPagamento = [
