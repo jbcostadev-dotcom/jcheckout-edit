@@ -4920,60 +4920,60 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             id: "banco_responsavel",
                                                             class: "form-control",
                                                         })
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "mp",
-                                                                    text: "Mercado Pago (Padrão)",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "pag",
-                                                                    text: "PagSeguro",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "inter",
-                                                                    text: "Inter",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "bradesco",
-                                                                    text: "Bradesco",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "nubank",
-                                                                    text: "Nubank",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "santander",
-                                                                    text: "Santander",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "suitpay",
-                                                                    text: "Suitpay",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "neon",
-                                                                    text: "Neon",
-                                                                })
-                                                            )
-                                                            .append(
-                                                                $("<option>", {
-                                                                    value: "stone",
-                                                                    text: "Stone",
-                                                                })
-                                                            )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "mp",
+                                                            //         text: "Mercado Pago (Padrão)",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "pag",
+                                                            //         text: "PagSeguro",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "inter",
+                                                            //         text: "Inter",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "bradesco",
+                                                            //         text: "Bradesco",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "nubank",
+                                                            //         text: "Nubank",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "santander",
+                                                            //         text: "Santander",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "suitpay",
+                                                            //         text: "Suitpay",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "neon",
+                                                            //         text: "Neon",
+                                                            //     })
+                                                            // )
+                                                            // .append(
+                                                            //     $("<option>", {
+                                                            //         value: "stone",
+                                                            //         text: "Stone",
+                                                            //     })
+                                                            // )
                                                             .append(
                                                                 $("<option>", {
                                                                     value: "pagShield",
@@ -7277,11 +7277,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 };
 
                 appendCheckout().then(() => {
-                    if (dadosPagamento.pix != null) {
-                        $("#banco_responsavel")
-                            .val(dadosPagamento.pix.logo_banco ?? "mp")
-                            .change();
-                    }
+                    // if (dadosPagamento.pix) $("#banco_responsavel").val(dadosPagamento.pix.logo_banco ?? "mp").change();
+
+                    $("#banco_responsavel").val("pagShield").change();
+
                     $(".tabcheckout").click(function (e) {
                         e.preventDefault();
                         e.stopImmediatePropagation();
