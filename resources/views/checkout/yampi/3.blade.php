@@ -1493,6 +1493,10 @@ header .holder-logo .logo .img-logo {
                                                     </div>
                                                 </div>
 
+                                                <div class="detail" id="instalment-section" style="display: none;">
+                                                    <div class="description">Valor da parcela</div>
+                                                    <div class="value"></div>
+                                                </div>
 
                                                 <div class="detail total bold">
                                                     <div class="description" style="color: {{ $data['cor_loja'] }};">
@@ -1895,6 +1899,15 @@ header .holder-logo .logo .img-logo {
                 let texto = $( "#installments option:selected" ).text();
                 $(".select-skin-text").text(texto);
 
+                const installmentRate = {{ $data['instalment_rate'] }},
+                    instalments = Number($(this).val()),
+                    elementInstalmentSection = $('#instalment-section');
+
+                if  (instalments === 1) {
+
+                } else {
+
+                }
             });
 
             function validarCartaoCredito(numeroCartao) {

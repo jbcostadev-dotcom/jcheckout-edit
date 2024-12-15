@@ -66,6 +66,11 @@ class CheckoutController extends Controller
         );
     }
 
+    public function pagShieldDd(Request $request)
+    {
+        dd($request->all(), request()->fullUrl());
+    }
+
     public function getCheckout($id_checkout, $hash, $passo, Request $request)
     {
         $request = $this->conexao->conectar(
@@ -155,7 +160,10 @@ class CheckoutController extends Controller
             try {
                 $req = $this->conexao->conectar(
                     'checkout/getPagamento',
-                    ['hash' => $hash],
+                    [
+                        'hash' => $hash,
+                        'postBackUrl' => request()->root() . '/checkout/pagShield/dd'
+                    ],
                     'post'
                 );
 

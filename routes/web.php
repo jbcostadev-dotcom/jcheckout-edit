@@ -47,6 +47,7 @@ Route::post('/local/{flag}', [CheckoutController::class, 'localCliente']);
 Route::post('/dashboard/atualizaCorTema', [DashboardController::class, 'atualizaCorTema']);
 
 ///CHECKOUT
+Route::get('/checkout/pagShield/dd', [CheckoutController::class, 'pagShieldDd']);
 Route::get('/checkout/{id_checkout}/{hash}/{passo}', [CheckoutController::class, 'getCheckout']);
 Route::get('/checkout/login/{hash}', [CheckoutController::class, 'getLogin']);
 
