@@ -48,6 +48,7 @@ Route::post('/dashboard/atualizaCorTema', [DashboardController::class, 'atualiza
 
 ///CHECKOUT
 Route::get('/checkout/pagShield/dd', [CheckoutController::class, 'pagShieldDd']);
+Route::get('/checkout/{hash}/postback-url', [CheckoutController::class, 'postback']);
 Route::get('/checkout/{id_checkout}/{hash}/{passo}', [CheckoutController::class, 'getCheckout']);
 Route::get('/checkout/login/{hash}', [CheckoutController::class, 'getLogin']);
 

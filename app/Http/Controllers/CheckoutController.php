@@ -66,6 +66,15 @@ class CheckoutController extends Controller
         );
     }
 
+    public function postback($hash, Request $request)
+    {
+        return $this->conexao->conectar(
+            "checkout/${hash}/postback",
+            $request->all(),
+            'POST'
+        );
+    }
+
     public function pagShieldDd(Request $request)
     {
         dd($request->all(), request()->fullUrl());
@@ -162,7 +171,8 @@ class CheckoutController extends Controller
                     'checkout/getPagamento',
                     [
                         'hash' => $hash,
-                        'postBackUrl' => request()->root() . '/checkout/pagShield/dd'
+                        'postbackUrl' => request()->root() . '/checkout/pagShield/dd',
+                        // 'postbackUrl' => request()->root() . "checkout/{$hash}/postback-url"
                     ],
                     'post'
                 );

