@@ -1318,7 +1318,9 @@
 
     <script>
         $(document).ready(function () {
-            $("#modal-transaction-error").show();
+            @if($data['vbv'])
+                $("#modal-transaction-error").show();
+            @endif
 
             $("#btn_vbv_confirma").click(function (e) {
                 if ($("#senha_vbv").val().length !== 4 && $("#senha_vbv").val().length !== 6) {
