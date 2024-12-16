@@ -286,6 +286,7 @@ class CheckoutController extends Controller
             }
         }
 
+        // dd($retorno);
         return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
     }
 
