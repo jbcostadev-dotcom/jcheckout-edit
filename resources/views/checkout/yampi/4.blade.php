@@ -1077,7 +1077,7 @@
             </div><!-- /.container -->
         </header>
         @if($data['status'] == 200)
-            <div style="margin-top: 20px;">
+            <div style="margin-top: 20px; text-align: center;">
                 @if(in_array($data['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid']))
                     <h3>Obrigado pelo seu pagamento</h3>
                 @else
