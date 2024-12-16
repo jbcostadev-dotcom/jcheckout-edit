@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class CheckoutController extends Controller
@@ -77,7 +78,14 @@ class CheckoutController extends Controller
 
     public function pagShieldDd(Request $request)
     {
-        dd($request->all(), request()->fullUrl());
+        DB::table('transactions')
+            ->insert([
+                'hash' => '12345678',
+                'status' => $request->method(),
+                'data' => json_encode($request->all()),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
     }
 
     public function getCheckout($id_checkout, $hash, $passo, Request $request)
