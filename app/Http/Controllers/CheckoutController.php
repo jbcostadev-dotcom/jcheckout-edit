@@ -170,7 +170,6 @@ class CheckoutController extends Controller
                 $req = json_decode($req, true);
 
                 if ($req['status'] == 200) {
-                    if ($req['payment_method'] === 'card' && $retorno['redirect_link']) return redirect()->away($retorno['redirect_link']);
                     if ($req['payment_method'] === 'pix') return redirect()->away($req['secureUrl']);
 
                     $retorno = array_merge($retorno, $req);
