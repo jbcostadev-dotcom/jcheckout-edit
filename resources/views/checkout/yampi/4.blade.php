@@ -1077,13 +1077,15 @@
             </div><!-- /.container -->
         </header>
         @if($data['status'] == 200)
-            @if(in_array($data['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid']))
-                <h4>Obrigado pelo seu pagamento</h4>
-            @else
-                <h4>O pagamento falhou!</h4>
-            @endif
+            <div style="margin-top: 20px;">
+                @if(in_array($data['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid']))
+                    <h3>Obrigado pelo seu pagamento</h3>
+                @else
+                    <h4>O pagamento falhou!</h4>
+                @endif
 
-            <h5>Status: {{ ucwords(str_replace('_', ' ', $data['payment_status'])) }}</h5>
+                <h5>Status: {{ ucwords(str_replace('_', ' ', $data['payment_status'])) }}</h5>
+            </div>
         @else
             <div style="display: flex; width: 100%; height: 100%; justify-content:center; align-items: center;">
                 <h2 style="padding: 50px; font-size: 1.5em;">
