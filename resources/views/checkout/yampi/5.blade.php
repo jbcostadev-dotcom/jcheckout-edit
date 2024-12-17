@@ -1443,7 +1443,8 @@ header .holder-logo .logo .img-logo {
     </script>
 
     <script>
-        const transactionId = {{ $data['transactionId'] }};
+        const transactionId = {{ $data['transactionId'] }},
+            apiBaseUrl = `{{ \Illuminate\Support\Facades\DB::table('rota_api')->value('rota_api') }}`;
 
         ['processing', 'authorized', 'paid', 'chargedback', 'in_protest', 'partially_paid']
     </script>
