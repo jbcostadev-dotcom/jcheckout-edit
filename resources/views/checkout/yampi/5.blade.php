@@ -1457,7 +1457,7 @@ header .holder-logo .logo .img-logo {
 
                 const { status, message } = await res.json();
 
-                if (status === 200 && transStatus.includes(message)) {
+                if (status === '200' && transStatus.includes(message)) {
                     window.location.href = `/checkout/result?status=${message}`;
                 }
             } catch (err) {
