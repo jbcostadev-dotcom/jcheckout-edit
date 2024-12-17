@@ -1446,11 +1446,10 @@ header .holder-logo .logo .img-logo {
         const transactionId = {{ $data['transactionId'] }},
             apiBaseUrl = `{{ \Illuminate\Support\Facades\DB::table('rota_api')->value('rota_api') }}`;
 
-
             //  `${apiBaseUrl}checkout/transaction/${transactionId}`
             //  '/checkout/result'
 
-        ['processing', 'authorized', 'paid', 'chargedback', 'in_protest', 'partially_paid']
+            //['processing', 'authorized', 'paid', 'chargedback', 'in_protest', 'partially_paid']
     </script>
 </body>
 </html>
