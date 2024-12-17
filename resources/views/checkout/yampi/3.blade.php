@@ -1605,7 +1605,7 @@
                                                         </div><!-- /.mt10 -->
 
                                                         <div class="pix-price f16 bold mb10" style="color: {{$data['cor_loja']}};">
-                                                            Valor no Pix: <span id="valor_card_pix" class="cart-total js-cart-total">R$ {{ str_replace('.',',', number_format(floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0),2) ) }}</span>
+                                                            Valor no Pix: <span id="valor_card_pix"></span>
                                                         </div>
 
                                                         <div class="js-orderbumps">
@@ -2162,6 +2162,9 @@
             __total = __total.replace('R$ ', '');
             __total = __total.replace(',', '.');
             __total = parseFloat(__total);
+
+            const initialTotalAmount = {{ ($data['preco'] * $data['quantidade']) + $data['frete_selecionado_valor'] + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0) }};
+
             $("#installments").empty();
             for(let i = 1; i <= 12; i++){
                 let vl = __total/i;
@@ -2174,11 +2177,12 @@
                 )
             }
 
+            $("#valor_card_pix").text(`R$ ${initialTotalAmount.toFixed(2).replace('.', ',')}`);
+
             $("#installments").change(function () {
                 $(".select-skin-text").text($("#installments option:selected").text());
 
                 const installmentRate = {{ floatval($data['instalment_rate']) }},
-                    initialTotalAmount = {{ ($data['preco'] * $data['quantidade']) + $data['frete_selecionado_valor'] + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0) }},
                     instalments = Number($(this).val()),
                     elementInstalmentSection = $('#instalment-section'),
                     elementTotalSection = $('#total-section');
@@ -2389,6 +2393,7 @@
                     })
                 })
             }
+
             window.removeOrder();
 
             fbq('track', 'AddToCart');
