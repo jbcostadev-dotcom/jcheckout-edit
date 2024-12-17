@@ -7,6 +7,6 @@
 </head>
 <body>
     <h3 style="text-align: center; margin-top: 50px;">Seu pagamento foi efetuado com sucesso</h3>
-    <h5>Status: {{ ucwords(str_replace('_', ' ', request()->query('status'))) }}</h5>
+    <h5 style="text-align: center; margin-top: 20px;">Status: {{ ucwords(str_replace('_', ' ', request()->query('status'))) }}</h5>
 </body>
 </html>
