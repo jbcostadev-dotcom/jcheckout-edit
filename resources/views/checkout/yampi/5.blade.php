@@ -1443,8 +1443,9 @@ header .holder-logo .logo .img-logo {
     </script>
 
     <script>
+        const transactionId = {{ $data['transactionId'] }};
 
+        ['processing', 'authorized', 'paid', 'chargedback', 'in_protest', 'partially_paid']
     </script>
-
 </body>
 </html>
