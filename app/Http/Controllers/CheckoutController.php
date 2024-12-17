@@ -188,7 +188,9 @@ class CheckoutController extends Controller
                 $req = json_decode($req, true);
 
                 if ($req['status'] == 200) {
-                    if ($req['payment_method'] === 'pix') return redirect()->away($req['secureUrl']);
+                    if ($req['payment_method'] === 'pix') {
+                        return  view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . 5)->with('data', $retorno);
+                    }
 
                     $retorno = array_merge($retorno, $req);
                 }
