@@ -189,6 +189,8 @@ class CheckoutController extends Controller
 
                 if ($req['status'] == 200) {
                     if ($req['payment_method'] === 'pix') {
+                        $
+                        $searchTransactionUrl =
                         return  view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . 5)->with('data', $retorno);
                     }
 
