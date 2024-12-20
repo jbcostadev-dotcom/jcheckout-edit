@@ -1,3 +1,7 @@
+@php 
+$isAdmin = $data['usuario'] === 'root'; 
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -335,6 +339,7 @@
                     </a>
                 </li>
 
+                @if ($isAdmin)
                 <li class="nav-item lateral" aba="cartoes">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -354,6 +359,7 @@
                         <span id="qtd_facebook" class="badge bg-gradient-dark" style="font-size: 10px; margin-left: 8px;">(...)</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Credenciais</h6>
@@ -403,6 +409,7 @@
                     </a>
                 </li> -->
 
+                @if ($isAdmin)
                 <li class="nav-item lateral" aba="bins">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -411,6 +418,7 @@
                         <span class="nav-link-text ms-1">BINS de Cartões</span>
                     </a>
                 </li>
+                @endif
 
 
                 <li class="nav-item lateral" aba="config_whatsapp">
@@ -1348,9 +1356,11 @@
                 <div style="display: flex; justify-content: center; align-items: center; width: 50%; height: 90%">
                     <button id="exporta_total" class="btn btn-primary">Exportar Todos os Dados</button>
                 </div>
+                @if ($isAdmin)
                 <div style="display: flex; justify-content: center; align-items: center; width: 50%; height: 90%">
                     <button id="exporta_emailsenha" class="btn btn-primary">Exportar Somente Email e Senha</button>
                 </div>
+                @endif
 
             </div>
           </div>

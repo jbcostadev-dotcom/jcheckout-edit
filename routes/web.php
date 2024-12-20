@@ -16,6 +16,8 @@ Route::get('/devloja', [DominioController::class, 'devLoja']);
 
 Route::post('/autenticaUsuario', [LoginController::class, 'autenticaUsuario']);
 Route::get('/entrar', [LoginController::class, 'indexLogin']);
+//user login
+//Route::get('/login', [LoginController::class, 'indexLogin']);
 
 Route::get('/inscreve', [SignupController::class, 'creare']);
 

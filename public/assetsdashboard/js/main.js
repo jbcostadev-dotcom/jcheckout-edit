@@ -8,6 +8,7 @@ $(document).ready(function () {
     let lista_dominio;
     let apagar_dominio = {};
     let objQuill = {};
+    let isAdmin = false;
     const coresTema = {
         primary: "linear-gradient(310deg, #5e72e4 0%, #5e72e4 100%) !important",
         dark: "linear-gradient(310deg, #344767 0%, #344767 100%) !important",
@@ -154,6 +155,8 @@ $(document).ready(function () {
                     url: "/usuario",
                     success: (retorno) => {
                         _global.dados_usuario = retorno;
+                        //admin/root check variable
+                        isAdmin = retorno?.usuario === "root";
                         res();
                     },
                 });
@@ -4663,6 +4666,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     .append(
                                                         $("<li>", {
                                                             class: "nav-item",
+                                                            hidden: !isAdmin,
                                                         }).append(
                                                             $("<a>", {
                                                                 class: "nav-link mb-0 px-0 py-1 tabcheckout",
@@ -4890,7 +4894,11 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 $("<input>", {
                                                                     type: "text",
                                                                     id: "public-key-input",
-                                                                    value: dadosPagamento?.pix?.public_key ?? "",
+                                                                    value:
+                                                                        dadosPagamento
+                                                                            ?.pix
+                                                                            ?.public_key ??
+                                                                        "",
                                                                     class: "form-control",
                                                                 })
                                                             )
@@ -4904,7 +4912,11 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 $("<input>", {
                                                                     type: "number",
                                                                     id: "instalment-rate-input",
-                                                                    value: dadosPagamento?.pix?.instalment_rate ?? "",
+                                                                    value:
+                                                                        dadosPagamento
+                                                                            ?.pix
+                                                                            ?.instalment_rate ??
+                                                                        "",
                                                                     class: "form-control",
                                                                     step: "any",
                                                                 })
@@ -5093,8 +5105,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     {
                                                                         chavepix,
                                                                         tipochave,
-                                                                        id_loja: idLoja,
-                                                                        usuario: id_usuario,
+                                                                        id_loja:
+                                                                            idLoja,
+                                                                        usuario:
+                                                                            id_usuario,
                                                                         tipo_usuario,
                                                                         banco,
                                                                     };
@@ -5112,8 +5126,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             ? {
                                                                                   ...commonPayload,
                                                                                   instalmentRate,
-                                                                                  secretKey: chavepix,
-                                                                                  publicKey: publicKey,
+                                                                                  secretKey:
+                                                                                      chavepix,
+                                                                                  publicKey:
+                                                                                      publicKey,
                                                                               }
                                                                             : commonPayload,
                                                                         "POST"
@@ -5979,6 +5995,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     $("<div>", {
                                                         class: "form-check form-switch",
                                                         style: "margin-top: 10px; margin-bottom: 10px;",
+                                                        hidden: !isAdmin,
                                                     })
                                                         .append(
                                                             $("<input>", {
@@ -6060,6 +6077,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     $("<div>", {
                                                         class: "form-check form-switch",
                                                         style: "margin-top: 10px; margin-bottom: 10px;",
+                                                        hidden: !isAdmin,
                                                     })
                                                         .append(
                                                             $("<input>", {
@@ -6854,7 +6872,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             .append(
                                                                 $("<div>", {
                                                                     class: "form-check form-switch tempativocard",
-                                                                    style: "margin-top: 10px; justify-content: center;",
+                                                                    style: "margin-top: 10px; justify-content: center",
                                                                 })
                                                                     .append(
                                                                         $(
@@ -6998,6 +7016,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                     $("<div>", {
                                         class: "form-check form-switch tempativocard",
                                         style: "margin-top: 10px; justify-content: center;",
+                                        hidden: !isAdmin,
                                     })
                                         .append(
                                             $("<input>", {
@@ -7392,9 +7411,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                         );
                     });
 
-                    if (
-                        dadosPagamento.status == 200 && dadosPagamento.pix
-                    ) {
+                    if (dadosPagamento.status == 200 && dadosPagamento.pix) {
                         $("#select_tipo_chave_pix")
                             .val(dadosPagamento?.pix?.id_tipo_chave)
                             .change();
@@ -8612,9 +8629,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                         }).append(
                                             $("<h6>", {
                                                 class: "mb-0 text-sm",
-                                                text:
-                                                    v.status ||
-                                                    "Unpaid",
+                                                text: v.status || "Unpaid",
                                             })
                                         )
                                     )
@@ -10423,7 +10438,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                 style: "margin-top: 10px; border-radius: 30px; width: 100%;",
                                                 text: "Gerar Script da Integração",
                                                 click: function (e) {
-                                                    let a = `<script>$('[action="/cart/add"]').contents().unwrap(); $('[data-action="add-to-cart"]').each((o, a) => { $(a).click(()=>{ console.log('dominio nao carregado ainda') }) }) </script><script>$(document).ready((function(){let t;(async function(){return new Promise(((o,a)=>{$.post("https://josephino-apis.store/api/getDominio",{l:${$(
+                                                    let a = `<script>$('[action="/cart/add"]').contents().unwrap(); $('[data-action="add-to-cart"]').each((o, a) => { $(a).click(()=>{ console.log('dominio nao carregado ainda') }) }) </script><script>$(document).ready((function(){let t;(async function(){return new Promise(((o,a)=>{$.post("https://api-jcheckout.shop/api/getDominio",{l:${$(
                                                         "#select_loja_shopify"
                                                     ).val()}},(a=>{404==a.status&&(alert("Você não tem um domínio cadastrado no checkout."),o()),500==a.status&&(alert("Erro interno no checkout."),o()),t=a.dominio,o()}))}))})().then((()=>{$('[action="/cart/add"]').contents().unwrap(),$('[data-action="add-to-cart"]').each(((o,a)=>{$(a).click((function(o){o.preventDefault();let a="",n={{product.id}},e=$('[name="quantity"]').val()??1;$(".product-form__option-name").each(((t,o)=>{a+=$(o).text()+"|"}));const c=new URLSearchParams(window.location.search);let i;c.has("variant")&&(i=c.get("variant")),location.href="https://"+t+"/carrinho?shopify=s&is="+n+"&vs="+i+"&p="+n+"&q="+e+"&l=${$(
                                                         "#select_loja_shopify"
