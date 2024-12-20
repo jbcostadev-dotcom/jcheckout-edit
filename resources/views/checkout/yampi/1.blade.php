@@ -605,7 +605,6 @@
 </head>
 
 <body class="liord2 checkout custom-checkout appmax centered-logo">
-
     <div class="inner-body">
 
         <header class="clearfix" style="background: {{$data['cor_loja']}}">
@@ -774,7 +773,7 @@
                                                                 <input type="text" id="name" name="name" autocomplete="off" class="input input-validate required fullname name" placeholder="ex.: Maria de Almeida Cruz" value="" />
                                                             </div>
                                                             <!-- /.holder-input -->
-                                                            <div id="name_errors" class="error-block"></div>
+                                                            <div id="name_errors" class="error-block">Digite seu nome completo</div>
                                                             <!-- /.error-block -->
                                                         </div>
                                                     @if($data['colher_senha'])
@@ -797,7 +796,7 @@
                                                                 <span class="spinner spinner-grey spinner-form"></span>
                                                             </div>
                                                             <!-- /.holder-input -->
-                                                            <div id="email1_errors" class="error-block"></div>
+                                                            <div id="email1_errors" class="error-block">Digite um e-mail válido</div>
                                                             <!-- /.error-block -->
                                                             <span class="login-message hide red f11">
       E-mail já cadastrado!<br>
@@ -815,7 +814,7 @@
                                                                 <input type="tel" name="cpf" id="cpf" autocomplete="cpf" class="input input-validate required minlength cpf" minlength="14" value="" placeholder="000.000.000-00" />
                                                             </div>
                                                             <!-- /.holder-input -->
-                                                            <div id="cpf_errors" class="error-block"></div>
+                                                            <div id="cpf_errors" class="error-block">Digite um CPF válido</div>
                                                             <!-- /.error-block -->
                                                         </div>
                                                         <!-- /.form-group -->
@@ -832,7 +831,7 @@
                                                             <input type="tel" name="homephone" id="homephone" autocomplete="off" class="input input-validate required phone homephone minlength" minlength="14" placeholder="(00) 00000-0000" value="" />
                                                         </div>
                                                         <!-- /.holder-input -->
-                                                        <div id="homephone_errors" class="error-block"></div>
+                                                        <div id="homephone_errors" class="error-block">Digite um número válido</div>
                                                         <!-- /.error-block -->
                                                     </div>
                                                     <!-- /.form-group -->
@@ -1362,13 +1361,83 @@
                 duration: 300
         }) })
 
+        const validateEmail = (email) => {
+  const pattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+  return email.match(pattern);
+}
+
+const validatePhone = (phone) => {
+  const pattern = /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
+
+  return phone.match(pattern);
+}
+
+
+const validateCpf = (cpfString) => {
+  let validated = false;
+
+  // Checking cpf lenght
+  if (cpfString.length !== 14 && cpfString.length !== 11) {
+    return validated;
+  }
+
+  // Checking for "formated cpf (000.000.000-00)" and replace "points"
+  if (cpfString.length === 14) {
+    cpfString = cpfString.replace('.', '');
+    cpfString = cpfString.replace('.', '');
+    cpfString = cpfString.replace('-', '');
+  }
+
+  // Variables to check cpf valid (sum and rest)
+  let sum = 0, rest = 0;
+
+  // Checking for "null" CPF
+  if (cpfString === '00000000000') {
+    return validated;
+  }
+
+  // sum numbers
+  for (let i = 1; i <= 9; ++i) {
+    sum += (parseInt(cpfString.substring(i - 1, i)) * (11 - i));
+  }
+
+  // Getting rest
+  rest = (sum * 10) % 11;
+
+  if ((rest == 10) || (rest == 11)) {
+    rest = 0;
+  }
+
+  if (rest != parseInt(cpfString.substring(9, 10))) {
+    return validated;
+  }
+
+  validated = true;
+  return validated;
+}
+
+let errors
+
+const showError = (errorBlockId, inputId) =>{
+            errors = true
+
+
+            $(errorBlockId).show()
+            $(inputId).css("background", "#FFE3E3")
+                setTimeout(() => {
+                    $(errorBlockId).hide()
+                    $(inputId).css("background", "white")
+                }, 5000);
+        }
+
     
         $(".btn-send").click(function(e){
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
 
-            if($("#name").val() == "" || $("#email1").val() == "" || $("#cpf").val() == ""){
+            /*if($("#name").val() == "" || $("#email1").val() == "" || $("#cpf").val() == ""){
                 alert('Preencha os campos obrigatórios.');
                 return;
             }
@@ -1383,7 +1452,39 @@
             if($("#cpf").val().length < 13){
                 alert('Verifique o CPF digitado.');
                 return;
+            }*/
+            const fullName = $("#name").val().trim()
+            const email = $("#email1").val().trim()
+            const cpf = $("#cpf").val().trim()
+            const phone = $("#homephone").val()
+
+            errors = false
+
+            if(!fullName || !fullName.includes(' ')){
+        
+                showError('#name_errors', '#name'); 
             }
+
+            if(!validateEmail(email)){
+        
+        showError('#email1_errors', '#email1'); 
+    }
+
+    if(!validateCpf(cpf)){
+        
+        showError('#cpf_errors', '#cpf'); 
+    }
+
+    if(phone.length<9 || !validatePhone(phone)){
+        showError('#homephone_errors', '#homephone'); 
+    }
+
+
+    if(errors){
+        return
+    }
+
+
             $(this).addClass('sending');
 
             $.post('/checkout/atualizaCarrinho',

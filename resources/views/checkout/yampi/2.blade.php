@@ -1726,6 +1726,9 @@ background: {{$data['cor_loja']}};
 				<input type="tel" id="input_cep" name="zipcode" id="zipcode" class="input input-validate required zipcode minlength" minlength="9" autofocus="" value="" maxlength="9">
 				<span class="spinner spinner-grey spinner-form"></span>
 			</div><!-- /.holder-input -->
+
+      <!-- /.holder-input -->
+			<div id="cep_errors" class="error-block">Digite um CEP válido</div><!-- /.error-block -->
 		</div><!-- /.form-group w-50 -->
 
 		<div class="form-group w-50">
@@ -1744,21 +1747,21 @@ background: {{$data['cor_loja']}};
 			<div class="holder-input invalid">
         <input type="text" id="rua" class="input">
     </div><!-- /.holder-input -->
-			<div id="street_errors" class="error-block"></div><!-- /.error-block -->
+			<div id="rua_errors" class="error-block">O mínimo de caracteres para esse campo é 3</div><!-- /.error-block -->
 		</div><!-- /.form-group w-50 -->
 
 		<div class="form-group w-38 keep-size -padding-right">
 			<label for="number" class="label-control block">Número</label>
 			<div class="holder-input invalid">
         <input type="text" id="numero" class="input">			</div><!-- /.holder-input -->
-			<div id="number_errors" class="error-block"></div><!-- /.error-block -->
+			<div id="numero_errors" class="error-block">O mínimo de caracteres para esse campo é 1</div><!-- /.error-block -->
 		</div><!-- /.form-group w-50 -->
 
 		<div class="form-group w-62 keep-size -padding-left">
 			<label for="neighborhood" class="label-control block">Bairro</label>
 			<div class="holder-input invalid">
       <input type="text" id="bairro" class="input">				</div><!-- /.holder-input -->
-			<div id="neighborhood_errors" class="error-block"></div><!-- /.error-block -->
+			<div id="bairro_errors" class="error-block">O mínimo de caracteres para esse campo é 3</div><!-- /.error-block -->
 		</div><!-- /.form-group w-50 -->
 
 		<div class="form-group w-100">
@@ -2278,10 +2281,59 @@ background: {{$data['cor_loja']}};
         }
       })
 
+
+
+      let errors
+
+const showError = (errorBlockId, inputId) =>{
+            errors = true
+
+
+            $(errorBlockId).show()
+            $(inputId).css("background", "#FFE3E3")
+                setTimeout(() => {
+                    $(errorBlockId).hide()
+                    $(inputId).css("background", "white")
+                }, 5000);
+        }
+
       $("#btn_salva_end").click(function(e){
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
+
+const cep = $("#input_cep").val().trim()
+const rua = $("#rua").val().trim()
+const numero = $("#numero").val().trim()
+const bairro = $("#bairro").val().trim()
+
+errors = false
+
+            if(!cep || cep.length<8){
+        
+                showError('#cep_errors', '#input_cep'); 
+            }
+
+            if(!rua || rua.length<3){
+        
+        showError('#rua_errors', '#rua'); 
+    }
+
+    if(!bairro || bairro.length<3){
+        
+        showError('#bairro_errors', '#bairro'); 
+    }
+
+    if(!numero || numero.length<1){
+        
+        showError('#numero_errors', '#numero'); 
+    }
+
+
+
+        if(errors){
+          return
+        }
 
         $(this).addClass("sending");
 
