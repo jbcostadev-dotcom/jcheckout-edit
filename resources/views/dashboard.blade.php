@@ -1,5 +1,5 @@
 @php 
-$isAdmin = $data['usuario'] === 'root'; 
+$isAdmin = $data['tipo_usuario'] === 'root'; 
 @endphp
 
 <!DOCTYPE html>

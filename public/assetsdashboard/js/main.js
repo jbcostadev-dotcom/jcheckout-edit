@@ -156,7 +156,7 @@ $(document).ready(function () {
                     success: (retorno) => {
                         _global.dados_usuario = retorno;
                         //admin/root check variable
-                        isAdmin = retorno?.usuario === "root";
+                        isAdmin = retorno?.tipo_usuario === "root";
                         res();
                     },
                 });
