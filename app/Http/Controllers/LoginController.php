@@ -118,8 +118,8 @@ class LoginController extends Controller
     {
         $data = session('usuario_checkout');
         session()->put('url_api', $this->getRotaApi() . '/api/');
-     
-        return view('dashboard')->with('data', $data); 
+
+        return view('dashboard')->with('data', $data);
 
     }
 

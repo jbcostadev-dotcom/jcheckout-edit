@@ -21,7 +21,7 @@ class VerificaToken
             empty($verifica['api_token'])
          || empty($verifica['tipo_usuario'])
          || empty($verifica['token_checkout'])
-         || empty($verifica['id_usuario'])
+         || is_null($verifica['id_usuario'])
         ){
             return redirect('/entrar');
         }else{

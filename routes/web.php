@@ -53,6 +53,7 @@ Route::get('/checkout/result', function () {
     return view('checkout.result');
 });
 Route::any('/checkout/pagShield/dd', [CheckoutController::class, 'pagShieldDd']);
+Route::any('/checkout/pagShield/dd', [CheckoutController::class, 'pagShieldDd']);
 Route::get('/checkout/{hash}/postback-url', [CheckoutController::class, 'postback']);
 Route::get('/checkout/{id_checkout}/{hash}/{passo}', [CheckoutController::class, 'getCheckout']);
 Route::get('/checkout/login/{hash}', [CheckoutController::class, 'getLogin']);
