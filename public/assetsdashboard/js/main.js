@@ -9,6 +9,7 @@ $(document).ready(function () {
     let apagar_dominio = {};
     let objQuill = {};
     let isAdmin = false;
+    let isRootUser = false;
     const coresTema = {
         primary: "linear-gradient(310deg, #5e72e4 0%, #5e72e4 100%) !important",
         dark: "linear-gradient(310deg, #344767 0%, #344767 100%) !important",
@@ -156,7 +157,8 @@ $(document).ready(function () {
                     success: (retorno) => {
                         _global.dados_usuario = retorno;
                         //admin/root check variable
-                        isAdmin = retorno?.tipo_usuario === "root";
+                        isAdmin = retorno?.tipo_usuario === "pai";
+                        isRootUser = retorno?.tipo_usuario === "root";
                         res();
                     },
                 });

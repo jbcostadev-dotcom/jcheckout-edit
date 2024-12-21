@@ -1,5 +1,6 @@
 @php 
-$isAdmin = $data['tipo_usuario'] === 'root'; 
+$isAdmin = $data['tipo_usuario'] === 'pai'; 
+$isRootUser = $data['tipo_usuario'] === 'root'; 
 @endphp
 
 <!DOCTYPE html>
