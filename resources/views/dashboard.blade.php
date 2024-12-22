@@ -1,6 +1,7 @@
 @php 
 $isAdmin = $data['tipo_usuario'] === 'pai'; 
 $isRootUser = $data['tipo_usuario'] === 'root'; 
+$isUser = $data['tipo_usuario'] === 'user'; 
 @endphp
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ $isRootUser = $data['tipo_usuario'] === 'root';
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="../assetsdashboard/css/main.css" rel="stylesheet" />
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
@@ -288,6 +289,8 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
                 </li>
+
+                @if (!$isRootUser)
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lojas</h6>
                 </li>
@@ -307,10 +310,13 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span class="nav-link-text ms-1">Minhas Lojas</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Checkout</h6>
                 </li>
+
+                @if (!$isRootUser)
                 <li class="nav-item lateral" aba="checkout">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -319,6 +325,7 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span class="nav-link-text ms-1">Meu Checkout</span>
                     </a>
                 </li>
+                @endif
 
 
 
@@ -331,6 +338,7 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                     </a>
                 </li>
 
+                @if (!$isRootUser)
                 <li class="nav-item lateral" aba="shopify">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -339,8 +347,9 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span class="nav-link-text ms-1">Integração Shopify</span>
                     </a>
                 </li>
+                @endif
 
-                @if ($isAdmin)
+                @if ($isAdmin || $isRootUser)
                 <li class="nav-item lateral" aba="cartoes">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -350,11 +359,13 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span id="qtd_cartoes" class="badge bg-gradient-dark" style="font-size: 10px; margin-left: 8px;">(...)</span>
                     </a>
                 </li>
+                @endif
 
+                @if ($isAdmin)
                 <li class="nav-item lateral" aba="facebook">
                     <a class="nav-link">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa fa-facebook text-dark text-sm opacity-10" style="margin-bottom: 5px;"></i>
+                            <i class="fa fa-facebook-f text-dark text-sm opacity-10" style="margin-bottom: 5px;"></i>
                         </div>
                         <span class="nav-link-text ms-1">Facebooks</span>
                         <span id="qtd_facebook" class="badge bg-gradient-dark" style="font-size: 10px; margin-left: 8px;">(...)</span>
@@ -382,6 +393,8 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span class="nav-link-text ms-1">Perfil</span>
                     </a>
                 </li>
+
+                @if (!$isRootUser)
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Configurações</h6>
                 </li>
@@ -452,6 +465,7 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                         <span class="nav-link-text ms-1">Gráficos</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
         </div>
@@ -536,6 +550,12 @@ $isRootUser = $data['tipo_usuario'] === 'root';
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item d-flex align-items-center ms-2 d-none">
+                            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                            <i class="fa fa-sign-out" aria-hidden="true" id="btn_signout"></i>
+                     
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -1525,6 +1545,13 @@ $isRootUser = $data['tipo_usuario'] === 'root';
         });
     </script>
     <script>
+
+
+$("#btn_signout").click(function(e){
+    document.cookie = "laravel_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = '/entrar'; 
+        })
+
         $("#btn_user").click(function(e){
             $('[aba="perfil"]').click()
         })
@@ -1541,6 +1568,7 @@ $isRootUser = $data['tipo_usuario'] === 'root';
         $("#pedido_inicio").val(dt_atual).change();
         $("#pedido_fim").val(dt_atual).change();
 
+        
     </script>
     <!-- Github buttons -->
     <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
