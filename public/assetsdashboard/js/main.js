@@ -10367,72 +10367,119 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<div>", {
                                                 class: "form-check form-switch",
                                                 style: "margin-top: 10px;",
-                                            })
-                                                .append(
-                                                    $("<input>", {
-                                                        class: "form-check-input",
-                                                        type: "checkbox",
-                                                        id: "checkbox_pedido_shopify",
-                                                        change: async function (
-                                                            e
-                                                        ) {
-                                                            let flag = "s";
+                                            }).append(
+                                                $("<input>", {
+                                                    class: "form-check-input",
+                                                    type: "checkbox",
+                                                    id: "checkbox_pedido_shopify",
+                                                    change: async function (
+                                                        e
+                                                    ) {
+                                                        let flag = "s";
 
-                                                            if (
-                                                                !$(this).prop(
-                                                                    "checked"
-                                                                )
+                                                        if (
+                                                            !$(this).prop(
+                                                                "checked"
                                                             )
-                                                                flag = "n";
+                                                        )
+                                                            flag = "n";
 
-                                                            let dados =
-                                                                await _global.busca(
-                                                                    "dashboard/updatePreferenciaShopify",
-                                                                    {
-                                                                        l: $(
-                                                                            "#select_loja_shopify"
-                                                                        ).val(),
-                                                                        flag: flag,
-                                                                    },
-                                                                    "POST"
-                                                                );
-
-                                                            if (
-                                                                dados.status ==
-                                                                    200 &&
-                                                                flag == "s"
-                                                            ) {
-                                                                _global.toast(
-                                                                    "Os pedidos serão marcados na shopify.",
-                                                                    "toastsucesso"
-                                                                );
-                                                                return;
-                                                            }
-                                                            if (
-                                                                dados.status ==
-                                                                    200 &&
-                                                                flag == "n"
-                                                            ) {
-                                                                _global.toast(
-                                                                    "Os pedidos não serão marcados na shopify.",
-                                                                    "toastsucesso"
-                                                                );
-                                                                return;
-                                                            }
-
-                                                            _global.toast(
-                                                                "Houve um erro interno.",
-                                                                "toasterro"
+                                                        let dados =
+                                                            await _global.busca(
+                                                                "dashboard/updatePreferenciaShopify",
+                                                                {
+                                                                    l: $(
+                                                                        "#select_loja_shopify"
+                                                                    ).val(),
+                                                                    flag: flag,
+                                                                    column: 'marcar_pedido'
+                                                                },
+                                                                "POST"
                                                             );
-                                                        },
-                                                    })
-                                                )
-                                                .append(
-                                                    $("<label>", {
-                                                        class: "form-check-label",
-                                                        text: "Registrar Pedidos na Shopify",
-                                                    })
-                                                )
+
+                                                        if (
+                                                            dados.status ==
+                                                                200 &&
+                                                            flag == "s"
+                                                        ) {
+                                                            _global.toast(
+                                                                "Os pedidos serão marcados na shopify.",
+                                                                "toastsucesso"
+                                                            );
+                                                            return;
+                                                        }
+                                                        if (
+                                                            dados.status ==
+                                                                200 &&
+                                                            flag == "n"
+                                                        ) {
+                                                            _global.toast(
+                                                                "Os pedidos não serão marcados na shopify.",
+                                                                "toastsucesso"
+                                                            );
+                                                            return;
+                                                        }
+
+                                                        _global.toast(
+                                                            "Houve um erro interno.",
+                                                            "toasterro"
+                                                        );
+                                                    },
+                                                })
+                                            ).append(
+                                                $("<label>", {
+                                                    class: "form-check-label",
+                                                    text: "Registrar Pedidos na Shopify",
+                                                })
+                                            )
+                                        ).append(
+                                            $("<div>", {
+                                                class: "form-check form-switch",
+                                                style: "margin-top: 10px;",
+                                            }).append(
+                                                $("<input>", {
+                                                    class: "form-check-input",
+                                                    type: "checkbox",
+                                                    id: "checkbox_multiple_products_in_cart",
+                                                    change: async function (e) {
+                                                        const checked = $(this).prop("checked") ? 1 : 0;
+
+                                                        let dados = await _global.busca("dashboard/updatePreferenciaShopify", {
+                                                            l: $("#select_loja_shopify").val(),
+                                                            flag: checked,
+                                                            column: 'multiple_products_in_cart',
+                                                        }, "POST");
+
+                                                        if (dados.status == 200 && checked) {
+                                                            _global.toast(
+                                                                "Vários produtos no carrinho no Shopify.",
+                                                                "toastsucesso"
+                                                            );
+
+                                                            return;
+                                                        }
+
+                                                        if (dados.status == 200 && !checked) {
+                                                            _global.toast(
+                                                                "Produto único no carrinho no Shopify.",
+                                                                "toastsucesso"
+                                                            );
+
+                                                            return;
+                                                        }
+
+                                                        _global.toast(
+                                                            "Houve um erro interno.",
+                                                            "toasterro"
+                                                        );
+                                                    }
+                                                })
+                                            ).append(
+                                                $("<label>", {
+                                                    class: "form-check-label",
+                                                    text: "Usar Carrinho",
+                                                })
+                                            )
                                         )
                                         .append(
                                             $("<button>", {
