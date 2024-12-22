@@ -1,7 +1,7 @@
-@php 
-$isAdmin = $data['tipo_usuario'] === 'pai'; 
-$isRootUser = $data['tipo_usuario'] === 'root'; 
-$isUser = $data['tipo_usuario'] === 'user'; 
+@php
+    $isAdmin = $data['tipo_usuario'] === 'pai';
+    $isRootUser = $data['tipo_usuario'] === 'root';
+    $isUser = $data['tipo_usuario'] === 'user';
 @endphp
 
 <!DOCTYPE html>
@@ -317,14 +317,14 @@ $isUser = $data['tipo_usuario'] === 'user';
                 </li>
 
                 @if (!$isRootUser)
-                <li class="nav-item lateral" aba="checkout">
-                    <a class="nav-link">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-cart text-dark text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Meu Checkout</span>
-                    </a>
-                </li>
+                    <li class="nav-item lateral" aba="checkout">
+                        <a class="nav-link">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-cart text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Meu Checkout</span>
+                        </a>
+                    </li>
                 @endif
 
 
@@ -554,7 +554,7 @@ $isUser = $data['tipo_usuario'] === 'user';
                         <li class="nav-item d-flex align-items-center ms-2 d-none">
                             <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                             <i class="fa fa-sign-out" aria-hidden="true" id="btn_signout"></i>
-                     
+
                             </a>
                         </li>
                     </ul>
@@ -1549,7 +1549,7 @@ $isUser = $data['tipo_usuario'] === 'user';
 
 $("#btn_signout").click(function(e){
     document.cookie = "laravel_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href = '/entrar'; 
+    window.location.href = '/entrar';
         })
 
         $("#btn_user").click(function(e){
@@ -1568,7 +1568,7 @@ $("#btn_signout").click(function(e){
         $("#pedido_inicio").val(dt_atual).change();
         $("#pedido_fim").val(dt_atual).change();
 
-        
+
     </script>
     <!-- Github buttons -->
     <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
