@@ -10549,6 +10549,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                         } else {
                             $("#checkbox_pedido_shopify").prop("checked", true);
                         }
+
+                        $("#checkbox_multiple_products_in_cart").prop("checked", dados.multiple_products_in_cart);
                     }
                 });
             }
