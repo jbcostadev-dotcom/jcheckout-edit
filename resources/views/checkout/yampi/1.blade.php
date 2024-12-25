@@ -828,7 +828,7 @@
     </label>
                                                         <div class="holder-input input-group input-group-prepend">
                                                             <span class="input-group-addon">+55</span>
-                                                            <input type="tel" name="homephone" id="homephone" autocomplete="off" class="input input-validate required phone homephone minlength" minlength="14" placeholder="(00) 00000-0000" value="" />
+                                                            <input type="tel" name="homephone" id="homephone" autocomplete="off" class="input input-validate required phone homephone minlength" minlength="14" placeholder="(00) 00000-0000" value="" maxlength="15"/>
                                                         </div>
                                                         <!-- /.holder-input -->
                                                         <div id="homephone_errors" class="error-block">Digite um número válido</div>
@@ -1317,8 +1317,33 @@
         ?>
     </script>
     <script>
+        //masking phone number
+document.querySelector('.homephone').addEventListener('input', function (event) {
+    let phone = event.target.value.replace(/\D/g, ''); // Remove non-digit characters
+    let formattedPhone = '';
+
+    if (phone.length > 10) {
+        // Format for 11 digits: (00) 00000-0000
+        formattedPhone = phone
+            .replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+    } else {
+        // Format for 10 digits: (00) 0000-00000
+        formattedPhone = phone
+            .replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+    }
+
+    // Update the input field with the formatted phone number
+    event.target.value = formattedPhone;
+});
+
+
+
+
         $('#cpf').mask('000.000.000-00', {reverse: true});
-        $('.homephone').mask('(00) 00000-0000');
+
+        //console.log($('.homephone'), 'mask input');
+        //console.log($('.homephone').length, 'mask length');
+        //$('.homephone').mask('(00) 00000-0000');
         fbq('track', 'InitiateCheckout');
         
         let dispositivo = "";
@@ -1368,7 +1393,10 @@
 }
 
 const validatePhone = (phone) => {
-  const pattern = /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
+    console.log(phone, 'phone');
+    console.log(phone.length, 'phone length');
+  //const pattern = /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
+  const pattern = /^\s*\(?([0-9]{2})\)?[-. ]?([0-9]{4,5})[-. ]?([0-9]{4})\s*$/;
 
   return phone.match(pattern);
 }
@@ -1475,7 +1503,7 @@ const showError = (errorBlockId, inputId) =>{
         showError('#cpf_errors', '#cpf'); 
     }
 
-    if(phone.length<9 || !validatePhone(phone)){
+    if(phone.length<14 || !validatePhone(phone)){
         showError('#homephone_errors', '#homephone'); 
     }
 
