@@ -103,7 +103,8 @@ class CheckoutController extends Controller
         $request = $this->conexao->conectar(
             'checkout/getCheckout',
             [
-                'hash' => $hash
+                'hash' => $hash,
+                'step' => $passo,
             ],
             'post'
         );
