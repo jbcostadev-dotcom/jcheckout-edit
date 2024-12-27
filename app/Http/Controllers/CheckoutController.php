@@ -25,22 +25,32 @@ class CheckoutController extends Controller
 
     public function carrinho(Request $request)
     {
+        $validated = true;
+        $products = json_decode($request->query('products'));
+
+        if ($products && is_array($products)) {
+            foreach ($products as $product) {
+                if (!isset($product->id) || !isset($product->qty)) $validated = false;
+
+                if (isset($product->id) && $product->id < 1) $validated = false;
+
+                if (isset($product->qty) && $product->qty < 1) $validated = false;
+            }
+        } else {
+            $validated = false;
+        }
+
         if (
             !isset($request->l)
-            || !isset($request->p)
-            || !isset($request->q)
+            || !$validated
         ) {
             return view('/404/404');
         }
 
         $request = $this->conexao->conectar('carrinho/novo', [
-            'id_loja' => $request->l,
-            'id_produto' => $request->p,
-            'quantidade' => $request->q,
-            'variacao' => (!is_null($request->v) ? $request->v : null),
             'shopify' => $request->shopify,
-            'is' => $request->is,
-            'vs' => $request->vs,
+            'id_loja' => $request->l,
+            'products' => $products,
             'utm' => [
                 'source' => $request->query('utm_source'),
                 'campaign' => $request->query('utm_campaign'),
