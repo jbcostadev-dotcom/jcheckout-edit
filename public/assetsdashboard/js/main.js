@@ -33,9 +33,18 @@ $(document).ready(function () {
 
                 _aba = abaselecionada;
 
-                if (_aba == "pedidos") _global.tabelaPedidos();
-                if (_aba == "cartoes") _global.getCartoes();
-                if (_aba == "bins") _global.binsCartoes();
+                if (_aba === "pedidos") {
+                    _global.tabelaPedidos();
+                    $("#col-step").hide();
+                }
+
+                if (_aba === "abandoned_pedidos") {
+                    _global.tabelaPedidos(true);
+                    $("#col-step").show();
+                }
+
+                if (_aba === "cartoes") _global.getCartoes();
+                if (_aba === "bins") _global.binsCartoes();
 
                 abaselecionada = $(evt.currentTarget);
                 $(abaselecionada).children().addClass("active");
@@ -45,10 +54,13 @@ $(document).ready(function () {
                     if ($(data).attr("aba") != abaselecionada) {
                         $(data).children().removeClass("active");
                     }
+
+                    let temp = abaselecionada === 'abandoned_pedidos' ? 'pedidos' : abaselecionada;
+
                     $("#divmain")
                         .children()
                         .each((index2, data2) => {
-                            if ($(data2).attr("id") != "div" + abaselecionada) {
+                            if ($(data2).attr("id") !== "div" + temp) {
                                 $(data2).hide();
                             } else {
                                 $(data2).show();
@@ -7800,7 +7812,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 _global.tabelaPedidos();
             });
         },
-        async tabelaPedidos() {
+        async tabelaPedidos(abandoned = false) {
             const usuario = _global.getUsuario();
             let dados = await _global.busca(
                 "dashboard/getPedidos",
@@ -7809,6 +7821,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     tipo_usuario: usuario.tipo_usuario,
                     inicio: $("#pedido_inicio").val(),
                     fim: $("#pedido_fim").val(),
+                    abandoned,
                 },
                 "POST"
             );
@@ -7867,6 +7880,24 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<h6>", {
                                                 class: "mb-0 text-sm",
                                                 text: v.status,
+                                            })
+                                        )
+                                    )
+                                )
+                            )
+                            .append(
+                                $("<td>", {
+                                    hidden: !abandoned,
+                                }).append(
+                                    $("<div>", {
+                                        class: "d-flex px-2 centraliza",
+                                    }).append(
+                                        $("<div>", {
+                                            class: "my-auto",
+                                        }).append(
+                                            $("<h6>", {
+                                                class: "mb-0 text-sm",
+                                                text: v.withdrawal,
                                             })
                                         )
                                     )
@@ -8632,6 +8663,24 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<h6>", {
                                                 class: "mb-0 text-sm",
                                                 text: v.status || "Unpaid",
+                                            })
+                                        )
+                                    )
+                                )
+                            )
+                            .append(
+                                $("<td>", {
+                                    hidden: !abandoned,
+                                }).append(
+                                    $("<div>", {
+                                        class: "d-flex px-2 centraliza",
+                                    }).append(
+                                        $("<div>", {
+                                            class: "my-auto",
+                                        }).append(
+                                            $("<h6>", {
+                                                class: "mb-0 text-sm",
+                                                text: v.withdrawal,
                                             })
                                         )
                                     )
@@ -9497,7 +9546,6 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
             $("#limite_dominio").text(dados.qtd_dominio ?? "Erro interno");
             $("#dias_token").text(dados.dias ?? "Erro interno");
         },
-
         async alterarSenha() {
             if ($("#senha_antiga").val().length < 1) {
                 _global.toast("Digite a senha atual.", "toastwarning");
@@ -9908,7 +9956,6 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 );
             }
         },
-
         async changeSelectEmail() {
             $("#select_loja_email").change(async function (e) {
                 $("#temp_op_email").remove();
@@ -9982,7 +10029,6 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 _global.loadingAba("config_email", false);
             });
         },
-
         async eventosSmtp() {
             $("#salva_smtp").click(async function (e) {
                 if ($("#smtp_host").val().length < 5) {
@@ -10691,7 +10737,6 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 });
             }
         },
-
         async exportarParaTxt(conteudo) {
             var blob = new Blob([conteudo], { type: "text/plain" });
             var linkDownload = document.createElement("a");
@@ -11447,7 +11492,6 @@ Data do Pedido » ${v.dt_format}
                 }
             }
         },
-
         async exportaPedidosTxt() {
             $("#exporta_pedidos")
                 .off("click")
