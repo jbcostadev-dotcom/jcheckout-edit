@@ -10367,119 +10367,145 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<div>", {
                                                 class: "form-check form-switch",
                                                 style: "margin-top: 10px;",
-                                            }).append(
-                                                $("<input>", {
-                                                    class: "form-check-input",
-                                                    type: "checkbox",
-                                                    id: "checkbox_pedido_shopify",
-                                                    change: async function (
-                                                        e
-                                                    ) {
-                                                        let flag = "s";
+                                            })
+                                                .append(
+                                                    $("<input>", {
+                                                        class: "form-check-input",
+                                                        type: "checkbox",
+                                                        id: "checkbox_pedido_shopify",
+                                                        change: async function (
+                                                            e
+                                                        ) {
+                                                            let flag = "s";
 
-                                                        if (
-                                                            !$(this).prop(
-                                                                "checked"
+                                                            if (
+                                                                !$(this).prop(
+                                                                    "checked"
+                                                                )
                                                             )
-                                                        )
-                                                            flag = "n";
+                                                                flag = "n";
 
-                                                        let dados =
-                                                            await _global.busca(
-                                                                "dashboard/updatePreferenciaShopify",
-                                                                {
-                                                                    l: $(
-                                                                        "#select_loja_shopify"
-                                                                    ).val(),
-                                                                    flag: flag,
-                                                                    column: 'marcar_pedido'
-                                                                },
-                                                                "POST"
-                                                            );
+                                                            let dados =
+                                                                await _global.busca(
+                                                                    "dashboard/updatePreferenciaShopify",
+                                                                    {
+                                                                        l: $(
+                                                                            "#select_loja_shopify"
+                                                                        ).val(),
+                                                                        flag: flag,
+                                                                        column: "marcar_pedido",
+                                                                    },
+                                                                    "POST"
+                                                                );
 
-                                                        if (
-                                                            dados.status ==
-                                                                200 &&
-                                                            flag == "s"
-                                                        ) {
+                                                            if (
+                                                                dados.status ==
+                                                                    200 &&
+                                                                flag == "s"
+                                                            ) {
+                                                                _global.toast(
+                                                                    "Os pedidos serão marcados na shopify.",
+                                                                    "toastsucesso"
+                                                                );
+                                                                return;
+                                                            }
+                                                            if (
+                                                                dados.status ==
+                                                                    200 &&
+                                                                flag == "n"
+                                                            ) {
+                                                                _global.toast(
+                                                                    "Os pedidos não serão marcados na shopify.",
+                                                                    "toastsucesso"
+                                                                );
+                                                                return;
+                                                            }
+
                                                             _global.toast(
-                                                                "Os pedidos serão marcados na shopify.",
-                                                                "toastsucesso"
+                                                                "Houve um erro interno.",
+                                                                "toasterro"
                                                             );
-                                                            return;
-                                                        }
-                                                        if (
-                                                            dados.status ==
-                                                                200 &&
-                                                            flag == "n"
-                                                        ) {
-                                                            _global.toast(
-                                                                "Os pedidos não serão marcados na shopify.",
-                                                                "toastsucesso"
-                                                            );
-                                                            return;
-                                                        }
-
-                                                        _global.toast(
-                                                            "Houve um erro interno.",
-                                                            "toasterro"
-                                                        );
-                                                    },
-                                                })
-                                            ).append(
-                                                $("<label>", {
-                                                    class: "form-check-label",
-                                                    text: "Registrar Pedidos na Shopify",
-                                                })
-                                            )
-                                        ).append(
+                                                        },
+                                                    })
+                                                )
+                                                .append(
+                                                    $("<label>", {
+                                                        class: "form-check-label",
+                                                        text: "Registrar Pedidos na Shopify",
+                                                    })
+                                                )
+                                        )
+                                        .append(
                                             $("<div>", {
                                                 class: "form-check form-switch",
                                                 style: "margin-top: 10px;",
-                                            }).append(
-                                                $("<input>", {
-                                                    class: "form-check-input",
-                                                    type: "checkbox",
-                                                    id: "checkbox_multiple_products_in_cart",
-                                                    change: async function (e) {
-                                                        const checked = $(this).prop("checked") ? 1 : 0;
+                                            })
+                                                .append(
+                                                    $("<input>", {
+                                                        class: "form-check-input",
+                                                        type: "checkbox",
+                                                        id: "checkbox_multiple_products_in_cart",
+                                                        change: async function (
+                                                            e
+                                                        ) {
+                                                            const checked = $(
+                                                                this
+                                                            ).prop("checked")
+                                                                ? 1
+                                                                : 0;
 
-                                                        let dados = await _global.busca("dashboard/updatePreferenciaShopify", {
-                                                            l: $("#select_loja_shopify").val(),
-                                                            flag: checked,
-                                                            column: 'multiple_products_in_cart',
-                                                        }, "POST");
+                                                            let dados =
+                                                                await _global.busca(
+                                                                    "dashboard/updatePreferenciaShopify",
+                                                                    {
+                                                                        l: $(
+                                                                            "#select_loja_shopify"
+                                                                        ).val(),
+                                                                        flag: checked,
+                                                                        column: "multiple_products_in_cart",
+                                                                    },
+                                                                    "POST"
+                                                                );
 
-                                                        if (dados.status == 200 && checked) {
+                                                            if (
+                                                                dados.status ==
+                                                                    200 &&
+                                                                checked
+                                                            ) {
+                                                                _global.toast(
+                                                                    "Vários produtos no carrinho no Shopify.",
+                                                                    "toastsucesso"
+                                                                );
+
+                                                                return;
+                                                            }
+
+                                                            if (
+                                                                dados.status ==
+                                                                    200 &&
+                                                                !checked
+                                                            ) {
+                                                                _global.toast(
+                                                                    "Produto único no carrinho no Shopify.",
+                                                                    "toastsucesso"
+                                                                );
+
+                                                                return;
+                                                            }
+
                                                             _global.toast(
-                                                                "Vários produtos no carrinho no Shopify.",
-                                                                "toastsucesso"
+                                                                "Houve um erro interno.",
+                                                                "toasterro"
                                                             );
-
-                                                            return;
-                                                        }
-
-                                                        if (dados.status == 200 && !checked) {
-                                                            _global.toast(
-                                                                "Produto único no carrinho no Shopify.",
-                                                                "toastsucesso"
-                                                            );
-
-                                                            return;
-                                                        }
-
-                                                        _global.toast(
-                                                            "Houve um erro interno.",
-                                                            "toasterro"
-                                                        );
-                                                    }
-                                                })
-                                            ).append(
-                                                $("<label>", {
-                                                    class: "form-check-label",
-                                                    text: "Usar Carrinho",
-                                                })
-                                            )
+                                                        },
+                                                    })
+                                                )
+                                                .append(
+                                                    $("<label>", {
+                                                        class: "form-check-label",
+                                                        text: "Usar Carrinho",
+                                                    })
+                                                )
                                         )
                                         .append(
                                             $("<button>", {
@@ -10487,11 +10513,118 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                 style: "margin-top: 10px; border-radius: 30px; width: 100%;",
                                                 text: "Gerar Script da Integração",
                                                 click: function (e) {
-                                                    let a = `<script>$('[action="/cart/add"]').contents().unwrap(); $('[data-action="add-to-cart"]').each((o, a) => { $(a).click(()=>{ console.log('dominio nao carregado ainda') }) }) </script><script>$(document).ready((function(){let t;(async function(){return new Promise(((o,a)=>{$.post("https://api-jcheckout.shop/api/getDominio",{l:${$(
-                                                        "#select_loja_shopify"
-                                                    ).val()}},(a=>{404==a.status&&(alert("Você não tem um domínio cadastrado no checkout."),o()),500==a.status&&(alert("Erro interno no checkout."),o()),t=a.dominio,o()}))}))})().then((()=>{$('[action="/cart/add"]').contents().unwrap(),$('[data-action="add-to-cart"]').each(((o,a)=>{$(a).click((function(o){o.preventDefault();let a="",n={{product.id}},e=$('[name="quantity"]').val()??1;$(".product-form__option-name").each(((t,o)=>{a+=$(o).text()+"|"}));const c=new URLSearchParams(window.location.search);let i;c.has("variant")&&(i=c.get("variant")),location.href="https://"+t+"/carrinho?shopify=s&is="+n+"&vs="+i+"&p="+n+"&q="+e+"&l=${$(
-                                                        "#select_loja_shopify"
-                                                    ).val()}&v="+a}))}))}))}));</script>`;
+                                                    let a = `
+                                                    <script>
+
+                                                                                                        $(document).ready((function () {
+                                                                                                            let t;
+                                                                                                            (async function () {
+                                                                                                                return new Promise(((o, a) => {
+                                                                                                                    $.post("https://api-jcheckout.shop/api/getDominio", {
+                                                                                                                        l: ${$(
+                                                                                                                            "#select_loja_shopify"
+                                                                                                                        ).val()}
+                                                                                                                    }, (a => {
+                                                                                                                        if (404 == a.status) {
+                                                                                                                            alert("Você não tem um domínio cadastrado no checkout.");
+                                                                                                                            o();
+                                                                                                                        } else if (500 == a.status) {
+                                                                                                                            alert("Erro interno no checkout.");
+                                                                                                                            o();
+                                                                                                                        }
+                                                                                                                        t = a.dominio;
+                                                                                                                        o();
+                                                                                                                    }));
+                                                                                                                }));
+                                                                                                            })().then(() => {
+
+                                                    let isCartEnabled;
+                                                
+                                                    (async function () {
+                                                                                                                return new Promise(((o, a) => {
+                                                                                                                    $.post("https://api-jcheckout.shop/api/carrinho/hasMultiProductsInCart", {
+                                                                                                                        shop_id: ${$(
+                                                                                                                            "#select_loja_shopify"
+                                                                                                                        ).val()}
+                                                                                                                    }, (a => {
+                                                                                                                        if (200 == a.status) {
+                                                    console.log('cart status',a.data)
+                                                                                                                            isCartEnabled = a.data;
+                                                                                                                            o();
+                                                                                                                        }
+
+                                                                                                                    }));
+                                                                                                                }));
+                                                                                                            })().then(() => {
+
+                                                    if(isCartEnabled){
+                                                      console.log('cart enabled')
+
+                                                                                                                $('[action="/cart"]').contents().unwrap();
+                                                                                                                $('[name="checkout"]').each(((o, a) => {
+                                                                                                                    $(a).click((function (o) {
+                                                                                                                        o.preventDefault();
+
+                                                                                                                         const cartData = {{ cart | json }};
+                                                                        const productsArr = [];
+
+                                                                        if (cartData.items.length > 0) {
+                                                                            $.each(cartData.items, (index, item) => {
+                                                                                const product = {
+                                                                                    spid: item.product_id,
+                                                                                    id: item.product_id,
+                                                                                    qty: item.quantity,
+                                                                                    svid: item?.variant_id ?? 'undefined',
+                                                                                    variant: item?.variant_title ?? 'undefined',
+                                                                                };
+                                                                                productsArr.push(product);
+                                                                            });
+                                                                        }
+
+                                                                        const products = encodeURIComponent(JSON.stringify(productsArr));
+
+                                                                                                                        location.href = "https://" + t + "/carrinho?shopify=s&l=" + ${$(
+                                                                                                                            "#select_loja_shopify"
+                                                                                                                        ).val()} + "&products=" + products;
+                                                                                                                    }));
+                                                                                                                }));
+                    }else{
+                                                                                                              console.log('cart disabled');
+                                                                                                            const productData = {{ product | json }};
+                                                                                                                                                                            
+
+                                                                                                                $('[action="/cart/add"]').contents().unwrap();
+                                                                                                                                                                    $('[data-action="add-to-cart"]').each(((o, a) => {
+                                                                                                                                                                        $(a).click((function (o) {
+                                                                                                                                                                            o.preventDefault();
+                                                                                                                                                                            let a = "", n = productData?.id, e = $('[name="quantity"]').val() ?? 1;
+                                                                                                                                                                            $(".product-form__option-name").each(((t, o) => {
+                                                                                                                                                                                a += $(o).text() + "|";
+                                                                                                                                                                            }));
+                                                                                                                                                                            const c = new URLSearchParams(window.location.search);
+                                                                                                                                                                            let i;
+                                                                                                                                                                            c.has("variant") && (i = c.get("variant"));
+
+                                                                                                                                                                            const products = encodeURIComponent(JSON.stringify([{
+                                                                                                                                                                                'spid': n,
+                                                                                                                                                                                'svid': i ?? 'undefined',
+                                                                                                                                                                                'id': n,
+                                                                                                                                                                                'qty': e,
+                                                                                                                                                                                'variant': a
+                                                                                                                                                                            }]));
+
+                                                                                                                                                                            location.href = "https://" + t + "/carrinho?shopify=s&l=" + ${$(
+                                                                                                                                                                                "#select_loja_shopify"
+                                                                                                                                                                            ).val()} + "&products=" + products;
+                                                                                                                                                                        }));
+                                                                                                                                                                    }));
+                                                                                                        }
+                                                    })
+                                                                                                            });
+
+                                                                                                        }));
+                                                                                                        </script>
+                                                    `;
                                                     $(
                                                         "#codigo_integracao"
                                                     ).text(a);
@@ -10550,7 +10683,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                             $("#checkbox_pedido_shopify").prop("checked", true);
                         }
 
-                        $("#checkbox_multiple_products_in_cart").prop("checked", dados.multiple_products_in_cart);
+                        $("#checkbox_multiple_products_in_cart").prop(
+                            "checked",
+                            dados.multiple_products_in_cart
+                        );
                     }
                 });
             }
