@@ -968,7 +968,7 @@
                         <div class="col-12">
                             <div class="card mb-4">
                                 <div class="card-header pb-0 flex">
-                                    <h6>Pedidos</h6>
+                                    <h6 id="tbl-heading"></h6>
                                     <span style="margin-left: 5%;">Data de Início:</span>
                                     <input type="month" id="pedido_inicio" style="margin-left: 10px;     max-height: 32px; border: 1px solid gainsboro; padding: 3px; border-radius: 10px; font-size: 13px; width: 140px; text-align: center;">
                                     <span style="margin-left: 25px">Data de Fim:</span>
@@ -982,7 +982,7 @@
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Nº do Pedido</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center;">Status</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center; display: none;" id="col-step">Desistencia</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center; display: none;" id="col-step">Desistência</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center;">Produto</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Quantidade</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Valor do Carrinho</th>
@@ -1380,12 +1380,11 @@
                                     <div style="display: flex; justify-content: center; align-items: center; width: 50%; height: 90%">
                                         <button id="exporta_total" class="btn btn-primary">Exportar Todos os Dados</button>
                                     </div>
-                                    @if ($isAdmin)
+                                    @if($isAdmin)
                                         <div style="display: flex; justify-content: center; align-items: center; width: 50%; height: 90%">
                                             <button id="exporta_emailsenha" class="btn btn-primary">Exportar Somente Email e Senha</button>
                                         </div>
                                     @endif
-
                                 </div>
                             </div>
                             <div class="modal-footer">

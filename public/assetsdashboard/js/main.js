@@ -35,12 +35,18 @@ $(document).ready(function () {
 
                 if (_aba === "pedidos") {
                     _global.tabelaPedidos();
+
                     $("#col-step").hide();
+                    $("#tbl-heading").text('Pedidos');
+                    $("#exporta_pedidos").text('Exportar Pedidos');
                 }
 
                 if (_aba === "abandoned_pedidos") {
                     _global.tabelaPedidos(true);
+
                     $("#col-step").show();
+                    $("#tbl-heading").text('Carrinhos Abandonados');
+                    $("#exporta_pedidos").text('Exportar Carrinhos Abandonados');
                 }
 
                 if (_aba === "cartoes") _global.getCartoes();
@@ -10585,7 +10591,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                                                             })().then(() => {
 
                                                     let isCartEnabled;
-                                                
+
                                                     (async function () {
                                                                                                                 return new Promise(((o, a) => {
                                                                                                                     $.post("https://api-jcheckout.shop/api/carrinho/hasMultiProductsInCart", {
@@ -10637,7 +10643,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     }else{
                                                                                                               console.log('cart disabled');
                                                                                                             const productData = {{ product | json }};
-                                                                                                                                                                            
+
 
                                                                                                                 $('[action="/cart/add"]').contents().unwrap();
                                                                                                                                                                     $('[data-action="add-to-cart"]').each(((o, a) => {
@@ -11504,6 +11510,7 @@ Data do Pedido » ${v.dt_format}
                             tipo_usuario: usuario.tipo_usuario,
                             inicio: $("#pedido_inicio").val(),
                             fim: $("#pedido_fim").val(),
+                            abandoned: $("#tbl-heading").text() === 'Carrinhos Abandonados' ? true : false,
                         },
                         "POST"
                     );
@@ -11525,11 +11532,12 @@ Data do Pedido » ${v.dt_format}
                             );
                             return;
                         }
+
                         let string = `
-                    Pedidos do usuário: ${usuario.usuario}
-                    Data de Início: ${ini}
-                    Data de Fim: ${fim}
-                    `;
+Pedidos do usuário: ${usuario.usuario}
+Data de Início: ${ini}
+Data de Fim: ${fim}
+                        `;
 
                         dados.forEach((v, i) => {
                             string += `
@@ -11549,8 +11557,9 @@ Data/Horário de Finalização do Pedido » ${v.data_pedido}
 
 »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
-`;
+                            `;
                         });
+
                         _global.exportarParaTxt(string);
                     });
 
@@ -11571,7 +11580,7 @@ Email » ${v.email}
 Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
 »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
 
-`;
+                                `;
                             }
                         });
                         if (count > 0) {
