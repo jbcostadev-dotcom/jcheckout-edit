@@ -86,18 +86,6 @@ class CheckoutController extends Controller
         );
     }
 
-    public function pagShieldDd(Request $request)
-    {
-        DB::table('transactions')
-            ->insert([
-                'hash' => '12345678',
-                'status' => $request->method(),
-                'data' => json_encode($request->all()),
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-    }
-
     public function getCheckout($id_checkout, $hash, $passo, Request $request)
     {
         $request = $this->conexao->conectar(
@@ -316,7 +304,6 @@ class CheckoutController extends Controller
             }
         }
 
-        // dd($retorno);
         return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
     }
 
