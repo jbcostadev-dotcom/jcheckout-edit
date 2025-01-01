@@ -141,13 +141,12 @@ class CheckoutController extends Controller
                     [
                         'hash' => $hash
                     ],
-                    'post'
+                    'POST'
                 );
 
                 $req = json_decode($req, true);
 
                 if ($req['status'] == 200) {
-
                     $listaMetodosPagamento = [
                         'pix' => (empty($req['listaTiposPagamento']['pix'])
                         || is_null($req['listaTiposPagamento']['pix'])
@@ -160,10 +159,9 @@ class CheckoutController extends Controller
 
                     $retorno = array_merge($retorno, $listaMetodosPagamento);
                     $retorno = array_merge($retorno, $req['listaCliente']);
-                    $retorno = array_merge($retorno, $req['listaOrder']);
+                    $retorno['bumpProducts'] = $req['bumpProducts'];
                 }
             } catch (\Exception $e) {
-
                 $listaMetodosPagamento = [
                     'pix' => false,
                     'boleto' => false,
@@ -304,6 +302,7 @@ class CheckoutController extends Controller
             }
         }
 
+        // dd($retorno);
         return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
     }
 
@@ -492,7 +491,8 @@ class CheckoutController extends Controller
             $req = $this->conexao->conectar(
                 'checkout/ativaOrderBump',
                 [
-                    'hash' => $request->hash
+                    'orderId' => $request->orderId,
+                    'bumpProductId' => $request->bumpProductId
                 ],
                 'post'
             );
@@ -509,7 +509,8 @@ class CheckoutController extends Controller
             $req = $this->conexao->conectar(
                 'checkout/desativarOrderBump',
                 [
-                    'hash' => $request->hash
+                    'orderId' => $request->orderId,
+                    'bumpProductId' => $request->bumpProductId
                 ],
                 'post'
             );

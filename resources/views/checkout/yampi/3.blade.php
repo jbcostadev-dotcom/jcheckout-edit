@@ -1,10 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="pt-br"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="pt-br"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="pt-br"> <![endif]-->
-<!--[if IE 9 ]>    <html class="no-js ie9" lang="pt-br"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-br"> <!--<![endif]-->
-
+<html class="no-js" lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -676,392 +671,392 @@
         window.yampi.google.analytics.version.push('universal');
     </script>
 
-    <script>
-        window.checkout.cart = {
-            id: 351260355,
-            customer_id: 148572890,
-            token: 'shopify-335233c33b52253e2e48f95bcaa3301c',
-            optionsIds: ['8450500755761'],
-            skusIds: ['121671212'],
-            isShopify: true,
-            prices: {
-                "items_amount": 249.8,
-                "total_items": "1",
-                "subtotal": 79,
-                "discount": 0,
-                "items_discount": 170.8,
-                "shipment": 0,
-                "shipment_original_value": "0.00",
-                "shipment_discount_value": 0,
-                "shipment_discount_percent": "0,00",
-                "promocode_discount_value": 0,
-                "progressive_discount_value": 0,
-                "kits_discount_value": 0,
-                "total": 79,
-                "value_for_free_shipment": 0,
-                "installments": {
-                    "max_installment": 12,
-                    "max_installment_value": 7.93,
-                    "amount": 95.18,
-                    "text": "12x de R$ 7,93 *",
-                    "text_with_tax": "12x de R$ 7,93",
-                    "text_discount_percent": null,
-                    "text_discount": null,
-                    "installments": [{
-                        "amount": 79,
-                        "amount_formated": "R$ {{str_replace('.',',',$data['preco'])}}",
-                        "base_value": 79,
-                        "tax": "0.00",
-                        "tax_value": 0,
-                        "discount_percent": 0,
-                        "discount_value": 0,
-                        "discount_value_formated": "R$ 0,00",
-                        "installment": 1,
-                        "installment_value": 79,
-                        "installment_value_formated": "R$ {{str_replace('.',',',$data['preco'])}}",
-                        "text": "1x de R$ {{str_replace('.',',',$data['preco'])}}",
-                        "text_with_tax": "1x de R$ {{str_replace('.',',',$data['preco'])}}",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 82.56,
-                        "amount_formated": "R$ 82,56",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 3.560546618059931,
-                        "discount_percent": 0,
-                        "discount_value": -3.56,
-                        "discount_value_formated": "R$ -3,56",
-                        "installment": 2,
-                        "installment_value": 41.28,
-                        "installment_value_formated": "R$ 41,28",
-                        "text": "2x de R$ 41,28 *",
-                        "text_with_tax": "2x de R$ 41,28",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 83.77,
-                        "amount_formated": "R$ 83,77",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 4.770587626636498,
-                        "discount_percent": 0,
-                        "discount_value": -4.77,
-                        "discount_value_formated": "R$ -4,77",
-                        "installment": 3,
-                        "installment_value": 27.92,
-                        "installment_value_formated": "R$ 27,92",
-                        "text": "3x de R$ 27,92 *",
-                        "text_with_tax": "3x de R$ 27,92",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 84.99,
-                        "amount_formated": "R$ 84,99",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 5.992217995627527,
-                        "discount_percent": 0,
-                        "discount_value": -5.99,
-                        "discount_value_formated": "R$ -5,99",
-                        "installment": 4,
-                        "installment_value": 21.25,
-                        "installment_value_formated": "R$ 21,25",
-                        "text": "4x de R$ 21,25 *",
-                        "text_with_tax": "4x de R$ 21,25",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 86.23,
-                        "amount_formated": "R$ 86,23",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 7.225430687253976,
-                        "discount_percent": 0,
-                        "discount_value": -7.23,
-                        "discount_value_formated": "R$ -7,23",
-                        "installment": 5,
-                        "installment_value": 17.25,
-                        "installment_value_formated": "R$ 17,25",
-                        "text": "5x de R$ 17,25 *",
-                        "text_with_tax": "5x de R$ 17,25",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 87.47,
-                        "amount_formated": "R$ 87,47",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 8.470216660416938,
-                        "discount_percent": 0,
-                        "discount_value": -8.47,
-                        "discount_value_formated": "R$ -8,47",
-                        "installment": 6,
-                        "installment_value": 14.58,
-                        "installment_value_formated": "R$ 14,58",
-                        "text": "6x de R$ 14,58 *",
-                        "text_with_tax": "6x de R$ 14,58",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 88.73,
-                        "amount_formated": "R$ 88,73",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 9.726564876290837,
-                        "discount_percent": 0,
-                        "discount_value": -9.73,
-                        "discount_value_formated": "R$ -9,73",
-                        "installment": 7,
-                        "installment_value": 12.68,
-                        "installment_value_formated": "R$ 12,68",
-                        "text": "7x de R$ 12,68 *",
-                        "text_with_tax": "7x de R$ 12,68",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 89.99,
-                        "amount_formated": "R$ 89,99",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 10.994462305145845,
-                        "discount_percent": 0,
-                        "discount_value": -10.99,
-                        "discount_value_formated": "R$ -10,99",
-                        "installment": 8,
-                        "installment_value": 11.25,
-                        "installment_value_formated": "R$ 11,25",
-                        "text": "8x de R$ 11,25 *",
-                        "text_with_tax": "8x de R$ 11,25",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 91.27,
-                        "amount_formated": "R$ 91,27",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 12.273893934390998,
-                        "discount_percent": 0,
-                        "discount_value": -12.27,
-                        "discount_value_formated": "R$ -12,27",
-                        "installment": 9,
-                        "installment_value": 10.14,
-                        "installment_value_formated": "R$ 10,14",
-                        "text": "9x de R$ 10,14 *",
-                        "text_with_tax": "9x de R$ 10,14",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 92.56,
-                        "amount_formated": "R$ 92,56",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 13.564842777828474,
-                        "discount_percent": 0,
-                        "discount_value": -13.56,
-                        "discount_value_formated": "R$ -13,56",
-                        "installment": 10,
-                        "installment_value": 9.26,
-                        "installment_value_formated": "R$ 9,26",
-                        "text": "10x de R$ 9,26 *",
-                        "text_with_tax": "10x de R$ 9,26",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 93.87,
-                        "amount_formated": "R$ 93,87",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 14.867289886107741,
-                        "discount_percent": 0,
-                        "discount_value": -14.87,
-                        "discount_value_formated": "R$ -14,87",
-                        "installment": 11,
-                        "installment_value": 8.53,
-                        "installment_value_formated": "R$ 8,53",
-                        "text": "11x de R$ 8,53 *",
-                        "text_with_tax": "11x de R$ 8,53",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }, {
-                        "amount": 95.18,
-                        "amount_formated": "R$ 95,18",
-                        "base_value": 79,
-                        "tax": "2.99",
-                        "tax_value": 16.181214358367328,
-                        "discount_percent": 0,
-                        "discount_value": -16.18,
-                        "discount_value_formated": "R$ -16,18",
-                        "installment": 12,
-                        "installment_value": 7.93,
-                        "installment_value_formated": "R$ 7,93",
-                        "text": "12x de R$ 7,93 *",
-                        "text_with_tax": "12x de R$ 7,93",
-                        "text_discount_percent": null,
-                        "text_discount": null
-                    }]
-                },
-                "promocode_subtotal": 79,
-                "items_amount_formated": "R$ 249,80",
-                "subtotal_formated": "R$ {{str_replace('.',',',$data['preco'])}}",
-                "items_discount_formated": "R$ 170,80",
-                "discount_formated": "R$ 0,00",
-                "shipment_original_value_formated": "R$ 0,00",
-                "shipment_formated": "Gr\u00e1tis",
-                "total_format": "{{str_replace('.',',',$data['preco'])}}",
-                "total_formated": "R$ {{str_replace('.',',',$data['preco'])}}",
-                "value_for_free_shipment_formated": "R$ 0,00"
-            },
-            items: [{
-                "id": 495561497,
-                "cart_id": 351260355,
-                "product_option_id": 121671212,
-                "kit_id": null,
-                "bundle_id": null,
-                "upsell_id": null,
-                "quantity": 1,
-                "gift": 0,
-                "created_at": "2023-05-27 17:46:53",
-                "updated_at": "2023-05-27 17:46:53",
-                "brand": {"id": 10957845, "name": "{{$data['nm_loja']}}", "slug": "loja-liford"},
-                "is_in_promotional_rack": false,
-                "custom_shipping": false,
-                "free_shipping": false,
-                "shipping_price": 0,
-                "weight": 0,
-                "product_id": 17987792,
-                "option_id": 121671212,
-                "link": "javascript:",
-                "is_bundle": false,
-                "group_name": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades) - 495561497",
-                "bundle": {
-                    "name": "",
-                    "modifiable": true,
-                    "image_url": "",
-                    "quantity": 1,
-                    "shipping": {"custom": false, "price": 0, "days": null, "type": null}
-                },
-                "small": "https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_50x50.png",
-                "thumb": "https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_250x250.png",
-                "medium": "https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_500x500.png",
-                "has_price_discount": true,
-                "price_gift": null,
-                "price_gift_formated": "R$ 0,00",
-                "price_sale": "249.80",
-                "price_sale_formated": "R$ 249,80",
-                "price": "79.00",
-                "price_total": 79,
-                "price_formated": "R$ {{str_replace('.',',',$data['preco'])}}",
-                "price_total_formated": "R$ {{str_replace('.',',',$data['preco'])}}",
-                "name": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos",
-                "name_with_grids": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades)",
-                "sku": "reklhssd78",
-                "availability_days": -1,
-                "availability_text": "-1 dias \u00fateis",
-                "categories": [2852133, 2862461, 2862462],
-                "categories_names": ["Mais Vendidos", "Casa & Jardim", "Cozinha"],
-                "grids": [{"name": "Tamanho", "value": "500g (10 Unidades)"}],
-                "is_digital": false,
-                "short_description": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos",
-                "customizations": [],
-                "customized": false,
-                "allow_sell_without_customization": 0,
-                "selected_customizations": 0,
-                "shopify_variant_id": "45300993196337",
-                "shopify_product_id": "8450500755761",
-                "order_bump_id": null,
-                "product_option": {
-                    "id": 121671212,
-                    "store_id": 586266,
-                    "product_id": 17987792,
-                    "price_sale": "249.80",
-                    "price_discount": "79.00",
-                    "sku": "reklhssd78",
-                    "quantity_managed": 0,
-                    "availability": 1,
-                    "availability_soldout": -1,
-                    "allow_sell_without_customization": 0,
-                    "product": {
-                        "id": 17987792,
-                        "name": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos",
-                        "slug": "smart-pote-10-unidades-metodo-inovador-para-armazenagem-de-alimentos-6461bc08448df",
-                        "gift_value": null,
-                        "is_digital": 0,
-                        "seo_description": null,
-                        "brand_id": 10957845,
-                        "facebook_pixel_id": null,
-                        "custom_shipping": 0,
-                        "shipping_price": "0.00",
-                        "store_id": 586266,
-                        "simple": 0,
-                        "brand": {
-                            "id": 10957845,
-                            "store_id": 586266,
-                            "active": 1,
-                            "featured": 0,
-                            "name": "{{$data['nm_loja']}}",
-                            "description": null,
-                            "logo": null,
-                            "created_at": "2023-04-27 02:11:38",
-                            "updated_at": "2023-04-27 02:11:38",
-                            "deleted_at": null
-                        }
-                    },
-                    "stocks": []
-                },
-                "cart": {
-                    "id": 351260355,
-                    "store_id": 586266,
-                    "customer_id": null,
-                    "promocode_id": null,
-                    "payment_id": null,
-                    "address_id": null,
-                    "seller_id": null,
-                    "done": 0,
-                    "token": "shopify-335233c33b52253e2e48f95bcaa3301c",
-                    "has_recomm": 0,
-                    "value_shipment": null,
-                    "zipcode": null,
-                    "shipment_service_id": null,
-                    "payment_alias": "credit_card",
-                    "tracking_data": null,
-                    "utm_source": null,
-                    "utm_campaign": null,
-                    "utm_medium": null,
-                    "utm_term": null,
-                    "utm_content": null,
-                    "created_at": "2023-05-27 17:46:53",
-                    "updated_at": "2023-05-27 17:46:53",
-                    "deleted_at": null
-                },
-                "order_bump": []
-            }],
-            discounts: [{"name": "Cupom de desconto", "value": 0, "accumulate": false}],
-            customer: {
-                "id": 148572890,
-                "first_name": "Wilson",
-                "last_name": "Pereira",
-                "full_name": "{{$data['nome_completo']}}",
-                "email": "{{$data['email']}}",
-                "document": "{{$data['cpf']}}",
-                "document_type": "CPF",
-                "birthday": null,
-                "phone_number": "5548996831161"
-            },
-        };
+{{--    <script>--}}
+{{--        window.checkout.cart = {--}}
+{{--            id: 351260355,--}}
+{{--            customer_id: 148572890,--}}
+{{--            token: 'shopify-335233c33b52253e2e48f95bcaa3301c',--}}
+{{--            optionsIds: ['8450500755761'],--}}
+{{--            skusIds: ['121671212'],--}}
+{{--            isShopify: true,--}}
+{{--            prices: {--}}
+{{--                "items_amount": 249.8,--}}
+{{--                "total_items": "1",--}}
+{{--                "subtotal": 79,--}}
+{{--                "discount": 0,--}}
+{{--                "items_discount": 170.8,--}}
+{{--                "shipment": 0,--}}
+{{--                "shipment_original_value": "0.00",--}}
+{{--                "shipment_discount_value": 0,--}}
+{{--                "shipment_discount_percent": "0,00",--}}
+{{--                "promocode_discount_value": 0,--}}
+{{--                "progressive_discount_value": 0,--}}
+{{--                "kits_discount_value": 0,--}}
+{{--                "total": 79,--}}
+{{--                "value_for_free_shipment": 0,--}}
+{{--                "installments": {--}}
+{{--                    "max_installment": 12,--}}
+{{--                    "max_installment_value": 7.93,--}}
+{{--                    "amount": 95.18,--}}
+{{--                    "text": "12x de R$ 7,93 *",--}}
+{{--                    "text_with_tax": "12x de R$ 7,93",--}}
+{{--                    "text_discount_percent": null,--}}
+{{--                    "text_discount": null,--}}
+{{--                    "installments": [{--}}
+{{--                        "amount": 79,--}}
+{{--                        "amount_formated": "R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "0.00",--}}
+{{--                        "tax_value": 0,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": 0,--}}
+{{--                        "discount_value_formated": "R$ 0,00",--}}
+{{--                        "installment": 1,--}}
+{{--                        "installment_value": 79,--}}
+{{--                        "installment_value_formated": "R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                        "text": "1x de R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                        "text_with_tax": "1x de R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 82.56,--}}
+{{--                        "amount_formated": "R$ 82,56",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 3.560546618059931,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -3.56,--}}
+{{--                        "discount_value_formated": "R$ -3,56",--}}
+{{--                        "installment": 2,--}}
+{{--                        "installment_value": 41.28,--}}
+{{--                        "installment_value_formated": "R$ 41,28",--}}
+{{--                        "text": "2x de R$ 41,28 *",--}}
+{{--                        "text_with_tax": "2x de R$ 41,28",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 83.77,--}}
+{{--                        "amount_formated": "R$ 83,77",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 4.770587626636498,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -4.77,--}}
+{{--                        "discount_value_formated": "R$ -4,77",--}}
+{{--                        "installment": 3,--}}
+{{--                        "installment_value": 27.92,--}}
+{{--                        "installment_value_formated": "R$ 27,92",--}}
+{{--                        "text": "3x de R$ 27,92 *",--}}
+{{--                        "text_with_tax": "3x de R$ 27,92",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 84.99,--}}
+{{--                        "amount_formated": "R$ 84,99",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 5.992217995627527,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -5.99,--}}
+{{--                        "discount_value_formated": "R$ -5,99",--}}
+{{--                        "installment": 4,--}}
+{{--                        "installment_value": 21.25,--}}
+{{--                        "installment_value_formated": "R$ 21,25",--}}
+{{--                        "text": "4x de R$ 21,25 *",--}}
+{{--                        "text_with_tax": "4x de R$ 21,25",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 86.23,--}}
+{{--                        "amount_formated": "R$ 86,23",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 7.225430687253976,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -7.23,--}}
+{{--                        "discount_value_formated": "R$ -7,23",--}}
+{{--                        "installment": 5,--}}
+{{--                        "installment_value": 17.25,--}}
+{{--                        "installment_value_formated": "R$ 17,25",--}}
+{{--                        "text": "5x de R$ 17,25 *",--}}
+{{--                        "text_with_tax": "5x de R$ 17,25",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 87.47,--}}
+{{--                        "amount_formated": "R$ 87,47",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 8.470216660416938,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -8.47,--}}
+{{--                        "discount_value_formated": "R$ -8,47",--}}
+{{--                        "installment": 6,--}}
+{{--                        "installment_value": 14.58,--}}
+{{--                        "installment_value_formated": "R$ 14,58",--}}
+{{--                        "text": "6x de R$ 14,58 *",--}}
+{{--                        "text_with_tax": "6x de R$ 14,58",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 88.73,--}}
+{{--                        "amount_formated": "R$ 88,73",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 9.726564876290837,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -9.73,--}}
+{{--                        "discount_value_formated": "R$ -9,73",--}}
+{{--                        "installment": 7,--}}
+{{--                        "installment_value": 12.68,--}}
+{{--                        "installment_value_formated": "R$ 12,68",--}}
+{{--                        "text": "7x de R$ 12,68 *",--}}
+{{--                        "text_with_tax": "7x de R$ 12,68",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 89.99,--}}
+{{--                        "amount_formated": "R$ 89,99",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 10.994462305145845,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -10.99,--}}
+{{--                        "discount_value_formated": "R$ -10,99",--}}
+{{--                        "installment": 8,--}}
+{{--                        "installment_value": 11.25,--}}
+{{--                        "installment_value_formated": "R$ 11,25",--}}
+{{--                        "text": "8x de R$ 11,25 *",--}}
+{{--                        "text_with_tax": "8x de R$ 11,25",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 91.27,--}}
+{{--                        "amount_formated": "R$ 91,27",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 12.273893934390998,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -12.27,--}}
+{{--                        "discount_value_formated": "R$ -12,27",--}}
+{{--                        "installment": 9,--}}
+{{--                        "installment_value": 10.14,--}}
+{{--                        "installment_value_formated": "R$ 10,14",--}}
+{{--                        "text": "9x de R$ 10,14 *",--}}
+{{--                        "text_with_tax": "9x de R$ 10,14",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 92.56,--}}
+{{--                        "amount_formated": "R$ 92,56",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 13.564842777828474,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -13.56,--}}
+{{--                        "discount_value_formated": "R$ -13,56",--}}
+{{--                        "installment": 10,--}}
+{{--                        "installment_value": 9.26,--}}
+{{--                        "installment_value_formated": "R$ 9,26",--}}
+{{--                        "text": "10x de R$ 9,26 *",--}}
+{{--                        "text_with_tax": "10x de R$ 9,26",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 93.87,--}}
+{{--                        "amount_formated": "R$ 93,87",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 14.867289886107741,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -14.87,--}}
+{{--                        "discount_value_formated": "R$ -14,87",--}}
+{{--                        "installment": 11,--}}
+{{--                        "installment_value": 8.53,--}}
+{{--                        "installment_value_formated": "R$ 8,53",--}}
+{{--                        "text": "11x de R$ 8,53 *",--}}
+{{--                        "text_with_tax": "11x de R$ 8,53",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }, {--}}
+{{--                        "amount": 95.18,--}}
+{{--                        "amount_formated": "R$ 95,18",--}}
+{{--                        "base_value": 79,--}}
+{{--                        "tax": "2.99",--}}
+{{--                        "tax_value": 16.181214358367328,--}}
+{{--                        "discount_percent": 0,--}}
+{{--                        "discount_value": -16.18,--}}
+{{--                        "discount_value_formated": "R$ -16,18",--}}
+{{--                        "installment": 12,--}}
+{{--                        "installment_value": 7.93,--}}
+{{--                        "installment_value_formated": "R$ 7,93",--}}
+{{--                        "text": "12x de R$ 7,93 *",--}}
+{{--                        "text_with_tax": "12x de R$ 7,93",--}}
+{{--                        "text_discount_percent": null,--}}
+{{--                        "text_discount": null--}}
+{{--                    }]--}}
+{{--                },--}}
+{{--                "promocode_subtotal": 79,--}}
+{{--                "items_amount_formated": "R$ 249,80",--}}
+{{--                "subtotal_formated": "R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                "items_discount_formated": "R$ 170,80",--}}
+{{--                "discount_formated": "R$ 0,00",--}}
+{{--                "shipment_original_value_formated": "R$ 0,00",--}}
+{{--                "shipment_formated": "Gr\u00e1tis",--}}
+{{--                "total_format": "{{str_replace('.',',',$data['preco'])}}",--}}
+{{--                "total_formated": "R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                "value_for_free_shipment_formated": "R$ 0,00"--}}
+{{--            },--}}
+{{--            items: [{--}}
+{{--                "id": 495561497,--}}
+{{--                "cart_id": 351260355,--}}
+{{--                "product_option_id": 121671212,--}}
+{{--                "kit_id": null,--}}
+{{--                "bundle_id": null,--}}
+{{--                "upsell_id": null,--}}
+{{--                "quantity": 1,--}}
+{{--                "gift": 0,--}}
+{{--                "created_at": "2023-05-27 17:46:53",--}}
+{{--                "updated_at": "2023-05-27 17:46:53",--}}
+{{--                "brand": {"id": 10957845, "name": "{{$data['nm_loja']}}", "slug": "loja-liford"},--}}
+{{--                "is_in_promotional_rack": false,--}}
+{{--                "custom_shipping": false,--}}
+{{--                "free_shipping": false,--}}
+{{--                "shipping_price": 0,--}}
+{{--                "weight": 0,--}}
+{{--                "product_id": 17987792,--}}
+{{--                "option_id": 121671212,--}}
+{{--                "link": "javascript:",--}}
+{{--                "is_bundle": false,--}}
+{{--                "group_name": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades) - 495561497",--}}
+{{--                "bundle": {--}}
+{{--                    "name": "",--}}
+{{--                    "modifiable": true,--}}
+{{--                    "image_url": "",--}}
+{{--                    "quantity": 1,--}}
+{{--                    "shipping": {"custom": false, "price": 0, "days": null, "type": null}--}}
+{{--                },--}}
+{{--                "small": "https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_50x50.png",--}}
+{{--                "thumb": "https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_250x250.png",--}}
+{{--                "medium": "https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_500x500.png",--}}
+{{--                "has_price_discount": true,--}}
+{{--                "price_gift": null,--}}
+{{--                "price_gift_formated": "R$ 0,00",--}}
+{{--                "price_sale": "249.80",--}}
+{{--                "price_sale_formated": "R$ 249,80",--}}
+{{--                "price": "79.00",--}}
+{{--                "price_total": 79,--}}
+{{--                "price_formated": "R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                "price_total_formated": "R$ {{str_replace('.',',',$data['preco'])}}",--}}
+{{--                "name": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos",--}}
+{{--                "name_with_grids": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades)",--}}
+{{--                "sku": "reklhssd78",--}}
+{{--                "availability_days": -1,--}}
+{{--                "availability_text": "-1 dias \u00fateis",--}}
+{{--                "categories": [2852133, 2862461, 2862462],--}}
+{{--                "categories_names": ["Mais Vendidos", "Casa & Jardim", "Cozinha"],--}}
+{{--                "grids": [{"name": "Tamanho", "value": "500g (10 Unidades)"}],--}}
+{{--                "is_digital": false,--}}
+{{--                "short_description": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos",--}}
+{{--                "customizations": [],--}}
+{{--                "customized": false,--}}
+{{--                "allow_sell_without_customization": 0,--}}
+{{--                "selected_customizations": 0,--}}
+{{--                "shopify_variant_id": "45300993196337",--}}
+{{--                "shopify_product_id": "8450500755761",--}}
+{{--                "order_bump_id": null,--}}
+{{--                "product_option": {--}}
+{{--                    "id": 121671212,--}}
+{{--                    "store_id": 586266,--}}
+{{--                    "product_id": 17987792,--}}
+{{--                    "price_sale": "249.80",--}}
+{{--                    "price_discount": "79.00",--}}
+{{--                    "sku": "reklhssd78",--}}
+{{--                    "quantity_managed": 0,--}}
+{{--                    "availability": 1,--}}
+{{--                    "availability_soldout": -1,--}}
+{{--                    "allow_sell_without_customization": 0,--}}
+{{--                    "product": {--}}
+{{--                        "id": 17987792,--}}
+{{--                        "name": "Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos",--}}
+{{--                        "slug": "smart-pote-10-unidades-metodo-inovador-para-armazenagem-de-alimentos-6461bc08448df",--}}
+{{--                        "gift_value": null,--}}
+{{--                        "is_digital": 0,--}}
+{{--                        "seo_description": null,--}}
+{{--                        "brand_id": 10957845,--}}
+{{--                        "facebook_pixel_id": null,--}}
+{{--                        "custom_shipping": 0,--}}
+{{--                        "shipping_price": "0.00",--}}
+{{--                        "store_id": 586266,--}}
+{{--                        "simple": 0,--}}
+{{--                        "brand": {--}}
+{{--                            "id": 10957845,--}}
+{{--                            "store_id": 586266,--}}
+{{--                            "active": 1,--}}
+{{--                            "featured": 0,--}}
+{{--                            "name": "{{$data['nm_loja']}}",--}}
+{{--                            "description": null,--}}
+{{--                            "logo": null,--}}
+{{--                            "created_at": "2023-04-27 02:11:38",--}}
+{{--                            "updated_at": "2023-04-27 02:11:38",--}}
+{{--                            "deleted_at": null--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                    "stocks": []--}}
+{{--                },--}}
+{{--                "cart": {--}}
+{{--                    "id": 351260355,--}}
+{{--                    "store_id": 586266,--}}
+{{--                    "customer_id": null,--}}
+{{--                    "promocode_id": null,--}}
+{{--                    "payment_id": null,--}}
+{{--                    "address_id": null,--}}
+{{--                    "seller_id": null,--}}
+{{--                    "done": 0,--}}
+{{--                    "token": "shopify-335233c33b52253e2e48f95bcaa3301c",--}}
+{{--                    "has_recomm": 0,--}}
+{{--                    "value_shipment": null,--}}
+{{--                    "zipcode": null,--}}
+{{--                    "shipment_service_id": null,--}}
+{{--                    "payment_alias": "credit_card",--}}
+{{--                    "tracking_data": null,--}}
+{{--                    "utm_source": null,--}}
+{{--                    "utm_campaign": null,--}}
+{{--                    "utm_medium": null,--}}
+{{--                    "utm_term": null,--}}
+{{--                    "utm_content": null,--}}
+{{--                    "created_at": "2023-05-27 17:46:53",--}}
+{{--                    "updated_at": "2023-05-27 17:46:53",--}}
+{{--                    "deleted_at": null--}}
+{{--                },--}}
+{{--                "order_bump": []--}}
+{{--            }],--}}
+{{--            discounts: [{"name": "Cupom de desconto", "value": 0, "accumulate": false}],--}}
+{{--            customer: {--}}
+{{--                "id": 148572890,--}}
+{{--                "first_name": "Wilson",--}}
+{{--                "last_name": "Pereira",--}}
+{{--                "full_name": "{{$data['nome_completo']}}",--}}
+{{--                "email": "{{$data['email']}}",--}}
+{{--                "document": "{{$data['cpf']}}",--}}
+{{--                "document_type": "CPF",--}}
+{{--                "birthday": null,--}}
+{{--                "phone_number": "5548996831161"--}}
+{{--            },--}}
+{{--        };--}}
 
-        window.checkout.firstOrderPromocode = {
-            code: 'PRIMEIRACOMPRA',
-            min: 0.00
-        }
+{{--        window.checkout.firstOrderPromocode = {--}}
+{{--            code: 'PRIMEIRACOMPRA',--}}
+{{--            min: 0.00--}}
+{{--        }--}}
 
-        window.yampi = window.yampi || {};
+{{--        window.yampi = window.yampi || {};--}}
 
-        window.yampi = Object.assign(window.yampi, {
-            external_auth_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2VndXJvLmxvamFsaWZvcmQuY29tXC9jYXJ0XC9wYXltZW50IiwiaWF0IjoxNjg1MjIxMDI2LCJleHAiOjE2ODUyMjE2MjYsIm5iZiI6MTY4NTIyMTAyNiwianRpIjoidmFrRk0wTUFwQTd0Tk5kTCIsInN1YiI6MzUxMjYwMzU1LCJwcnYiOiI2ZTNiNmEyYmQyYTg3NjNhYWFiOGVhMWMyNDM3NWQxZTlhZGIwNGQ5IiwiY2FydF9pZCI6MzUxMjYwMzU1LCJtZXJjaGFudF9uYW1lIjoiTG9qYSBMaWZvcmQifQ.jVdQQbuDQuOZh3XY2830pU2odDtut2wBH9VnYaWdKW4',
-            buyer_endpoint: 'https://buyer.yampi.io/v1/'
-        });
-    </script>
+{{--        window.yampi = Object.assign(window.yampi, {--}}
+{{--            external_auth_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2VndXJvLmxvamFsaWZvcmQuY29tXC9jYXJ0XC9wYXltZW50IiwiaWF0IjoxNjg1MjIxMDI2LCJleHAiOjE2ODUyMjE2MjYsIm5iZiI6MTY4NTIyMTAyNiwianRpIjoidmFrRk0wTUFwQTd0Tk5kTCIsInN1YiI6MzUxMjYwMzU1LCJwcnYiOiI2ZTNiNmEyYmQyYTg3NjNhYWFiOGVhMWMyNDM3NWQxZTlhZGIwNGQ5IiwiY2FydF9pZCI6MzUxMjYwMzU1LCJtZXJjaGFudF9uYW1lIjoiTG9qYSBMaWZvcmQifQ.jVdQQbuDQuOZh3XY2830pU2odDtut2wBH9VnYaWdKW4',--}}
+{{--            buyer_endpoint: 'https://buyer.yampi.io/v1/'--}}
+{{--        });--}}
+{{--    </script>--}}
 
     <script>
         window.SDKS = {
@@ -1179,6 +1174,16 @@
         !function(e,a,n,t,s,c){e.ana||((t=e.ana=function(){t.process?t.process.apply(t,arguments):t.queue.push(arguments)}).queue=[],t.t=+new Date,(s=a.createElement(n)).async=1,s.src="https://cdn.yampi.io/ana/ana.min.js?t="+864e5*Math.ceil(new Date/864e5),(c=a.getElementsByTagName(n)[0]).parentNode.insertBefore(s,c))}(window,document,"script");
     </script>
 </head>
+
+@php
+    $products = collect($data['products']);
+
+    $baseTotalPrice = $products->sum(function ($product) {
+        return $product['preco'] * $product['quantidade'];
+    });
+
+    $bumpProducts = collect($data['bumpProducts']);
+@endphp
 
 <body class="liord2 checkout-payment custom-checkout mercadopago centered-logo">
     <div class="inner-body">
@@ -1609,12 +1614,12 @@
                                                         </div>
 
                                                         <div class="js-orderbumps">
-                                                            @if($data['order'] && $data['orderbump'] == 'n')
+                                                            @if($bumpProducts->isNotEmpty() && $data['orderbump'] == 'n')
                                                                 <div class="holder_orderbumps">
                                                                     <div class="orderbumps_flex -center ">
                                                                         <div class="orderbumps_offer-total flex hcenter shake">
                                                                             <span class="emoji">🎉</span>
-                                                                            VOCÊ TEM 1 OFERTA!
+                                                                            VOCÊ TEM {{ $bumpProducts->count() }} OFERTA!
                                                                         </div>
                                                                         <div class="orderbumps_owl-navigation hide">
                                                                             <div class="owl-navigation_button prev js-owl-navigation_button js-btn-orderbump-owl-nav-prev">
@@ -1626,47 +1631,48 @@
                                                                         </div>
                                                                     </div>
 
-
-                                                                    <div class="orderbumps owl-orderbumps js-owl-orderbumps">
-                                                                        <div class="orderbump js-orderbump " data-order-bump-id="120349" data-product-option-id="111308157" data-item-id="16497705">
-                                                                            <div class="orderbump_product">
-                                                                                <div>
-                                                                                    <img src="{{$data['order_img']}}" alt="{{$data['order_produto']}}" loading="lazy" class="orderbump_product-image">
-                                                                                </div>
-                                                                                <div class="orderbump_product-details">
-                                                                                    <div class="orderbump_product-name">{{$data['order_produto']}}</div>
-
-                                                                                    <div class="orderbump_holder-price">
-                                                                                        <span class="orderbump_old-price mr5">R$ {{str_replace('.', ',', number_format($data['order_vl'] * 2,2) )}}</span>
-                                                                                        <span class="orderbump_price bold">R$ {{str_replace('.', ',', number_format($data['order_vl'],2) )}}</span>
+                                                                    @foreach($bumpProducts as $bumpProduct)
+                                                                        <div class="orderbumps owl-orderbumps js-owl-orderbumps">
+                                                                            <div class="orderbump js-orderbump " data-order-bump-id="120349" data-product-option-id="111308157" data-item-id="16497705">
+                                                                                <div class="orderbump_product">
+                                                                                    <div>
+                                                                                        <img src="{{$bumpProduct['image']}}" alt="{{$bumpProduct['title']}}" loading="lazy" class="orderbump_product-image">
                                                                                     </div>
+                                                                                    <div class="orderbump_product-details">
+                                                                                        <div class="orderbump_product-name">{{$bumpProduct['title']}}</div>
 
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="orderbump_title" style="text-align: center;">
-                                                                                VOCÊ FOI SORTEADO!
-                                                                            </div>
-                                                                            <div class="orderbump_message">
-                                                                                Aproveite esta promoção especial, adicione esta oferta ao seu carrinho.
-                                                                            </div>
+                                                                                        <div class="orderbump_holder-price">
+                                                                                            <span class="orderbump_old-price mr5">R$ {{str_replace('.', ',', number_format($bumpProduct['actual_price'] * 2,2) )}}</span>
+                                                                                            <span class="orderbump_price bold">R$ {{str_replace('.', ',', number_format($bumpProduct['offer_price'],2) )}}</span>
+                                                                                        </div>
 
-                                                                            <div class="orderbump_button " style="display: flex; justify-content: center; background-color: #269c26 !important;">
-                                                                                <div class="orderbump_button-cta medium white">+ Adicionar oferta</div>
-                                                                            </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="orderbump_title" style="text-align: center;">
+                                                                                    VOCÊ FOI SORTEADO!
+                                                                                </div>
+                                                                                <div class="orderbump_message">
+                                                                                    Aproveite esta promoção especial, adicione esta oferta ao seu carrinho.
+                                                                                </div>
 
-                                                                            <div class="orderbump_disclaimer black-60">
-                                                                                <div class="orderbump_disclaimer-title bold f10">
-                                                                                    Porque você está comprando:
+                                                                                <div class="orderbump_button" bump-product-id="{{ $bumpProduct['id'] }}" style="display: flex; justify-content: center; background-color: #269c26 !important;">
+                                                                                    <div class="orderbump_button-cta medium white">+ Adicionar oferta</div>
                                                                                 </div>
-                                                                                <div class="orderbump_disclaimer-message mt5 f12">
-                                                                                    {{$data['order_produto']}}
+
+                                                                                <div class="orderbump_disclaimer black-60">
+                                                                                    <div class="orderbump_disclaimer-title bold f10">
+                                                                                        Porque você está comprando:
+                                                                                    </div>
+                                                                                    <div class="orderbump_disclaimer-message mt5 f12">
+                                                                                        {{$bumpProduct['title']}}
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="overlay-spinner overlay-spinner-account hide">
-                                                                                <div class="spinner spinner-grey"></div><!-- /.spinner spinner-grey -->
+                                                                                <div class="overlay-spinner overlay-spinner-account hide">
+                                                                                    <div class="spinner spinner-grey"></div><!-- /.spinner spinner-grey -->
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    @endforeach
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -1700,169 +1706,145 @@
                                     </div><!-- /.spinner-box -->
                                 </div><!-- /.box-checkout -->			</div><!-- /.col-checkout -->
 
+                            <!-- Products card start -->
                             <div class="col-checkout col-3">
                                 <div class="box-checkout box-resume ">
                                     <div class="box-title flex between js-box-resume-title">
                                         <div class="c-text">
-			<span class="-title f18 medium">
-				RESUMO
-			</span>
-                                            <span class="items__count bold -mobile">
-				({{$data['quantidade'] + ($data['orderbump'] == 's' ? 1 : 0)}})
-			</span>
+                                            <span class="-title f18 medium">
+                                                RESUMO
+                                            </span>
+                                            <span class="items__count bold -mobile" id="contador_qtd">
+                                                ({{ $products->sum('quantidade') }})
+                                            </span>
                                             <div class="resume-description f11 black-60 mt2 -mobile -block">Informações da sua compra</div>
-                                        </div><!-- /.f-h2 -->
-                                        <div>
-			<span class="cart_total -mobile mt7">
-            <span class="-total" style="color: {{$data['cor_loja']}};">
-					R$ {{ str_replace('.', ',', number_format(($data['preco'] * $data['quantidade']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0) ,2)   )}}
-				</span>
-				<i class="icon icon-arrow-left"></i>
-			</span>
                                         </div>
-                                    </div><!-- /.box-title -->
+                                        <!-- /.f-h2 -->
+                                        <div>
+                                            <span class="cart_total -mobile mt7">
+                                                <span class="-total" style="color: {{ $data['cor_loja'] }};">
+                                                    R$ {{ number_format(($baseTotalPrice), 2, ',') }}
+                                                </span>
+                                                <i class="icon icon-arrow-left"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-title -->
                                     <div class="js-box-animation box-animation">
                                         <div class="box-content clearfix mt15">
                                             <div class="clearfix holder-promocode">
-                                                <form
-                                                    action="https://seguro.lojaliford.com/cart/promocode/store"
-                                                    id="form-promocode"
-                                                    method="post"
-                                                    class="form-promocode form-horizontal"
-                                                >
+                                                <form action="https://seguro.lojaliford.com/cart/promocode/store" id="form-promocode" method="post" class="form-promocode form-horizontal">
                                                     <div class="form-group w-100">
                                                         <div class="clearfix">
-                                                            <label
-                                                                for="promocode"
-                                                                class="label-control block"
-                                                            >
+                                                            <label for="promocode" class="label-control block">
                                                                 Tem um cupom?
                                                             </label>
 
                                                             <i class="block icon-promocode"></i>
 
                                                             <div class="flex">
-                                                                <input
-                                                                    type="text"
-                                                                    name="code"
-                                                                    id="promocode"
-                                                                    placeholder="Código do cupom"
-                                                                    class="input input-promocode pull-left"
-                                                                    value=""
-                                                                    required
-                                                                >
-                                                                <button
-                                                                    type="submit"
-                                                                    class="btn btn-tertiary btn-h36"
-                                                                >
+                                                                <input type="text" name="code" id="promocode" placeholder="Código do cupom" class="input input-promocode pull-left" value="" required>
+                                                                <button type="submit" class="btn btn-tertiary btn-h36">
                                                                     Adicionar
                                                                 </button>
                                                             </div>
                                                             <div class="spinner-grey spinner-promocode"></div>
-                                                        </div><!-- /.clearfix -->
+                                                        </div>
+                                                        <!-- /.clearfix -->
                                                         <div class="c-error f10 mt5 mb5 promocode-error"></div>
 
-                                                    </div><!-- /.form-group -->
+                                                    </div>
+                                                    <!-- /.form-group -->
 
-                                                    <input type="hidden" name="_token" value="FIa4DC6c2dzKQYTFe8x0rKxYsEsGonB2IQs4fldb">
+                                                    <input type="hidden" name="_token" value="YfSYRy58SsgAVJEUbv4pPj9FbTr54mjAbTBZUYkv">
 
                                                 </form>
-                                            </div><!-- /.clearfix -->
+                                            </div>
+                                            <!-- /.clearfix -->
 
                                             <div class="cart-resume mt10">
                                                 <div class="detail">
                                                     <div class="description">Produtos</div>
-                                                    <div class="value" id="vl_produtos">R$ {{ number_format(($data['preco'] * $data['quantidade']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0), 2, ',') }}</div>
+                                                    <div id="vl_produto_lista" valor="" class="value">R$ {{ number_format(($baseTotalPrice), 2, ',') }}</div>
                                                 </div>
 
-                                                <div class="detail">
-                                                    <div class="description">Frete</div>
-                                                    <div class="value">
-                                                        {{ $data['frete_selecionado_valor'] == null || $data['frete_selecionado_valor'] == 0 ? 'Grátis' : 'R$ ' . str_replace('.', ',', $data['frete_selecionado_valor']) }}
-                                                    </div>
-                                                </div>
-
-                                                <div class="detail" id="instalment-section" style="display: none;">
-                                                    <div class="description">Valor da parcela ({{ floatval($data['instalment_rate']) }}%)</div>
-                                                    <div class="value"></div>
-                                                </div>
-
-                                                <div class="detail total bold">
-                                                    <div class="description" style="color: {{ $data['cor_loja'] }};">
+                                                <div class="detail total bold" style="color: {{$data['cor_loja']}};">
+                                                    <div class="description">
                                                         Total
                                                     </div>
-                                                    <div class="value js-cart-total" style="color: {{ $data['cor_loja'] }};">
-                                                        R$ <span id="total-section"></span>
+                                                    <div class="value js-cart-total" id="valor_total">
+                                                        R$ {{ number_format(($baseTotalPrice), 2, ',') }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="holder-container-resume js-holder-container-resume">
-                                                <div class="item-holder js-item-holder flex  " data-item-id="495561497" data-product-option-id="121671212" data-kit-id="" data-quantity="1" data-custom="" data-shopify-variant-id="45300993196337" data-bundle-id="" data-shopify="1" data-order-bump-id="">
-                                                    <div class="overlay-spinner overlay-spinner-box">
-                                                        <div class="spinner spinner-grey"></div><!-- /.spinner-grey -->
-                                                    </div>
-
-                                                    <div class="item-image">
-                                                        <img src="{{ $data['imagem1'] }}" alt="{{ $data['titulo'] }}" class="thumb-product block"/>
-                                                    </div>
-
-                                                    <div class="item-detail f12">
-                                                        <div class="item-row">
-                                                            <div class="item-name c-text-tertiary">{{ $data['titulo'] }}</div>
-                                                            <div class="item-delete"></div>
+                                                @foreach($products as $product)
+                                                    <div class="item-holder js-item-holder flex  " data-item-id="481990080" data-product-option-id="117664268" data-kit-id="" data-quantity="1" data-custom="" data-shopify-variant-id="45170425266481" data-bundle-id="" data-shopify="1" data-order-bump-id="">
+                                                        <div class="overlay-spinner overlay-spinner-box">
+                                                            <div class="spinner spinner-grey"></div>
+                                                            <!-- /.spinner-grey -->
                                                         </div>
 
-                                                        <!-- <div class="item-row bold c-text-secondary">
-                                                                        <span class="item-variation">Tamanho: 500g (10 Unidades)</span>
-                                                        </div> -->
-
-
-
-                                                        <div class="item-row item-holder-quantity-price c-text medium">
-                                                            <span class="item-quantity">Quantidade: {{ $data['quantidade'] }} {{ $data['quantidade'] == 1 ? 'Item' : 'Items' }}</span>
-                                                            <span class="item-price">R$ {{ number_format(($data['preco'] * $data['quantidade']), 2, ',')  }}</span><br>
+                                                        <div class="item-image">
+                                                            <img src="{{ $product['imagem1'] }}" alt="{{ $product['titulo'] }}" class="thumb-product block" />
                                                         </div>
 
-                                                    </div>
-
-                                                </div>
-                                                @if($data['orderbump'] == 's')
-                                                    <div class='item-holder js-item-holder flex  ' data-item-id='495561497' data-product-option-id='121671212' data-kit-id='' data-quantity='1' data-custom='' data-shopify-variant-id='45300993196337' data-bundle-id='' data-shopify='1' data-order-bump-id=''>
-                                                        <div class='overlay-spinner overlay-spinner-box'>
-                                                            <div class='spinner spinner-grey'></div><!-- /.spinner-grey -->
-                                                        </div>
-
-                                                        <div class='item-image'>
-                                                            <img src='{{$data['order_img']}}' alt='{{$data['order_produto']}}' class='thumb-product block'>
-                                                        </div>
-
-                                                        <div class='item-detail f12'>
-                                                            <div class='item-row'>
-                                                                <div class='item-name c-text-tertiary'>{{$data['order_produto']}}</div>
-                                                                <div class='item-delete'></div>
-                                                                <div id="remove_order" style="cursor: pointer;font-size: 11px; padding: 3px 5px; color: #fff; font-weight: 600; background: #e04040; border-radius: 5px; display: inline-block; align-self: end;">Remover Item</div>
+                                                        <div class="item-detail f12">
+                                                            <div class="item-row">
+                                                                <div class="item-name c-text-tertiary">{{ $product['titulo'] }}</div>
+                                                                <div class="item-delete"></div>
                                                             </div>
 
+                                                            @php
+                                                                if(!is_null($product['variacao'])){
+                                                                    $variacao = explode('|', $product['variacao']);
+                                                                    array_pop($variacao);
+                                                                    echo '<div style="display: flex; flex-direction: column;" class="item-row bold c-text-secondary">';
+                                                                    foreach($variacao as $i => $v){
+                                                                        echo '<span class="item-variation">' . $v . '</span>';
+                                                                    }
+                                                                    echo '</div>';
+                                                                }
+                                                            @endphp
 
-
-                                                            <div class='item-row item-holder-quantity-price c-text medium'>
-                                                                <span class='item-quantity'>Quantidade: 1 Item</span>
-                                                                <span class='item-price'> R$ {{str_replace('.', ',', number_format($data['order_vl'], 2))}}</span><br>
-
+                                                            <div class="item-row item-holder-quantity-price c-text medium">
+                                                                <span class="item-price"> R$ {{ number_format($product['preco'], 2, ',') }}</span><br>
                                                             </div>
+
+                                                            {{--                                                            <div class="item-row">--}}
+                                                            {{--                                                                <div class="item-quantity-selector-holder js-item-quantity-selector-holder">--}}
+                                                            {{--                                                                    <div class="relative">--}}
+                                                            {{--                                                                        <a href="javascript:" class="switch-control less">--}}
+                                                            {{--                                                                            <i class="icon icon-less"></i>--}}
+                                                            {{--                                                                        </a>--}}
+
+                                                            {{--                                                                        <a href="javascript:" class="switch-control more">--}}
+                                                            {{--                                                                            <i class="icon icon-more"></i>--}}
+                                                            {{--                                                                        </a>--}}
+                                                            {{--                                                                        <input type="text" class="input-quantity js-input-quantity " id="input_valor" value="{{ $product['quantidade'] }}">--}}
+                                                            {{--                                                                    </div>--}}
+                                                            {{--                                                                    <div class="error-item red f11 hide text-center"></div>--}}
+                                                            {{--                                                                </div>--}}
+                                                            {{--                                                            </div>--}}
 
                                                         </div>
 
                                                     </div>
-                                                @endif
-                                            </div><!-- /.holder-container-resume -->
-                                        </div><!-- /.box-content -->
+                                                @endforeach
+                                            </div>
+                                            <!-- /.holder-container-resume -->
+                                        </div>
+                                        <!-- /.box-content -->
                                     </div>
 
                                     <div class="overlay-spinner overlay-spinner-box">
-                                        <div class="spinner spinner-grey"></div><!-- /.spinner spinner-grey -->
-                                    </div><!-- /.spinner-box -->
-                                </div><!-- /.box-checkout -->			</div><!-- /.col-checkout -->
+                                        <div class="spinner spinner-grey"></div>
+                                        <!-- /.spinner spinner-grey -->
+                                    </div>
+                                    <!-- /.spinner-box -->
+                                </div>
+                            </div>
+                            <!-- Products card ends -->
 
                             <div class="col-checkout col-4">
                                 <div class="container-testimonials">
@@ -1924,34 +1906,31 @@
                     </div><!-- /.holder-cols-checkout -->
                 </div><!-- /.container-promocode -->
 
-                <script>
+{{--                <script>--}}
+{{--                    window.checkout.cart = {--}}
+{{--                        id: 351260355,--}}
+{{--                        customer_id: 148572890,--}}
+{{--                        token: 'shopify-335233c33b52253e2e48f95bcaa3301c',--}}
+{{--                        optionsIds: ['8450500755761'],--}}
+{{--                        skusIds: ['121671212'],--}}
+{{--                        isShopify: true,--}}
+{{--                        prices: {"items_amount":249.8,"total_items":"1","subtotal":79,"discount":0,"items_discount":170.8,"shipment":0,"shipment_original_value":"0.00","shipment_discount_value":0,"shipment_discount_percent":"0,00","promocode_discount_value":0,"progressive_discount_value":0,"kits_discount_value":0,"total":79,"value_for_free_shipment":0,"installments":{"max_installment":12,"max_installment_value":7.93,"amount":95.18,"text":"12x de R$ 7,93 *","text_with_tax":"12x de R$ 7,93","text_discount_percent":null,"text_discount":null,"installments":[{"amount":79,"amount_formated":"R$ {{str_replace('.',',',$data['preco'])}}","base_value":79,"tax":"0.00","tax_value":0,"discount_percent":0,"discount_value":0,"discount_value_formated":"R$ 0,00","installment":1,"installment_value":79,"installment_value_formated":"R$ {{str_replace('.',',',$data['preco'])}}","text":"1x de R$ {{str_replace('.',',',$data['preco'])}}","text_with_tax":"1x de R$ {{str_replace('.',',',$data['preco'])}}","text_discount_percent":null,"text_discount":null},{"amount":82.56,"amount_formated":"R$ 82,56","base_value":79,"tax":"2.99","tax_value":3.560546618059931,"discount_percent":0,"discount_value":-3.56,"discount_value_formated":"R$ -3,56","installment":2,"installment_value":41.28,"installment_value_formated":"R$ 41,28","text":"2x de R$ 41,28 *","text_with_tax":"2x de R$ 41,28","text_discount_percent":null,"text_discount":null},{"amount":83.77,"amount_formated":"R$ 83,77","base_value":79,"tax":"2.99","tax_value":4.770587626636498,"discount_percent":0,"discount_value":-4.77,"discount_value_formated":"R$ -4,77","installment":3,"installment_value":27.92,"installment_value_formated":"R$ 27,92","text":"3x de R$ 27,92 *","text_with_tax":"3x de R$ 27,92","text_discount_percent":null,"text_discount":null},{"amount":84.99,"amount_formated":"R$ 84,99","base_value":79,"tax":"2.99","tax_value":5.992217995627527,"discount_percent":0,"discount_value":-5.99,"discount_value_formated":"R$ -5,99","installment":4,"installment_value":21.25,"installment_value_formated":"R$ 21,25","text":"4x de R$ 21,25 *","text_with_tax":"4x de R$ 21,25","text_discount_percent":null,"text_discount":null},{"amount":86.23,"amount_formated":"R$ 86,23","base_value":79,"tax":"2.99","tax_value":7.225430687253976,"discount_percent":0,"discount_value":-7.23,"discount_value_formated":"R$ -7,23","installment":5,"installment_value":17.25,"installment_value_formated":"R$ 17,25","text":"5x de R$ 17,25 *","text_with_tax":"5x de R$ 17,25","text_discount_percent":null,"text_discount":null},{"amount":87.47,"amount_formated":"R$ 87,47","base_value":79,"tax":"2.99","tax_value":8.470216660416938,"discount_percent":0,"discount_value":-8.47,"discount_value_formated":"R$ -8,47","installment":6,"installment_value":14.58,"installment_value_formated":"R$ 14,58","text":"6x de R$ 14,58 *","text_with_tax":"6x de R$ 14,58","text_discount_percent":null,"text_discount":null},{"amount":88.73,"amount_formated":"R$ 88,73","base_value":79,"tax":"2.99","tax_value":9.726564876290837,"discount_percent":0,"discount_value":-9.73,"discount_value_formated":"R$ -9,73","installment":7,"installment_value":12.68,"installment_value_formated":"R$ 12,68","text":"7x de R$ 12,68 *","text_with_tax":"7x de R$ 12,68","text_discount_percent":null,"text_discount":null},{"amount":89.99,"amount_formated":"R$ 89,99","base_value":79,"tax":"2.99","tax_value":10.994462305145845,"discount_percent":0,"discount_value":-10.99,"discount_value_formated":"R$ -10,99","installment":8,"installment_value":11.25,"installment_value_formated":"R$ 11,25","text":"8x de R$ 11,25 *","text_with_tax":"8x de R$ 11,25","text_discount_percent":null,"text_discount":null},{"amount":91.27,"amount_formated":"R$ 91,27","base_value":79,"tax":"2.99","tax_value":12.273893934390998,"discount_percent":0,"discount_value":-12.27,"discount_value_formated":"R$ -12,27","installment":9,"installment_value":10.14,"installment_value_formated":"R$ 10,14","text":"9x de R$ 10,14 *","text_with_tax":"9x de R$ 10,14","text_discount_percent":null,"text_discount":null},{"amount":92.56,"amount_formated":"R$ 92,56","base_value":79,"tax":"2.99","tax_value":13.564842777828474,"discount_percent":0,"discount_value":-13.56,"discount_value_formated":"R$ -13,56","installment":10,"installment_value":9.26,"installment_value_formated":"R$ 9,26","text":"10x de R$ 9,26 *","text_with_tax":"10x de R$ 9,26","text_discount_percent":null,"text_discount":null},{"amount":93.87,"amount_formated":"R$ 93,87","base_value":79,"tax":"2.99","tax_value":14.867289886107741,"discount_percent":0,"discount_value":-14.87,"discount_value_formated":"R$ -14,87","installment":11,"installment_value":8.53,"installment_value_formated":"R$ 8,53","text":"11x de R$ 8,53 *","text_with_tax":"11x de R$ 8,53","text_discount_percent":null,"text_discount":null},{"amount":95.18,"amount_formated":"R$ 95,18","base_value":79,"tax":"2.99","tax_value":16.181214358367328,"discount_percent":0,"discount_value":-16.18,"discount_value_formated":"R$ -16,18","installment":12,"installment_value":7.93,"installment_value_formated":"R$ 7,93","text":"12x de R$ 7,93 *","text_with_tax":"12x de R$ 7,93","text_discount_percent":null,"text_discount":null}]},"promocode_subtotal":79,"items_amount_formated":"R$ 249,80","subtotal_formated":"R$ {{str_replace('.',',',$data['preco'])}}","items_discount_formated":"R$ 170,80","discount_formated":"R$ 0,00","shipment_original_value_formated":"R$ 0,00","shipment_formated":"Gr\u00e1tis","total_format":"{{str_replace('.',',',$data['preco'])}}","total_formated":"R$ {{str_replace('.',',',$data['preco'])}}","value_for_free_shipment_formated":"R$ 0,00"},--}}
+{{--                        items: [{"id":495561497,"cart_id":351260355,"product_option_id":121671212,"kit_id":null,"bundle_id":null,"upsell_id":null,"quantity":1,"gift":0,"created_at":"2023-05-27 17:46:53","updated_at":"2023-05-27 17:46:53","brand":{"id":10957845,"name":"{{$data['nm_loja']}}","slug":"loja-liford"},"is_in_promotional_rack":false,"custom_shipping":false,"free_shipping":false,"shipping_price":0,"weight":0,"product_id":17987792,"option_id":121671212,"link":"javascript:","is_bundle":false,"group_name":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades) - 495561497","bundle":{"name":"","modifiable":true,"image_url":"","quantity":1,"shipping":{"custom":false,"price":0,"days":null,"type":null}},"small":"https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_50x50.png","thumb":"https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_250x250.png","medium":"https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_500x500.png","has_price_discount":true,"price_gift":null,"price_gift_formated":"R$ 0,00","price_sale":"249.80","price_sale_formated":"R$ 249,80","price":"79.00","price_total":79,"price_formated":"R$ {{str_replace('.',',',$data['preco'])}}","price_total_formated":"R$ {{str_replace('.',',',$data['preco'])}}","name":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos","name_with_grids":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades)","sku":"reklhssd78","availability_days":-1,"availability_text":"-1 dias \u00fateis","categories":[2852133,2862461,2862462],"categories_names":["Mais Vendidos","Casa & Jardim","Cozinha"],"grids":[{"name":"Tamanho","value":"500g (10 Unidades)"}],"is_digital":false,"short_description":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos","customizations":[],"customized":false,"allow_sell_without_customization":0,"selected_customizations":0,"shopify_variant_id":"45300993196337","shopify_product_id":"8450500755761","order_bump_id":null,"product_option":{"id":121671212,"store_id":586266,"product_id":17987792,"price_sale":"249.80","price_discount":"79.00","sku":"reklhssd78","quantity_managed":0,"availability":1,"availability_soldout":-1,"allow_sell_without_customization":0,"product":{"id":17987792,"name":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos","slug":"smart-pote-10-unidades-metodo-inovador-para-armazenagem-de-alimentos-6461bc08448df","gift_value":null,"is_digital":0,"seo_description":null,"brand_id":10957845,"facebook_pixel_id":null,"custom_shipping":0,"shipping_price":"0.00","store_id":586266,"simple":0,"brand":{"id":10957845,"store_id":586266,"active":1,"featured":0,"name":"{{$data['nm_loja']}}","description":null,"logo":null,"created_at":"2023-04-27 02:11:38","updated_at":"2023-04-27 02:11:38","deleted_at":null}},"stocks":[]},"cart":{"id":351260355,"store_id":586266,"customer_id":null,"promocode_id":null,"payment_id":null,"address_id":null,"seller_id":null,"done":0,"token":"shopify-335233c33b52253e2e48f95bcaa3301c","has_recomm":0,"value_shipment":null,"zipcode":null,"shipment_service_id":null,"payment_alias":"credit_card","tracking_data":null,"utm_source":null,"utm_campaign":null,"utm_medium":null,"utm_term":null,"utm_content":null,"created_at":"2023-05-27 17:46:53","updated_at":"2023-05-27 17:46:53","deleted_at":null},"order_bump":[]}],--}}
+{{--                        discounts: [{"name":"Cupom de desconto","value":0,"accumulate":false}],--}}
+{{--                        customer: {"id":148572890,"first_name":"Wilson","last_name":"Pereira","full_name":"{{$data['nome_completo']}}","email":"{{$data['email']}}","document":"{{$data['cpf']}}","document_type":"CPF","birthday":null,"phone_number":"5548996831161"},--}}
+{{--                    };--}}
 
-                    window.checkout.cart = {
-                        id: 351260355,
-                        customer_id: 148572890,
-                        token: 'shopify-335233c33b52253e2e48f95bcaa3301c',
-                        optionsIds: ['8450500755761'],
-                        skusIds: ['121671212'],
-                        isShopify: true,
-                        prices: {"items_amount":249.8,"total_items":"1","subtotal":79,"discount":0,"items_discount":170.8,"shipment":0,"shipment_original_value":"0.00","shipment_discount_value":0,"shipment_discount_percent":"0,00","promocode_discount_value":0,"progressive_discount_value":0,"kits_discount_value":0,"total":79,"value_for_free_shipment":0,"installments":{"max_installment":12,"max_installment_value":7.93,"amount":95.18,"text":"12x de R$ 7,93 *","text_with_tax":"12x de R$ 7,93","text_discount_percent":null,"text_discount":null,"installments":[{"amount":79,"amount_formated":"R$ {{str_replace('.',',',$data['preco'])}}","base_value":79,"tax":"0.00","tax_value":0,"discount_percent":0,"discount_value":0,"discount_value_formated":"R$ 0,00","installment":1,"installment_value":79,"installment_value_formated":"R$ {{str_replace('.',',',$data['preco'])}}","text":"1x de R$ {{str_replace('.',',',$data['preco'])}}","text_with_tax":"1x de R$ {{str_replace('.',',',$data['preco'])}}","text_discount_percent":null,"text_discount":null},{"amount":82.56,"amount_formated":"R$ 82,56","base_value":79,"tax":"2.99","tax_value":3.560546618059931,"discount_percent":0,"discount_value":-3.56,"discount_value_formated":"R$ -3,56","installment":2,"installment_value":41.28,"installment_value_formated":"R$ 41,28","text":"2x de R$ 41,28 *","text_with_tax":"2x de R$ 41,28","text_discount_percent":null,"text_discount":null},{"amount":83.77,"amount_formated":"R$ 83,77","base_value":79,"tax":"2.99","tax_value":4.770587626636498,"discount_percent":0,"discount_value":-4.77,"discount_value_formated":"R$ -4,77","installment":3,"installment_value":27.92,"installment_value_formated":"R$ 27,92","text":"3x de R$ 27,92 *","text_with_tax":"3x de R$ 27,92","text_discount_percent":null,"text_discount":null},{"amount":84.99,"amount_formated":"R$ 84,99","base_value":79,"tax":"2.99","tax_value":5.992217995627527,"discount_percent":0,"discount_value":-5.99,"discount_value_formated":"R$ -5,99","installment":4,"installment_value":21.25,"installment_value_formated":"R$ 21,25","text":"4x de R$ 21,25 *","text_with_tax":"4x de R$ 21,25","text_discount_percent":null,"text_discount":null},{"amount":86.23,"amount_formated":"R$ 86,23","base_value":79,"tax":"2.99","tax_value":7.225430687253976,"discount_percent":0,"discount_value":-7.23,"discount_value_formated":"R$ -7,23","installment":5,"installment_value":17.25,"installment_value_formated":"R$ 17,25","text":"5x de R$ 17,25 *","text_with_tax":"5x de R$ 17,25","text_discount_percent":null,"text_discount":null},{"amount":87.47,"amount_formated":"R$ 87,47","base_value":79,"tax":"2.99","tax_value":8.470216660416938,"discount_percent":0,"discount_value":-8.47,"discount_value_formated":"R$ -8,47","installment":6,"installment_value":14.58,"installment_value_formated":"R$ 14,58","text":"6x de R$ 14,58 *","text_with_tax":"6x de R$ 14,58","text_discount_percent":null,"text_discount":null},{"amount":88.73,"amount_formated":"R$ 88,73","base_value":79,"tax":"2.99","tax_value":9.726564876290837,"discount_percent":0,"discount_value":-9.73,"discount_value_formated":"R$ -9,73","installment":7,"installment_value":12.68,"installment_value_formated":"R$ 12,68","text":"7x de R$ 12,68 *","text_with_tax":"7x de R$ 12,68","text_discount_percent":null,"text_discount":null},{"amount":89.99,"amount_formated":"R$ 89,99","base_value":79,"tax":"2.99","tax_value":10.994462305145845,"discount_percent":0,"discount_value":-10.99,"discount_value_formated":"R$ -10,99","installment":8,"installment_value":11.25,"installment_value_formated":"R$ 11,25","text":"8x de R$ 11,25 *","text_with_tax":"8x de R$ 11,25","text_discount_percent":null,"text_discount":null},{"amount":91.27,"amount_formated":"R$ 91,27","base_value":79,"tax":"2.99","tax_value":12.273893934390998,"discount_percent":0,"discount_value":-12.27,"discount_value_formated":"R$ -12,27","installment":9,"installment_value":10.14,"installment_value_formated":"R$ 10,14","text":"9x de R$ 10,14 *","text_with_tax":"9x de R$ 10,14","text_discount_percent":null,"text_discount":null},{"amount":92.56,"amount_formated":"R$ 92,56","base_value":79,"tax":"2.99","tax_value":13.564842777828474,"discount_percent":0,"discount_value":-13.56,"discount_value_formated":"R$ -13,56","installment":10,"installment_value":9.26,"installment_value_formated":"R$ 9,26","text":"10x de R$ 9,26 *","text_with_tax":"10x de R$ 9,26","text_discount_percent":null,"text_discount":null},{"amount":93.87,"amount_formated":"R$ 93,87","base_value":79,"tax":"2.99","tax_value":14.867289886107741,"discount_percent":0,"discount_value":-14.87,"discount_value_formated":"R$ -14,87","installment":11,"installment_value":8.53,"installment_value_formated":"R$ 8,53","text":"11x de R$ 8,53 *","text_with_tax":"11x de R$ 8,53","text_discount_percent":null,"text_discount":null},{"amount":95.18,"amount_formated":"R$ 95,18","base_value":79,"tax":"2.99","tax_value":16.181214358367328,"discount_percent":0,"discount_value":-16.18,"discount_value_formated":"R$ -16,18","installment":12,"installment_value":7.93,"installment_value_formated":"R$ 7,93","text":"12x de R$ 7,93 *","text_with_tax":"12x de R$ 7,93","text_discount_percent":null,"text_discount":null}]},"promocode_subtotal":79,"items_amount_formated":"R$ 249,80","subtotal_formated":"R$ {{str_replace('.',',',$data['preco'])}}","items_discount_formated":"R$ 170,80","discount_formated":"R$ 0,00","shipment_original_value_formated":"R$ 0,00","shipment_formated":"Gr\u00e1tis","total_format":"{{str_replace('.',',',$data['preco'])}}","total_formated":"R$ {{str_replace('.',',',$data['preco'])}}","value_for_free_shipment_formated":"R$ 0,00"},
-                        items: [{"id":495561497,"cart_id":351260355,"product_option_id":121671212,"kit_id":null,"bundle_id":null,"upsell_id":null,"quantity":1,"gift":0,"created_at":"2023-05-27 17:46:53","updated_at":"2023-05-27 17:46:53","brand":{"id":10957845,"name":"{{$data['nm_loja']}}","slug":"loja-liford"},"is_in_promotional_rack":false,"custom_shipping":false,"free_shipping":false,"shipping_price":0,"weight":0,"product_id":17987792,"option_id":121671212,"link":"javascript:","is_bundle":false,"group_name":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades) - 495561497","bundle":{"name":"","modifiable":true,"image_url":"","quantity":1,"shipping":{"custom":false,"price":0,"days":null,"type":null}},"small":"https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_50x50.png","thumb":"https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_250x250.png","medium":"https:\/\/cdn.shopify.com\/s\/files\/1\/0754\/7938\/4369\/products\/1-main-rains-chuva-tortorage-packaging-ag-ag-cereals-oiosture-sect-nsect-roof-telhado-ag-ealed-ag-ag-hichickened-orortable-ood-ood-ice-gelo-ean-ean-tainer-ontainer-oozzle-ag-ag_500x500.png","has_price_discount":true,"price_gift":null,"price_gift_formated":"R$ 0,00","price_sale":"249.80","price_sale_formated":"R$ 249,80","price":"79.00","price_total":79,"price_formated":"R$ {{str_replace('.',',',$data['preco'])}}","price_total_formated":"R$ {{str_replace('.',',',$data['preco'])}}","name":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos","name_with_grids":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos 500g (10 Unidades)","sku":"reklhssd78","availability_days":-1,"availability_text":"-1 dias \u00fateis","categories":[2852133,2862461,2862462],"categories_names":["Mais Vendidos","Casa & Jardim","Cozinha"],"grids":[{"name":"Tamanho","value":"500g (10 Unidades)"}],"is_digital":false,"short_description":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos","customizations":[],"customized":false,"allow_sell_without_customization":0,"selected_customizations":0,"shopify_variant_id":"45300993196337","shopify_product_id":"8450500755761","order_bump_id":null,"product_option":{"id":121671212,"store_id":586266,"product_id":17987792,"price_sale":"249.80","price_discount":"79.00","sku":"reklhssd78","quantity_managed":0,"availability":1,"availability_soldout":-1,"allow_sell_without_customization":0,"product":{"id":17987792,"name":"Smart Pote (10 Unidades) - M\u00e9todo inovador para armazenagem de alimentos","slug":"smart-pote-10-unidades-metodo-inovador-para-armazenagem-de-alimentos-6461bc08448df","gift_value":null,"is_digital":0,"seo_description":null,"brand_id":10957845,"facebook_pixel_id":null,"custom_shipping":0,"shipping_price":"0.00","store_id":586266,"simple":0,"brand":{"id":10957845,"store_id":586266,"active":1,"featured":0,"name":"{{$data['nm_loja']}}","description":null,"logo":null,"created_at":"2023-04-27 02:11:38","updated_at":"2023-04-27 02:11:38","deleted_at":null}},"stocks":[]},"cart":{"id":351260355,"store_id":586266,"customer_id":null,"promocode_id":null,"payment_id":null,"address_id":null,"seller_id":null,"done":0,"token":"shopify-335233c33b52253e2e48f95bcaa3301c","has_recomm":0,"value_shipment":null,"zipcode":null,"shipment_service_id":null,"payment_alias":"credit_card","tracking_data":null,"utm_source":null,"utm_campaign":null,"utm_medium":null,"utm_term":null,"utm_content":null,"created_at":"2023-05-27 17:46:53","updated_at":"2023-05-27 17:46:53","deleted_at":null},"order_bump":[]}],
-                        discounts: [{"name":"Cupom de desconto","value":0,"accumulate":false}],
-                        customer: {"id":148572890,"first_name":"Wilson","last_name":"Pereira","full_name":"{{$data['nome_completo']}}","email":"{{$data['email']}}","document":"{{$data['cpf']}}","document_type":"CPF","birthday":null,"phone_number":"5548996831161"},
-                    };
+{{--                    window.checkout.firstOrderPromocode = {--}}
+{{--                        code: 'PRIMEIRACOMPRA',--}}
+{{--                        min: 0.00--}}
+{{--                    }--}}
 
-                    window.checkout.firstOrderPromocode = {
-                        code: 'PRIMEIRACOMPRA',
-                        min: 0.00
-                    }
-
-
-
-                    window.yampi = window.yampi || {};
-                    window.yampi =  Object.assign(window.yampi, {
-                        external_auth_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2VndXJvLmxvamFsaWZvcmQuY29tXC9jYXJ0XC9wYXltZW50IiwiaWF0IjoxNjg1MjIxMDI2LCJleHAiOjE2ODUyMjE2MjYsIm5iZiI6MTY4NTIyMTAyNiwianRpIjoidmFrRk0wTUFwQTd0Tk5kTCIsInN1YiI6MzUxMjYwMzU1LCJwcnYiOiI2ZTNiNmEyYmQyYTg3NjNhYWFiOGVhMWMyNDM3NWQxZTlhZGIwNGQ5IiwiY2FydF9pZCI6MzUxMjYwMzU1LCJtZXJjaGFudF9uYW1lIjoiTG9qYSBMaWZvcmQifQ.jVdQQbuDQuOZh3XY2830pU2odDtut2wBH9VnYaWdKW4',
-                        buyer_endpoint: 'https://buyer.yampi.io/v1/'
-                    });
-                </script>
+{{--                    window.yampi = window.yampi || {};--}}
+{{--                    window.yampi =  Object.assign(window.yampi, {--}}
+{{--                        external_auth_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2VndXJvLmxvamFsaWZvcmQuY29tXC9jYXJ0XC9wYXltZW50IiwiaWF0IjoxNjg1MjIxMDI2LCJleHAiOjE2ODUyMjE2MjYsIm5iZiI6MTY4NTIyMTAyNiwianRpIjoidmFrRk0wTUFwQTd0Tk5kTCIsInN1YiI6MzUxMjYwMzU1LCJwcnYiOiI2ZTNiNmEyYmQyYTg3NjNhYWFiOGVhMWMyNDM3NWQxZTlhZGIwNGQ5IiwiY2FydF9pZCI6MzUxMjYwMzU1LCJtZXJjaGFudF9uYW1lIjoiTG9qYSBMaWZvcmQifQ.jVdQQbuDQuOZh3XY2830pU2odDtut2wBH9VnYaWdKW4',--}}
+{{--                        buyer_endpoint: 'https://buyer.yampi.io/v1/'--}}
+{{--                    });--}}
+{{--                </script>--}}
             </div><!-- /.container clearfix -->
 
             <div id="overlay_processando" class="overlay overlay-transaction-loading">
@@ -2146,7 +2125,7 @@
         <input type="hidden" value="{{($data['vbv'] ? 's' : 'n')}}" id="vbv_sn">
         <input type="hidden" value="{{$data['mensagem_erro']}}" id="mensagem_erro">
         <input type="hidden" value="Houve um erro ao processar o seu pagamento, por favor verifique os valores digitados ou utilize outra forma de pagamento." id="mensagem_padrao">
-        <input type="hidden" value="{{$data['preco']}}" id="vl_produto">
+        <input type="hidden" value="{{ $baseTotalPrice }}" id="vl_produto">
 
         </div><!-- /.inner-body -->
 
@@ -2163,7 +2142,7 @@
             __total = __total.replace(',', '.');
             __total = parseFloat(__total);
 
-            const initialTotalAmount = {{ ($data['preco'] * $data['quantidade']) + $data['frete_selecionado_valor'] + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0) }};
+            const initialTotalAmount = {{ $baseTotalPrice + $data['frete_selecionado_valor'] + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0) }};
 
             $("#installments").empty();
             for(let i = 1; i <= 12; i++){
@@ -2251,16 +2230,18 @@
             $("#input-security-number-0").mask('0000');
             $("#input-card-document-0").mask('000.000.000-00');
 
-            window.orderBump = function(e){
-                $('.orderbump_button').click(function(e){
-                    e.preventDefault();
+            $('.orderbump_button').click(function(e){
+                e.preventDefault();
 
-                    $.post('/checkout/ativaOrderBump', {
-                        hash: $('[a_hash="h_checkout"]').attr('hash'),
-                    }, (r)=>{
-                        if(r.status == 200){
-                            $('.holder-container-resume').append(
-                                `<div class='item-holder js-item-holder flex  ' data-item-id='495561497' data-product-option-id='121671212' data-kit-id='' data-quantity='1' data-custom='' data-shopify-variant-id='45300993196337' data-bundle-id='' data-shopify='1' data-order-bump-id=''>
+                const bumpProductId = $(this).attr('bump-product-id');
+
+                $.post('/checkout/ativaOrderBump', {
+                    orderId: {{ $data['order_id'] }},
+                    bumpProductId
+                }, (r)=>{
+                    if(r.status == 200){
+                        $('.holder-container-resume').append(
+                            `<div class='item-holder js-item-holder flex  ' data-item-id='495561497' data-product-option-id='121671212' data-kit-id='' data-quantity='1' data-custom='' data-shopify-variant-id='45300993196337' data-bundle-id='' data-shopify='1' data-order-bump-id=''>
                             <div class='overlay-spinner overlay-spinner-box'>
                                 <div class='spinner spinner-grey'></div><!-- /.spinner-grey -->
                             </div>
@@ -2273,7 +2254,7 @@
                                 <div class='item-row'>
                                     <div class='item-name c-text-tertiary'>${r.titulo}</div>
                                     <div class='item-delete'></div>
-                                    <div id="remove_order" style="cursor: pointer;font-size: 11px; padding: 3px 5px; color: #fff; font-weight: 600; background: #e04040; border-radius: 5px; display: inline-block; align-self: end;">Remover Item</div>
+                                    <div id="remove_order" style="cursor: pointer;font-size: 11px; padding: 3px 5px; color: #fff; font-weight: 600; background: #e04040; border-radius: 5px; display: inline-block; align-self: end;" bump-product-id="${r.id}">Remover Item</div>
                                 </div>
 
 
@@ -2287,30 +2268,34 @@
                                     </div>
 
                             </div>`
-                            )
-                            $('.orderbump_button-cta').text('Oferta Adicionada!!')
-                            let vl = $(".js-cart-total").text();
-                            vl = vl.replace('R$', '');
-                            vl = parseFloat(vl);
-                            vl = parseFloat(vl) + parseFloat(r.preco);
-                            vl = vl.toFixed(2);
-                            vl = vl.replace('.', ',')
-                            $(".js-cart-total").text('R$ ' + vl)
-                            $("#vl_produtos").text('R$ ' + vl)
-                            $(".-total").text('R$ ' + vl)
-                            let a = $(".items__count").text();
-                            a = a.replace('(', '');
-                            a = a.replace(')', '');
-                            a = parseInt(a);
-                            $(".items__count").text(` (${a+1})`)
-                            window.removeOrder();
-                            setTimeout(()=>{
-                                $('.js-orderbumps').empty();
-                            },2000)
-                        }
-                    })
+                        )
+                        $('.orderbump_button-cta').text('Oferta Adicionada!!')
+                        let vl = $(".js-cart-total").text();
+                        vl = vl.replace('R$', '');
+                        vl = vl.replace(',', '.');
+                        vl = parseFloat(vl);
+                        console.log('vl 1 =', vl);
+                        vl = parseFloat(vl) + parseFloat(r.preco);
+                        console.log('vl 2 =', vl);
+
+                        vl = vl.toFixed(2);
+                        vl = vl.replace('.', ',')
+                        $(".js-cart-total").text('R$ ' + vl)
+                        $("#valor_card_pix").text('R$ ' + vl)
+                        $("#vl_produtos").text('R$ ' + vl)
+                        $(".-total").text('R$ ' + vl)
+                        let a = $(".items__count").text();
+                        a = a.replace('(', '');
+                        a = a.replace(')', '');
+                        a = parseInt(a);
+                        $(".items__count").text(` (${a+1})`)
+                        // window.removeOrder();
+                        setTimeout(()=>{
+                            $('.js-orderbumps').empty();
+                        },2000)
+                    }
                 })
-            }
+            })
 
             <?php
             if($data['resumo_aberto']){
@@ -2322,9 +2307,9 @@
             }
 
 
-            if($data['order']){
-                echo "window.orderBump();";
-            }
+//            if($bumpProducts->isNotEmpty()){
+//                echo "window.orderBump();";
+//            }
             ?>
 
 
@@ -2380,21 +2365,20 @@
                 return soma % 10 === 0;
             }
 
-            window.removeOrder = function(){
-                $("#remove_order").off('click').on('click', function(e){
-                    e.preventDefault();
+            $(document).on('click', '#remove_order', function(e){
+                e.preventDefault();
 
-                    $.post('/checkout/desativarOrder', {
-                        hash: $('[a_hash="h_checkout"]').attr('hash'),
-                    },(r)=>{
-                        if(r.status == 200){
-                            location.reload();
-                        }
-                    })
+                const bumpProductId = $(this).attr('bump-product-id');
+
+                $.post('/checkout/desativarOrder', {
+                    orderId: {{ $data['order_id'] }},
+                    bumpProductId
+                },(r)=>{
+                    if(r.status == 200){
+                        location.reload();
+                    }
                 })
-            }
-
-            window.removeOrder();
+            });
 
             fbq('track', 'AddToCart');
 

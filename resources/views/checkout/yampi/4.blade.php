@@ -55,16 +55,16 @@
             'tb_tfa_script');
     </script>
     <!-- End of Taboola Pixel Code -->
-    <script>
-        _tfa.push({
-            notify: 'event',
-            name: 'make_purchase',
-            id: {{$data['pixeltaboola']}},
-            revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor'] ?? 0) + (($data['orderbump'] ?? 'xyz') == 's' ? $data['vl_orderbump'] : 0)}},
-            currency: 'BRL',
-            quantity: {{$data['quantidade']}}
-        });
-    </script>
+{{--    <script>--}}
+{{--        _tfa.push({--}}
+{{--            notify: 'event',--}}
+{{--            name: 'make_purchase',--}}
+{{--            id: {{$data['pixeltaboola']}},--}}
+{{--            revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor'] ?? 0) + (($data['orderbump'] ?? 'xyz') == 's' ? $data['vl_orderbump'] : 0)}},--}}
+{{--            currency: 'BRL',--}}
+{{--            quantity: {{$data['quantidade']}}--}}
+{{--        });--}}
+{{--    </script>--}}
     <!-- End of Taboola Pixel Code -->
 
     <!-- webfonts -->
@@ -1247,7 +1247,7 @@
 
             </div>
             <input type="hidden" value="{{$data['id_loja']}}" id="__l">
-            <input type="hidden" value="{{$data['preco']}}" id="_vl">
+            <input type="hidden" value="{{ 9999999999 }}" id="_vl">
         </div>
     </footer>
 
