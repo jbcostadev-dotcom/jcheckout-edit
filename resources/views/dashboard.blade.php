@@ -981,6 +981,9 @@
                                             <thead>
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Nº do Pedido</th>
+                                                    @if($isRootUser)
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width5" style="text-align: center;">Usuario</th>
+                                                    @endif
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center;">Status</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center; display: none;" id="col-step">Desistência</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width20" style="text-align: center;">Produto</th>

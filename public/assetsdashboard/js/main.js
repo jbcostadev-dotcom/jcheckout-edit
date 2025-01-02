@@ -8824,6 +8824,24 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                 )
                             )
                             .append(
+                                $("<td>", {
+                                    hidden: !isRootUser,
+                                }).append(
+                                    $("<div>", {
+                                        class: "d-flex px-2 centraliza",
+                                    }).append(
+                                        $("<div>", {
+                                            class: "my-auto",
+                                        }).append(
+                                            $("<h6>", {
+                                                class: "mb-0 text-sm",
+                                                text: v.usuario,
+                                            })
+                                        )
+                                    )
+                                )
+                            )
+                            .append(
                                 $("<td>").append(
                                     $("<div>", {
                                         class: "d-flex px-2 centraliza",
