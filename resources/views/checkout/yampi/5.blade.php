@@ -67,7 +67,7 @@
             id: {{$data['pixeltaboola']}},
 {{--            revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor'] ?? 0) + (($data['orderbump'] ?? 'xyz') == 's' ? $data['vl_orderbump'] : 0)}},--}}
             currency: 'BRL',
-            quantity: {{$data['quantidade']}}
+            {{--quantity: {{$data['quantidade']}}--}}
         });
     </script>
     <!-- End of Taboola Pixel Code -->
