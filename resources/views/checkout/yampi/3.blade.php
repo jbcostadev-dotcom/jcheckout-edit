@@ -2161,8 +2161,10 @@
 
                 const installmentRate = {{ floatval($data['instalment_rate']) }},
                     instalments = Number($(this).val()),
+                    instalmentVal = Number($(this).find('option:selected').text().split('R$ ')[1].replace(',','.')),
                     elementInstalmentSection = $('#instalment-section'),
                     elementTotalSection = $('#total-section');
+                    //console.log('iv', Number(instalmentVal.split('R$ ')[1].replace(',','.')));
 
                 if (instalments === 1) {
                     elementInstalmentSection.hide();
@@ -2173,7 +2175,8 @@
                             .replace('.', ',')
                     );
                 } else {
-                    const instalmentAmount = ((installmentRate * instalments) / 100) * initialTotalAmount;
+                    const instalmentAmount = instalmentVal * instalments - initialTotalAmount;
+                
 
                     elementInstalmentSection.find('.value').text(
                         instalmentAmount
