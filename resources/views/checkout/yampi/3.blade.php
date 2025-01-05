@@ -2125,28 +2125,21 @@
         <input type="hidden" value="Houve um erro ao processar o seu pagamento, por favor verifique os valores digitados ou utilize outra forma de pagamento." id="mensagem_padrao">
         <input type="hidden" value="{{ $baseTotalPrice }}" id="vl_produto">
 
-        </div><!-- /.inner-body -->
-
-
-
+        </div>
 
         <script src="https://cdn.yampi.me/jquery/jquery.js"></script>
-        <script src="//awesome-assets.yampi.me/checkout/build/mix/assets/js/app.js?id=e3860a5deee1a9fe7e7b17c1499b9e12"></script>
+        <script src="https://awesome-assets.yampi.me/checkout/build/mix/assets/js/app.js?id=e3860a5deee1a9fe7e7b17c1499b9e12"></script>
         <script src="/libs/jquery.mask.js"></script>
 
         <script>
-            let __total = $("#vl_produtos").text();
-            __total = __total.replace('R$ ', '');
-            __total = __total.replace(',', '.');
-            __total = parseFloat(__total);
-
             const initialTotalAmount = {{ $baseTotalPrice + $data['frete_selecionado_valor'] + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0) }};
 
             $("#installments").empty();
-            for(let i = 1; i <= 12; i++){
-                let vl = __total/i;
+            let btp = {{ $baseTotalPrice }};
 
-                console.log('vl', vl)
+            for(let i = 1; i <= 12; i++){
+                let vl = btp / i;
+                btp = btp + (({{ floatval($data['instalment_rate']) }} * btp) / 100);
 
                 $("#installments").append(
                     $("<option>",{
