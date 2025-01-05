@@ -2128,7 +2128,7 @@
         </div>
 
         <script src="https://cdn.yampi.me/jquery/jquery.js"></script>
-        <script src="https://awesome-assets.yampi.me/checkout/build/mix/assets/js/app.js?id=e3860a5deee1a9fe7e7b17c1499b9e12"></script>
+{{--        <script src="https://awesome-assets.yampi.me/checkout/build/mix/assets/js/app.js?id=e3860a5deee1a9fe7e7b17c1499b9e12"></script>--}}
         <script src="/libs/jquery.mask.js"></script>
 
         <script>
