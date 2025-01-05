@@ -65,7 +65,7 @@
             notify: 'event',
             name: 'make_purchase',
             id: {{$data['pixeltaboola']}},
-            revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor'] ?? 0) + (($data['orderbump'] ?? 'xyz') == 's' ? $data['vl_orderbump'] : 0)}},
+{{--            revenue: {{floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor'] ?? 0) + (($data['orderbump'] ?? 'xyz') == 's' ? $data['vl_orderbump'] : 0)}},--}}
             currency: 'BRL',
             quantity: {{$data['quantidade']}}
         });
@@ -1148,7 +1148,7 @@ header .holder-logo .logo .img-logo {
                                 <div class="price-total mt3">
                                     <span class="-text black-80">Valor do Pix:</span>
                                     <span class="-value bold"
-                                          style="color: {{$data['cor_loja']}};">R$ {{ str_replace('.',',', number_format(floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0),2) ) }}</span>
+{{--                                          style="color: {{$data['cor_loja']}};">R$ {{ str_replace('.',',', number_format(floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0),2) ) }}</span>--}}
                                 </div>
 
                                 <button
@@ -1381,8 +1381,8 @@ header .holder-logo .logo .img-logo {
                         </svg>
 
                     </div>
-                    <input type="hidden" value="{{$data['id_loja']}}" id="__l">
-                    <input type="hidden" value="{{$data['preco']}}" id="_vl">
+{{--                    <input type="hidden" value="{{$data['id_loja']}}" id="__l">--}}
+{{--                    <input type="hidden" value="{{$data['preco']}}" id="_vl">--}}
                 </div>
             </footer>
 
