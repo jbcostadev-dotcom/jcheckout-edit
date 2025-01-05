@@ -1548,11 +1548,11 @@
                                                                                 <div class="holder-selectskin">
                                                                                     <div class="select-skin">
                                                                                         <select id="installments" data-testid="input-cc-installments" data-name="card[0][installments]" class="selectskin installments" style="width: 100%; opacity: 0;"></select>
-                                                                                        <!--<div class="select-skin-mask">
+                                                                                        <div class="select-skin-mask">
                                                                                             <div class="select-skin-text-clip">
                                                                                                 <div class="select-skin-text"></div>
                                                                                             </div>
-                                                                                        </div>-->
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- /.holder-select -->
@@ -1766,11 +1766,16 @@
                                                     <div id="vl_produto_lista" valor="" class="value">R$ {{ number_format(($baseTotalPrice), 2, ',') }}</div>
                                                 </div>
 
+                                                <div class="description" id="instalment-section" style="display: none;">
+                                                    <div class="description">Instalments</div>
+                                                    <div class="value"></div>
+                                                </div>
+
                                                 <div class="detail total bold" style="color: {{$data['cor_loja']}};">
                                                     <div class="description">
                                                         Total
                                                     </div>
-                                                    <div class="value js-cart-total" id="valor_total">
+                                                    <div class="value js-cart-total" id="total-section">
                                                         R$ {{ number_format(($baseTotalPrice), 2, ',') }}
                                                     </div>
                                                 </div>
