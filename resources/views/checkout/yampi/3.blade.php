@@ -1550,11 +1550,11 @@
                                                                                 <div class="holder-selectskin">
                                                                                     <div class="select-skin">
                                                                                         <select id="installments" data-testid="input-cc-installments" data-name="card[0][installments]" class="selectskin installments" style="width: 100%; opacity: 0;"></select>
-                                                                                        <div class="select-skin-mask">
+                                                                                        <!--<div class="select-skin-mask">
                                                                                             <div class="select-skin-text-clip">
                                                                                                 <div class="select-skin-text"></div>
                                                                                             </div>
-                                                                                        </div>
+                                                                                        </div>-->
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- /.holder-select -->
@@ -2148,6 +2148,8 @@
             for(let i = 1; i <= 12; i++){
                 let vl = __total/i;
 
+                console.log('vl', vl)
+
                 $("#installments").append(
                     $("<option>",{
                         value: i,
@@ -2583,6 +2585,7 @@
                     }
                 })
             })
+          
         </script>
 
         <div class="shopify-handler" data-shop="http://lojaliford.com/a/checkout" data-redirect-uri="https://seguro.lojaliford.com/cart" style="display: none;"></div>

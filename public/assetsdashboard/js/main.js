@@ -8806,6 +8806,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     $("#table_pedidos").append(
                         $("<tr>", {
                             id: "pedido_" + v.id_carrinho,
+                            hidden: !abandoned && !v.email,
                         })
                             .append(
                                 $("<td>").append(
@@ -8885,7 +8886,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                         }).append(
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
-                                                text: v.titulo,
+                                                text: v.titulo.replace('<br>', " + "),
                                             })
                                         )
                                     )
