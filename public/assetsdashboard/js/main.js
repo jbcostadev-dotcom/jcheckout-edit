@@ -6309,13 +6309,13 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         change: async function (
                                                             e
                                                         ) {
-                                                            
+
                                                             let i =
                                                                 $(
                                                                     "#select_loja"
                                                                 ).val();
 
-                                                            
+
                                                             const dados =
                                                                 await _global.busca(
                                                                     "dashboard/updatePreferencias",
@@ -6328,7 +6328,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     "POST"
                                                                 );
 
-                                                         
+
 
                                                             if (
                                                                 dados.status ==
@@ -6388,13 +6388,13 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         change: async function (
                                                             e
                                                         ) {
-                                                            
+
                                                             let i =
                                                                 $(
                                                                     "#select_loja"
                                                                 ).val();
 
-                                                            
+
                                                             const dados =
                                                                 await _global.busca(
                                                                     "dashboard/updatePreferencias",
@@ -6447,7 +6447,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     )
                                                 )
                                             )
-                                             
+
                                         )
                                     )
                                     .append(
@@ -8117,13 +8117,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
                                                 text:
-                                                    "R$ " +
-                                                    (
-                                                        v.quantidade * v.preco +
-                                                        parseFloat(
-                                                            v.valor_orderbump
-                                                        )
-                                                    ).toFixed(2),
+                                                    "R$ " + Number(v.preco).toFixed(2),
                                             })
                                         )
                                     )
@@ -8286,7 +8280,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
                                                 text:
-                                                    "R$ " +
+                                                    "Rx$ " +
                                                     v.frete_selecionado_valor,
                                             })
                                         )
@@ -8918,11 +8912,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                         }).append(
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
-                                                text:
-                                                    "R$ " +
-                                                    (
-                                                        v.quantidade * v.preco
-                                                    ).toFixed(2),
+                                                text: "R$ " + Number(v.preco).toFixed(2)
                                             })
                                         )
                                     )
