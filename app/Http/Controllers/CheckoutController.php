@@ -186,22 +186,18 @@ class CheckoutController extends Controller
 
                 if ($req['status'] == 200) {
                     $retorno = array_merge($retorno, $req);
+                    $customErrorMessage = DB::table('cartao_loja')->where('id_loja', $retorno['id_loja'])->value('mensagem_erro');
 
                     if ($req['payment_method'] === 'pix') {
                         return  view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . 5)->with('data', $retorno);
                     }
-                }
 
-                if ($req['status'] == 404) {
-                    $retorno = array_merge($retorno, $req);
-
-                    $customErrorMessage = DB::table('cartao_loja')->where('id_loja', $retorno['id_loja'])->value('mensagem_erro');
-
-                    if ($req['payment_method'] === 'card' && $customErrorMessage) {
+                    if ($req['payment_method'] === 'card' && $customErrorMessage && !in_array($retorno['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid'])) {
                         return redirect("checkout/{$id_checkout}/{$hash}/3")->with('customErrorMessage', $customErrorMessage);
                     }
                 }
 
+                if ($req['status'] == 404) $retorno = array_merge($retorno, $req);
                 if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
             } catch (\Exception $e) {
                 return response()->json(['status' => 500]);
