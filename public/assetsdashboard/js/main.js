@@ -3977,7 +3977,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 class: "btn btn-link text-danger text-gradient px-3 mb-0",
                                                             }).append(
                                                                 $("<i>", {
-                                                                    class: "far fa-trash-alt me-2",
+                                                                    class: "fa fa-trash-o mb-2 me-2",
                                                                     "aria-hidden":
                                                                         "true",
                                                                     click: function (
@@ -4224,7 +4224,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                 class: "btn btn-link text-danger text-gradient px-3 mb-0",
                                                             }).append(
                                                                 $("<i>", {
-                                                                    class: "far fa-trash-alt me-2",
+                                                                    class: "fa fa-trash-o mb-2 me-2",
                                                                     "aria-hidden":
                                                                         "true",
                                                                     click: function (
@@ -5298,7 +5298,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                                     $(
                                                                                         "<i>",
                                                                                         {
-                                                                                            class: "fas fa-pencil-alt ms-auto text-dark cursor-pointer",
+                                                                                            class: "fa fa-edit ms-auto text-dark cursor-pointer",
                                                                                             style: "font-size: 15px;",
                                                                                             click: async function (
                                                                                                 e
@@ -5379,7 +5379,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                                         $(
                                                                                             "<i>",
                                                                                             {
-                                                                                                class: "far fa-trash-alt me-2",
+                                                                                                class: "fa fa-trash-o mb-2 me-2",
                                                                                                 "aria-hidden":
                                                                                                     "true",
                                                                                             }
@@ -5641,7 +5641,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                                                         $(
                                                                                                             "<i>",
                                                                                                             {
-                                                                                                                class: "far fa-trash-alt me-2",
+                                                                                                                class: "fa fa-trash-o mb-2 me-2",
                                                                                                                 "aria-hidden":
                                                                                                                     "true",
                                                                                                             }
@@ -7021,6 +7021,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                 )
                                 .append(
                                     $("<div>", {
+                                        hidden: !isAdmin && !isRootUser,
                                         class: "form-check form-switch",
                                         style: "margin-top: 10px; justify-content: center; align-items: center;",
                                     })
@@ -7587,7 +7588,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             },
                                         }).append(
                                             $("<i>", {
-                                                class: "far fa-trash-alt me-2",
+                                                class: "fa fa-trash-o mb-2 me-2",
                                                 "aria-hidden": "true",
                                             })
                                         )
