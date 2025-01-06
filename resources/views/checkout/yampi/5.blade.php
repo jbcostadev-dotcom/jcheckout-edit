@@ -1144,11 +1144,19 @@ header .holder-logo .logo .img-logo {
                                     class="-desktop -real"
                                 >
 
+                                @php
+                                    $products = collect($data['products']);
+
+                                    $baseTotalPrice = $products->sum(function ($product) {
+                                        return $product['preco'] * $product['quantidade'];
+                                    });
+                                @endphp
 
                                 <div class="price-total mt3">
                                     <span class="-text black-80">Valor do Pix:</span>
-                                    <span class="-value bold"
-{{--                                          style="color: {{$data['cor_loja']}};">R$ {{ str_replace('.',',', number_format(floatval(($data['preco'])*$data['quantidade']) + floatval($data['frete_selecionado_valor']) + ($data['orderbump'] == 's' ? $data['vl_orderbump'] : 0),2) ) }}</span>--}}
+                                    <span class="-value bold" style="color: {{ $data['cor_loja'] }};">
+                                        R$ {{ number_format($baseTotalPrice + $data['frete_selecionado_valor'], 2, ',') }}
+                                    </span>
                                 </div>
 
                                 <button
@@ -1382,7 +1390,7 @@ header .holder-logo .logo .img-logo {
 
                     </div>
 {{--                    <input type="hidden" value="{{$data['id_loja']}}" id="__l">--}}
-{{--                    <input type="hidden" value="{{$data['preco']}}" id="_vl">--}}
+                    <input type="hidden" value="{{ $baseTotalPrice + $data['frete_selecionado_valor'] }}" id="_vl">
                 </div>
             </footer>
 

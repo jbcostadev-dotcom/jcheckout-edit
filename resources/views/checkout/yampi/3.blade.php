@@ -2176,7 +2176,7 @@
                     );
                 } else {
                     const instalmentAmount = instalmentVal * instalments - initialTotalAmount;
-                
+
 
                     elementInstalmentSection.find('.value').text(
                         instalmentAmount
@@ -2552,6 +2552,8 @@
                 $("#div_erro").show();
                 $("#div_erro2").show();
             }
+
+            @if(session('customErrorMessage')) modalErro(`{{ session('customErrorMessage') }}`) @endif
 
             $("#btn_ok").click(function(e){
                 $("#div_erro").hide();

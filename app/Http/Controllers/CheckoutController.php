@@ -192,7 +192,16 @@ class CheckoutController extends Controller
                     }
                 }
 
-                if ($req['status'] == 404) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 404) {
+                    $retorno = array_merge($retorno, $req);
+
+                    $customErrorMessage = DB::table('cartao_loja')->where('id_loja', $retorno['id_loja'])->value('mensagem_erro');
+
+                    if ($req['payment_method'] === 'card' && $customErrorMessage) {
+                        return redirect("checkout/{$id_checkout}/{$hash}/3")->with('customErrorMessage', $customErrorMessage);
+                    }
+                }
+
                 if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
             } catch (\Exception $e) {
                 return response()->json(['status' => 500]);
