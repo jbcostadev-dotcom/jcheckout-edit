@@ -184,8 +184,6 @@ class CheckoutController extends Controller
 
                 $req = json_decode($req, true);
 
-                dd($req);
-
                 if ($req['status'] == 200) {
                     $retorno = array_merge($retorno, $req);
                     $customErrorMessage = DB::table('cartao_loja')->where('id_loja', $retorno['id_loja'])->value('mensagem_erro');
