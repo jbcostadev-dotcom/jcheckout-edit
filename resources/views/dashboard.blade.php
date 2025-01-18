@@ -558,10 +558,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item d-flex align-items-center ms-2 d-none">
-                            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                                <i class="fa fa-sign-out" aria-hidden="true" id="btn_signout"></i>
-
+                        <li class="nav-item d-flex align-items-center ms-2">
+                            <a href="javascript:void(0);" class="nav-link text-white font-weight-bold px-0" id="btn_signout">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
                             </a>
                         </li>
                     </ul>
@@ -1550,11 +1549,14 @@
                     });
                 </script>
                 <script>
-
-
                     $("#btn_signout").click(function(e){
-                        document.cookie = "laravel_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        window.location.href = '/entrar';
+                        $.ajax({
+                            url: "/destroiSessao",
+                            success: () => {
+                                document.cookie = "laravel_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                window.location.href = '/entrar';
+                            },
+                        });
                     })
 
                     $("#btn_user").click(function(e){
