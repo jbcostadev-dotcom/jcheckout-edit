@@ -570,8 +570,8 @@
         <!-- End Navbar -->
         <div></div>
         <div class="container-fluid py-3">
-            <div class="row">
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="d-flex justify-content-between flex-wrap gap-3">
+            <div style="width: 200px">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
@@ -599,13 +599,46 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+
+<!-- new card -->
+                <div style="width: 200px">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Visitas ao Checkout</p>
+                                        <p class="text-xs mb-0 text-uppercase font-weight-bold mb-1">Vendas Realizadas</p>
+                                        <h5 class="font-weight-bolder counter" id="sales_total">
+                                            0
+                                        </h5>
+                                        <p class="mb-0">
+                                            <span class="text-danger text-sm font-weight-bolder counter" id="pedidos_hoje">0</span>
+                                            Hoje.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <i class="ni ni-curved-next text-lg opacity-10" style="margin-right: 10px; cursor: pointer;" id="reseta_pedidos" aria-hidden="true"></i>
+                                    <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle iconecard" style="background-image: {{ ($data['cor'] != null ? $data['cor'] : '' ) }};">
+                                        <i class="ni ni-shop text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+
+                <div style="width: 200px">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="numbers">
+                                        <p class="text-xs mb-0 text-uppercase font-weight-bold mb-1">Visitas ao Checkout</p>
                                         <h5 id="visitas_total" class="font-weight-bolder counter">
                                             0
                                         </h5>
@@ -625,17 +658,17 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div style="width: 200px">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Lojas</p>
-                                        <h5 id="nr_lojas" class="font-weight-bolder counter">
+                                        <h5 id="nr_lojas" class="font-weight-bolder counter ">
                                             0
                                         </h5>
-                                        <p class="mb-0">
+                                        <p class="mb-0 text-xs mb-2">
                                             Lojas cadastradas.
                                         </p>
                                     </div>
@@ -650,7 +683,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div style="width: 200px">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
@@ -660,8 +693,8 @@
                                         <h5 class="font-weight-bolder">
                                             Ativo
                                         </h5>
-                                        <p class="mb-0">
-                                            <span class="text-success text-sm font-weight-bolder counter" id="nr_dias">0</span> Dias restantes.
+                                        <p class="mb-0 text-xs">
+                                            <span class="text-success text-sm font-weight-bolder counter" id="nr_dias">0</span> Dias rest.
                                         </p>
                                     </div>
                                 </div>
