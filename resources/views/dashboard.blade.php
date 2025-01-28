@@ -608,11 +608,11 @@
                                 <div class="col-8">
                                     <div class="numbers">
                                         <p class="text-xs mb-0 text-uppercase font-weight-bold mb-1">Vendas Realizadas</p>
-                                        <h5 class="font-weight-bolder counter" id="sales_total">
+                                        <h5 class="font-weight-bolder counter" id="total_sales_amount">
                                             0
                                         </h5>
                                         <p class="mb-0">
-                                            <span class="text-danger text-sm font-weight-bolder counter" id="pedidos_hoje">0</span>
+                                            <span class="text-danger text-sm font-weight-bolder counter" id="today_sales_amount">0</span>
                                             Hoje.
                                         </p>
                                     </div>
@@ -628,9 +628,9 @@
                         </div>
                     </div>
                 </div>
-                
-                
-                
+
+
+
 
                 <div style="width: 200px">
                     <div class="card">

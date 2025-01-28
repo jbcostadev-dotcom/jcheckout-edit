@@ -9673,6 +9673,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 return new Promise((res) => {
                     $("#pedidos_hoje").attr("data-count", dados.pedidos.hoje);
                     $("#pedidos_total").attr("data-count", dados.pedidos.total);
+                    $("#total_sales_amount").attr("data-count", dados.sales_amount.total);
+                    $("#today_sales_amount").attr("data-count", dados.sales_amount.today);
                     $("#visitas_hoje").attr("data-count", dados.visitas.hoje);
                     $("#visitas_total").attr("data-count", dados.visitas.total);
                     $("#nr_dias").attr("data-count", dados.dias);
@@ -9691,7 +9693,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
         counterCards() {
             $(".counter").each(function () {
                 var $this = $(this),
-                    countTo = $this.attr("data-count");
+                    countTo = $this.attr("data-count"),
+                    id = $this.attr('id');
 
                 $({ countNum: $this.text() }).animate(
                     {
@@ -9702,7 +9705,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                         duration: 500,
                         easing: "linear",
                         step: function () {
-                            $this.text(Math.floor(this.countNum));
+                            $this.text((['total_sales_amount', 'today_sales_amount'].includes(id) ? 'R$ ' : '') + Math.floor(this.countNum));
                         },
                         complete: function () {
                             $this.text(this.countNum);
