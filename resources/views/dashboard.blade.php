@@ -571,7 +571,7 @@
         <div></div>
         <div class="container-fluid py-3">
             <div class="d-flex justify-content-between flex-wrap gap-3">
-            <div style="width: 200px">
+            <div style="min-width: 200px; flex: 1">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
@@ -601,18 +601,18 @@
 
 
 <!-- new card -->
-                <div style="width: 200px">
+                <div style="min-width: 200px; flex: 1">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-xs mb-0 text-uppercase font-weight-bold mb-1">Vendas Realizadas</p>
-                                        <h5 class="font-weight-bolder counter" id="total_sales_amount">
-                                            0
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold text-truncate">Vendas Realizadas</p>
+                                        <h5 class="font-weight-bolder counter">R$ <span id="total_sales_amount">
+                                         0
                                         </h5>
                                         <p class="mb-0">
-                                            <span class="text-danger text-sm font-weight-bolder counter" id="today_sales_amount">0</span>
+                                        R$ <span class="text-danger text-sm font-weight-bolder counter" id="today_sales_amount">0</span>
                                             Hoje.
                                         </p>
                                     </div>
@@ -632,13 +632,13 @@
 
 
 
-                <div style="width: 200px">
+                <div style="min-width: 200px; flex: 1">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-xs mb-0 text-uppercase font-weight-bold mb-1">Visitas ao Checkout</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold text-truncate">Visitas ao Checkout</p>
                                         <h5 id="visitas_total" class="font-weight-bolder counter">
                                             0
                                         </h5>
@@ -658,7 +658,7 @@
                     </div>
                 </div>
 
-                <div style="width: 200px">
+                <div style="min-width: 200px; flex: 1">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
@@ -668,7 +668,7 @@
                                         <h5 id="nr_lojas" class="font-weight-bolder counter ">
                                             0
                                         </h5>
-                                        <p class="mb-0 text-xs mb-2">
+                                        <p class="mb-0 text-truncate">
                                             Lojas cadastradas.
                                         </p>
                                     </div>
@@ -683,17 +683,17 @@
                     </div>
                 </div>
 
-                <div style="width: 200px">
+                <div style="min-width: 200px; flex: 1">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Status do Token</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold text-truncate">Status do Token</p>
                                         <h5 class="font-weight-bolder">
                                             Ativo
                                         </h5>
-                                        <p class="mb-0 text-xs">
+                                        <p class="mb-0 text-truncate">
                                             <span class="text-success text-sm font-weight-bolder counter" id="nr_dias">0</span> Dias rest.
                                         </p>
                                     </div>

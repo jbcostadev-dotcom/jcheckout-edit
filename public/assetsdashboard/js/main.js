@@ -9705,7 +9705,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                         duration: 500,
                         easing: "linear",
                         step: function () {
-                            $this.text((['total_sales_amount', 'today_sales_amount'].includes(id) ? 'R$ ' : '') + Math.floor(this.countNum));
+                            $this.text(Math.floor(this.countNum));
                         },
                         complete: function () {
                             $this.text(this.countNum);
