@@ -2506,6 +2506,8 @@
 
                     if (Number(r.status) === 401) {
                         $("#overlay_processando").hide();
+                        $("#btn_compra_cc").removeClass('sending');
+                        
                         modalErro(r.message ?? 'Nenhuma mensagem foi encontrada');
                         return;
                     }
