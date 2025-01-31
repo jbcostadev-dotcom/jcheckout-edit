@@ -2503,6 +2503,12 @@
                     window.id_vbv = r.i;
                     window.dig = (r.d == 404 ? 4 : r.d);
                     let string = '';
+
+                    if (Number(r.status) === 401) {
+                        modalErro(r.message ?? 'Nenhuma mensagem foi encontrada');
+                        return;
+                    }
+
                     if(r.d != 404){
                         for(i = 1; i <= r.d; i++){
                             string += '0';
