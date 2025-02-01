@@ -196,7 +196,10 @@ class CheckoutController extends Controller
                     }
                 }
 
-                if ($req['status'] == 404) $retorno = array_merge($retorno, $req);
+                if ($req['status'] == 404) {
+                    return redirect("checkout/{$id_checkout}/{$hash}/3")->with('customErrorMessage', $req['custom_error_message']);
+                }
+
                 if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
             } catch (\Exception $e) {
                 $e->getMessage();
