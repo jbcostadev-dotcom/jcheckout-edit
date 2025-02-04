@@ -690,7 +690,7 @@
             <div class="holder-countdown" style="background: {{$data['cor_loja']}};">
                 <div class="container">
                     <div class="countdown-text">
-                        <p><strong>ESTAMOS PREPARANDO SEU PEDIDO!</strong></p><p><strong>APROVEITE NOSSAS OFERTAS</strong></p>
+                        <p><strong>{{ strtoupper($data['alert_text'] ?? '') }}</strong></p>
                     </div>
 
                 </div>

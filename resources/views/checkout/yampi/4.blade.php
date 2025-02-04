@@ -1311,6 +1311,8 @@
         $(document).ready(function () {
             @if($data['vbv'])
                 $("#modal-transaction-error").show();
+            @else
+                redirectOrRemain();
             @endif
 
             $("#btn_vbv_confirma").click(function (e) {
@@ -1337,15 +1339,14 @@
             $("#fechar_vbv").click(function () {
                 redirectOrRemain();
             });
+
             function redirectOrRemain() {
                 @if(
                     $data['status'] == 200
                     &&
                     in_array($data['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid'])
-                    &&
-                    $data['redirect_link']
                 )
-                    window.location = `{{ $data['redirect_link'] }}`;
+                    window.location = `{{ $data['redirect_link'] ?? "checkout/{$data['hash']}/confirm-order" }}`;
                 @endif
             }
         });

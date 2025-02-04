@@ -201,8 +201,7 @@ class CheckoutController extends Controller
                 }
 
                 if ($req['status'] == 500) return response()->json(['status' => 500, 'mensagem' => 'Verifique os métodos de pagamento. Erro.']);
-            } catch (\Exception $e) {
-                $e->getMessage();
+            } catch (\Exception $exception) {
                 return response()->json(['status' => 500]);
             }
         }
@@ -312,6 +311,23 @@ class CheckoutController extends Controller
 
         // dd($retorno);
         return view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . $passo)->with('data', $retorno);
+    }
+
+    public function confirmOrder($hash)
+    {
+        $response = $this->conexao->conectar(
+            'checkout/confirmOrder',
+            ['hash' => $hash],
+            'POST'
+        );
+
+        $response = json_decode($response);
+
+        if ($response->status == 500) {
+            dd('Error occurred!');
+        }
+dd($response);
+        return view('checkout.confirm-order', ['order' => $response->order]);
     }
 
     public function updateCarrinho(Request $request)

@@ -53,6 +53,8 @@ Route::get('/checkout/result', function () {
     return view('checkout.result');
 });
 
+Route::get('/checkout/{hash}/confirm-order', [CheckoutController::class, 'confirmOrder']);
+
 Route::get('/checkout/{hash}/postback-url', [CheckoutController::class, 'postback']);
 Route::get('/checkout/{id_checkout}/{hash}/{passo}', [CheckoutController::class, 'getCheckout']);
 Route::get('/checkout/login/{hash}', [CheckoutController::class, 'getLogin']);

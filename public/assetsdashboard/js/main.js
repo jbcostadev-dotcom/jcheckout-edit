@@ -349,7 +349,11 @@ $(document).ready(function () {
                                     '"id="email_loja_' +
                                     data.id_loja +
                                     '">' +
-                                    "<span>CNPJ de Rodapé</span>" +
+
+                                `<span>Barra de Aviso</span>` +
+                                `<input class="form-control" type="text" value="${data.alert_text ?? ''}" id="alert_text_${data.id_loja}">` +
+
+                                "<span>CNPJ de Rodapé</span>" +
                                     '<input class="form-control" type="text" value="' +
                                     (data.cnpj_loja == null
                                         ? ""
@@ -419,37 +423,40 @@ $(document).ready(function () {
                                     '<div class="container-fluid">' +
                                     '<div class="row">' +
                                     '<div class="col-lg-12 card" style="margin: 5px; justify-content:center;">' +
-                                    '<button style="margin-top: 15px;" loja="' +
-                                    data.id_loja +
-                                    '" id="adiciona_produto_' +
-                                    data.id_loja +
-                                    '"class="btn btn-primary">Adicionar Produto</button>' +
-                                    '<button type="button" style="margin-top: 5px;" id="adiciona_variacao_' +
-                                    data.id_loja +
-                                    '" class="btn btn-info">Adicionar Variação</button>' +
+                                    // '<button style="margin-top: 15px;" loja="' +
+                                    // data.id_loja +
+                                    // '" id="adiciona_produto_' +
+                                    // data.id_loja +
+                                    // '"class="btn btn-primary">Adicionar Produto</button>' +
+                                    // '<button type="button" style="margin-top: 5px;" id="adiciona_variacao_' +
+                                    // data.id_loja +
+                                    // '" class="btn btn-info">Adicionar Variação</button>' +
                                     '<button type="button" style="margin-top: 5px;background: #b412b4;" id="orderbump_' +
                                     data.id_loja +
                                     '" class="btn btn-warning">Order Bump</button>' +
-                                    '<button type="button" style="margin-top: 5px;" id="script_' +
+                                    '<button type="button" style="margin-top: 5px;background: #fe8d59;" id="orderbump_general' +
                                     data.id_loja +
-                                    '" class="btn btn-warning">Script</button>' +
-                                    '<button style="margin-top: 5px;" loja="' +
-                                    data.id_loja +
-                                    '" id="deleta_produto_' +
-                                    data.id_loja +
-                                    '"class="btn btn-danger">Deletar Produto</button>' +
+                                    '" class="btn btn-warning">Order Bump Gerel</button>' +
+                                    // '<button type="button" style="margin-top: 5px;" id="script_' +
+                                    // data.id_loja +
+                                    // '" class="btn btn-warning">Script</button>' +
+                                    // '<button style="margin-top: 5px;" loja="' +
+                                    // data.id_loja +
+                                    // '" id="deleta_produto_' +
+                                    // data.id_loja +
+                                    // '"class="btn btn-danger">Deletar Produto</button>' +
                                     "</div>" +
                                     '<div class="col-lg-5 card" style="margin: 5px; justify-content:center; align-items: center;">' +
                                     "</div>" +
-                                    '<div class="col-lg-12 card" style="margin: 5px; justify-content:center; align-items: center;">' +
-                                    "<span>Importar arquivo (.csv)</span>" +
-                                    '<input class="form-control" enctype="multipart/form-data" type="file" id="csv_loja_' +
-                                    data.id_loja +
-                                    '" >' +
-                                    '<button style="width: 100%; margin-top: 10px; height: 40px;" class="btn btn-primary" id="importa_csv_loja_' +
-                                    data.id_loja +
-                                    '">Importar</button>' +
-                                    "</div>" +
+                                    // '<div class="col-lg-12 card" style="margin: 5px; justify-content:center; align-items: center;">' +
+                                    // "<span>Importar arquivo (.csv)</span>" +
+                                    // '<input class="form-control" enctype="multipart/form-data" type="file" id="csv_loja_' +
+                                    // data.id_loja +
+                                    // '" >' +
+                                    // '<button style="width: 100%; margin-top: 10px; height: 40px;" class="btn btn-primary" id="importa_csv_loja_' +
+                                    // data.id_loja +
+                                    // '">Importar</button>' +
+                                    // "</div>" +
                                     "</div>" +
                                     "</div>" +
                                     "</div>" +
@@ -992,7 +999,14 @@ $(document).ready(function () {
                             _global.orderBump(data.id_loja);
 
                             $("#btn_salva_" + data.id_loja).click(function (e) {
-                                let thisbotao = $(this);
+                                let thisbotao = $(this),
+                                    alertText = $("#alert_text_" + data.id_loja).val();
+
+                                if (alertText.length > 70) {
+                                    alert('A barra de notificação não pode exceder 70 caracteres.');
+                                    return;
+                                }
+
                                 $(this).text("");
                                 $(this).removeClass("btn-primary");
                                 $(this).addClass("btn-success");
@@ -1021,6 +1035,10 @@ $(document).ready(function () {
                                 formData.append(
                                     "email_loja",
                                     $("#email_loja_" + data.id_loja).val()
+                                );
+                                formData.append(
+                                    "alert_text",
+                                    alertText
                                 );
                                 formData.append(
                                     "cnpj_loja",

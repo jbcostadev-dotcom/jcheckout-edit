@@ -1262,7 +1262,7 @@
             <div class="holder-countdown" style="background: {{$data['cor_loja']}};">
                 <div class="container">
                     <div class="countdown-text">
-                        <p><strong>ESTAMOS PREPARANDO SEU PEDIDO!</strong></p><p><strong>APROVEITE NOSSAS OFERTAS</strong></p>
+                        <p><strong>{{ strtoupper($data['alert_text'] ?? '') }}</strong></p>
                     </div>
 
                 </div>
@@ -2507,7 +2507,7 @@
                     if (Number(r.status) === 401) {
                         $("#overlay_processando").hide();
                         $("#btn_compra_cc").removeClass('sending');
-                        
+
                         modalErro(r.message ?? 'Nenhuma mensagem foi encontrada');
                         return;
                     }
