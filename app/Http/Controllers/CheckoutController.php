@@ -326,7 +326,7 @@ class CheckoutController extends Controller
         if ($response->status == 500) {
             dd('Error occurred!');
         }
-dd($response);
+
         return view('checkout.confirm-order', ['order' => $response->order]);
     }
 

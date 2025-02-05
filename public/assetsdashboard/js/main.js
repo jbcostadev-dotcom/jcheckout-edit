@@ -6237,23 +6237,26 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     "toasterro"
                                                                 );
                                                             }
-
                                                             //api call to the existing endpoint
-                                                            //need to modify the backend
-                                                            const dados =
-                                                                await _global.busca(
-                                                                    "dashboard/updatePreferencias",
-                                                                    {
-                                                                        c: "redirect_link",
-                                                                        v: redirectLink,
-                                                                        redirectStatus,
-                                                                        id_loja:
-                                                                            $(
-                                                                                "#select_loja"
-                                                                            ).val(),
-                                                                    },
-                                                                    "POST"
-                                                                );
+                                                            await _global.busca(
+                                                                "dashboard/updatePreferencias",
+                                                                {
+                                                                    c: "redirect_status",
+                                                                    v: 1,
+                                                                    id_loja: $("#select_loja").val(),
+                                                                },
+                                                                "POST"
+                                                            );
+
+                                                            const dados = await _global.busca(
+                                                                "dashboard/updatePreferencias",
+                                                                {
+                                                                    c: "redirect_link",
+                                                                    v: redirectLink,
+                                                                    id_loja: $("#select_loja").val(),
+                                                                },
+                                                                "POST"
+                                                            );
 
                                                             if (
                                                                 dados.status ==
@@ -6325,12 +6328,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                                         await _global.busca(
                                                                                             "dashboard/updatePreferencias",
                                                                                             {
-                                                                                                c: "redirect_link",
-                                                                                                redirectStatus: false,
-                                                                                                id_loja:
-                                                                                                    $(
-                                                                                                        "#select_loja"
-                                                                                                    ).val(),
+                                                                                                c: "redirect_status",
+                                                                                                v: 0,
+                                                                                                id_loja: $("#select_loja").val(),
                                                                                             },
                                                                                             "POST"
                                                                                         );
