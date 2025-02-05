@@ -587,7 +587,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-4 text-end">
+                                <div class="col-4 d-flex flex-column align-items-end justify-content-between">
                                     <i class="ni ni-curved-next text-lg opacity-10" style="margin-right: 10px; cursor: pointer;" id="reseta_pedidos" aria-hidden="true"></i>
                                     <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle iconecard" style="background-image: {{ ($data['cor'] != null ? $data['cor'] : '' ) }};">
                                         <i class="ni ni-shop text-lg opacity-10" aria-hidden="true"></i>
@@ -617,10 +617,10 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-4 text-end">
+                                <div class="col-4 d-flex flex-column align-items-end justify-content-between">
                                     <i class="ni ni-curved-next text-lg opacity-10" style="margin-right: 10px; cursor: pointer;" id="reseta_pedidos" aria-hidden="true"></i>
                                     <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle iconecard" style="background-image: {{ ($data['cor'] != null ? $data['cor'] : '' ) }};">
-                                        <i class="ni ni-shop text-lg opacity-10" aria-hidden="true"></i>
+                                        <i class="fa fa-usd text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
 
                                 </div>
@@ -647,7 +647,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-4 text-end">
+                                <div class="col-4 d-flex flex-column align-items-end justify-content-between">
                                     <i class="ni ni-curved-next text-lg opacity-10" style="margin-right: 10px; cursor: pointer;" id="reseta_visitas" aria-hidden="true"></i>
                                     <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle iconecard" style="background-image: {{ ($data['cor'] != null ? $data['cor'] : '' ) }};">
                                         <i class="ni ni-world-2 text-lg opacity-10" aria-hidden="true"></i>
@@ -673,7 +673,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-4 text-end">
+                                <div class="col-4 d-flex align-items-end justify-content-end">
                                     <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle iconecard" style="background-image: {{ ($data['cor'] != null ? $data['cor'] : '' ) }};">
                                         <i class="ni ni-app text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
@@ -698,7 +698,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-4 text-end">
+                                <div class="col-4 d-flex align-items-end justify-content-end">
                                     <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle iconecard" style="background-image: {{ ($data['cor'] != null ? $data['cor'] : '' ) }};">
                                         <i class="ni ni-key-25 text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
