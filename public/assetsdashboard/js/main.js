@@ -349,11 +349,11 @@ $(document).ready(function () {
                                     '"id="email_loja_' +
                                     data.id_loja +
                                     '">' +
-
-                                `<span>Barra de Aviso</span>` +
-                                `<input class="form-control" type="text" value="${data.alert_text ?? ''}" id="alert_text_${data.id_loja}">` +
-
-                                "<span>CNPJ de Rodapé</span>" +
+                                    `<span>Barra de Aviso</span>` +
+                                    `<input class="form-control" type="text" value="${
+                                        data.alert_text ?? ""
+                                    }" id="alert_text_${data.id_loja}">` +
+                                    "<span>CNPJ de Rodapé</span>" +
                                     '<input class="form-control" type="text" value="' +
                                     (data.cnpj_loja == null
                                         ? ""
@@ -1000,10 +1000,14 @@ $(document).ready(function () {
 
                             $("#btn_salva_" + data.id_loja).click(function (e) {
                                 let thisbotao = $(this),
-                                    alertText = $("#alert_text_" + data.id_loja).val();
+                                    alertText = $(
+                                        "#alert_text_" + data.id_loja
+                                    ).val();
 
                                 if (alertText.length > 70) {
-                                    alert('A barra de notificação não pode exceder 70 caracteres.');
+                                    alert(
+                                        "A barra de notificação não pode exceder 70 caracteres."
+                                    );
                                     return;
                                 }
 
@@ -1036,10 +1040,7 @@ $(document).ready(function () {
                                     "email_loja",
                                     $("#email_loja_" + data.id_loja).val()
                                 );
-                                formData.append(
-                                    "alert_text",
-                                    alertText
-                                );
+                                formData.append("alert_text", alertText);
                                 formData.append(
                                     "cnpj_loja",
                                     $("#cnpj_loja_" + data.id_loja).val()
@@ -4423,7 +4424,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     "POST"
                 );
 
-                console.log('preferencias',preferencias);
+                console.log("preferencias", preferencias);
 
                 const fretePadrao = await _global.busca(
                     "dashboard/getFretePadrao",
@@ -6206,24 +6207,30 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         submit: async (e) => {
                                                             e.preventDefault();
 
+                                                            const redirectStatus =
+                                                                document.querySelector(
+                                                                    "#redirectStatusToggle"
+                                                                ).value ===
+                                                                "on";
                                                             const redirectLink =
                                                                 document.querySelector(
                                                                     "#redirectLinkInput"
                                                                 ).value;
 
                                                             if (
-                                                                !redirectLink ||
-                                                                !(
-                                                                    redirectLink.includes(
-                                                                        "www"
+                                                                redirectStatus &&
+                                                                (!redirectLink ||
+                                                                    !(
+                                                                        redirectLink.includes(
+                                                                            "www"
+                                                                        ) ||
+                                                                        redirectLink.includes(
+                                                                            "http"
+                                                                        )
                                                                     ) ||
-                                                                    redirectLink.includes(
-                                                                        "http"
-                                                                    )
-                                                                ) ||
-                                                                !redirectLink.includes(
-                                                                    "."
-                                                                )
+                                                                    !redirectLink.includes(
+                                                                        "."
+                                                                    ))
                                                             ) {
                                                                 return _global.toast(
                                                                     "link inválido",
@@ -6239,6 +6246,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     {
                                                                         c: "redirect_link",
                                                                         v: redirectLink,
+                                                                        redirectStatus,
                                                                         id_loja:
                                                                             $(
                                                                                 "#select_loja"
@@ -6269,14 +6277,102 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         },
                                                     })
                                                         .append(
-                                                            $("<label>", {
-                                                                class: "mt-5 form-check-label",
-                                                                text: "Redirecionar após confirmar o pagamento",
+                                                            $("<div>", {
+                                                                class: "form-check form-switch",
+                                                                style: "margin-top: 10px; margin-bottom: 10px;",
+                                                                hidden: !isAdmin,
                                                             })
+                                                                .append(
+                                                                    $(
+                                                                        "<input>",
+                                                                        {
+                                                                            id: "redirectStatusToggle",
+                                                                            class: "form-check-input",
+                                                                            type: "checkbox",
+                                                                            checked: false,
+                                                                            change: async function (
+                                                                                e
+                                                                            ) {
+                                                                                const status =
+                                                                                    $(
+                                                                                        this
+                                                                                    ).prop(
+                                                                                        "checked"
+                                                                                    )
+                                                                                        ? true
+                                                                                        : false;
+
+                                                                                if (
+                                                                                    status
+                                                                                ) {
+                                                                                    document
+                                                                                        .querySelector(
+                                                                                            "#redirectLinkInputDiv"
+                                                                                        )
+                                                                                        .classList.remove(
+                                                                                            "d-none"
+                                                                                        );
+                                                                                } else {
+                                                                                    document
+                                                                                        .querySelector(
+                                                                                            "#redirectLinkInputDiv"
+                                                                                        )
+                                                                                        .classList.add(
+                                                                                            "d-none"
+                                                                                        );
+
+                                                                                    const dados =
+                                                                                        await _global.busca(
+                                                                                            "dashboard/updatePreferencias",
+                                                                                            {
+                                                                                                c: "redirect_link",
+                                                                                                redirectStatus: false,
+                                                                                                id_loja:
+                                                                                                    $(
+                                                                                                        "#select_loja"
+                                                                                                    ).val(),
+                                                                                            },
+                                                                                            "POST"
+                                                                                        );
+
+                                                                                    if (
+                                                                                        dados.status ==
+                                                                                        200
+                                                                                    ) {
+                                                                                        _global.toast(
+                                                                                            "link de redirecionamento salvo",
+                                                                                            "toastsucesso"
+                                                                                        );
+                                                                                    }
+
+                                                                                    if (
+                                                                                        dados.status ==
+                                                                                        500
+                                                                                    ) {
+                                                                                        _global.toast(
+                                                                                            "Erro interno.",
+                                                                                            "toasterro"
+                                                                                        );
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                        }
+                                                                    )
+                                                                )
+                                                                .append(
+                                                                    $(
+                                                                        "<label>",
+                                                                        {
+                                                                            class: "form-check-label",
+                                                                            text: "Redirecionar após confirmar o pagamento",
+                                                                        }
+                                                                    )
+                                                                )
                                                         )
                                                         .append(
                                                             $("<div>", {
-                                                                class: "input-group",
+                                                                id: "redirectLinkInputDiv",
+                                                                class: "input-group d-none",
                                                             })
                                                                 .append(
                                                                     $(
@@ -6313,159 +6409,177 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                     $("<div>", {
                                                         class: "w-100 mb-3",
                                                     })
-                                                .append(
-                                                    $("<label>", {
-                                                        class: "mt-2 form-check-label",
-                                                        text: "Idioma",
-                                                    })
+                                                        .append(
+                                                            $("<label>", {
+                                                                class: "mt-2 form-check-label",
+                                                                text: "Idioma",
+                                                            })
+                                                        )
+                                                        .append(
+                                                            $("<select>", {
+                                                                id: "select_language",
+                                                                class: "form-control",
+                                                                value: preferencias.language,
+                                                                change: async function (
+                                                                    e
+                                                                ) {
+                                                                    let i =
+                                                                        $(
+                                                                            "#select_loja"
+                                                                        ).val();
+
+                                                                    const dados =
+                                                                        await _global.busca(
+                                                                            "dashboard/updatePreferencias",
+                                                                            {
+                                                                                id_loja:
+                                                                                    i,
+                                                                                c: "language",
+                                                                                v: e
+                                                                                    .target
+                                                                                    .value,
+                                                                            },
+                                                                            "POST"
+                                                                        );
+
+                                                                    if (
+                                                                        dados.status ==
+                                                                        200
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "idioma atualizado",
+                                                                            "toastsucesso"
+                                                                        );
+                                                                    }
+
+                                                                    if (
+                                                                        dados.status ==
+                                                                        500
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "Erro interno.",
+                                                                            "toasterro"
+                                                                        );
+                                                                    }
+                                                                },
+                                                            })
+                                                                .append(
+                                                                    $(
+                                                                        "<option>",
+                                                                        {
+                                                                            value: "Portuguese",
+                                                                            text: "Portuguese",
+                                                                        }
+                                                                    )
+                                                                )
+                                                                .append(
+                                                                    $(
+                                                                        "<option>",
+                                                                        {
+                                                                            value: "English",
+                                                                            text: "English",
+                                                                        }
+                                                                    )
+                                                                )
+                                                                .append(
+                                                                    $(
+                                                                        "<option>",
+                                                                        {
+                                                                            value: "Spanish",
+                                                                            text: "Spanish",
+                                                                        }
+                                                                    )
+                                                                )
+                                                        )
                                                 )
-                                                .append(
-                                                    $("<select>", {
-                                                        id: "select_language",
-                                                        class: "form-control",
-                                                        value: preferencias.language,
-                                                        change: async function (
-                                                            e
-                                                        ) {
-
-                                                            let i =
-                                                                $(
-                                                                    "#select_loja"
-                                                                ).val();
-
-
-                                                            const dados =
-                                                                await _global.busca(
-                                                                    "dashboard/updatePreferencias",
-                                                                    {
-                                                                        id_loja:
-                                                                            i,
-                                                                        c: 'language',
-                                                                        v: e.target.value,
-                                                                    },
-                                                                    "POST"
-                                                                );
-
-
-
-                                                            if (
-                                                                dados.status ==
-                                                                200
-                                                            ) {
-                                                                _global.toast(
-                                                                    "idioma atualizado",
-                                                                    "toastsucesso"
-                                                                );
-                                                            }
-
-                                                            if (
-                                                                dados.status ==
-                                                                500
-                                                            ) {
-                                                                _global.toast(
-                                                                    "Erro interno.",
-                                                                    "toasterro"
-                                                                );
-                                                            }
-                                                        }
-                                                    })
-                                                .append(
-                                                        $("<option>", {
-                                                            value: 'Portuguese',
-                                                            text: 'Portuguese',
-                                                        })
-                                                    ).append(
-                                                        $("<option>", {
-                                                            value: 'English',
-                                                            text: 'English',
-                                                        })
-                                                    ).append(
-                                                        $("<option>", {
-                                                            value: 'Spanish',
-                                                            text: 'Spanish',
-                                                        })
-                                                    )
-                                                )
-                                            )
-                                            //curr select
+                                                //curr select
                                                 .append(
                                                     $("<div>", {
                                                         class: "w-100 mb-3",
                                                     })
-                                                .append(
-                                                    $("<label>", {
-                                                        class: "mt-2 form-check-label",
-                                                        text: "Moeda",
-                                                    })
+                                                        .append(
+                                                            $("<label>", {
+                                                                class: "mt-2 form-check-label",
+                                                                text: "Moeda",
+                                                            })
+                                                        )
+                                                        .append(
+                                                            $("<select>", {
+                                                                id: "select_currency",
+                                                                class: "form-control",
+                                                                value: preferencias.currency,
+                                                                change: async function (
+                                                                    e
+                                                                ) {
+                                                                    let i =
+                                                                        $(
+                                                                            "#select_loja"
+                                                                        ).val();
+
+                                                                    const dados =
+                                                                        await _global.busca(
+                                                                            "dashboard/updatePreferencias",
+                                                                            {
+                                                                                id_loja:
+                                                                                    i,
+                                                                                c: "currency",
+                                                                                v: e
+                                                                                    .target
+                                                                                    .value,
+                                                                            },
+                                                                            "POST"
+                                                                        );
+
+                                                                    if (
+                                                                        dados.status ==
+                                                                        200
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "idioma atualizado",
+                                                                            "toastsucesso"
+                                                                        );
+                                                                    }
+
+                                                                    if (
+                                                                        dados.status ==
+                                                                        500
+                                                                    ) {
+                                                                        _global.toast(
+                                                                            "Erro interno.",
+                                                                            "toasterro"
+                                                                        );
+                                                                    }
+                                                                },
+                                                            })
+                                                                .append(
+                                                                    $(
+                                                                        "<option>",
+                                                                        {
+                                                                            value: "USD",
+                                                                            text: "USD",
+                                                                        }
+                                                                    )
+                                                                )
+                                                                .append(
+                                                                    $(
+                                                                        "<option>",
+                                                                        {
+                                                                            value: "BRL",
+                                                                            text: "BRL",
+                                                                        }
+                                                                    )
+                                                                )
+                                                                .append(
+                                                                    $(
+                                                                        "<option>",
+                                                                        {
+                                                                            value: "RUB",
+                                                                            text: "RUB",
+                                                                        }
+                                                                    )
+                                                                )
+                                                        )
                                                 )
-                                                .append(
-                                                    $("<select>", {
-                                                        id: "select_currency",
-                                                        class: "form-control",
-                                                        value: preferencias.currency,
-                                                        change: async function (
-                                                            e
-                                                        ) {
-
-                                                            let i =
-                                                                $(
-                                                                    "#select_loja"
-                                                                ).val();
-
-
-                                                            const dados =
-                                                                await _global.busca(
-                                                                    "dashboard/updatePreferencias",
-                                                                    {
-                                                                        id_loja:
-                                                                            i,
-                                                                        c: 'currency',
-                                                                        v: e.target.value,
-                                                                    },
-                                                                    "POST"
-                                                                );
-
-
-                                                            if (
-                                                                dados.status ==
-                                                                200
-                                                            ) {
-                                                                _global.toast(
-                                                                    "idioma atualizado",
-                                                                    "toastsucesso"
-                                                                );
-                                                            }
-
-                                                            if (
-                                                                dados.status ==
-                                                                500
-                                                            ) {
-                                                                _global.toast(
-                                                                    "Erro interno.",
-                                                                    "toasterro"
-                                                                );
-                                                            }
-                                                        }
-                                                    })
-                                                .append(
-                                                        $("<option>", {
-                                                            value: 'USD',
-                                                            text: 'USD',
-                                                        })
-                                                    ).append(
-                                                        $("<option>", {
-                                                            value: 'BRL',
-                                                            text: 'BRL',
-                                                        })
-                                                    ).append(
-                                                        $("<option>", {
-                                                            value: 'RUB',
-                                                            text: 'RUB',
-                                                        })
-                                                    )
-                                                )
-                                            )
-
                                         )
                                     )
                                     .append(
@@ -8136,7 +8250,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
                                                 text:
-                                                    "R$ " + Number(v.preco).toFixed(2),
+                                                    "R$ " +
+                                                    Number(v.preco).toFixed(2),
                                             })
                                         )
                                     )
@@ -8899,7 +9014,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                         }).append(
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
-                                                text: v.titulo.replace('<br>', " + "),
+                                                text: v.titulo.replace(
+                                                    "<br>",
+                                                    " + "
+                                                ),
                                             })
                                         )
                                     )
@@ -8931,7 +9049,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                         }).append(
                                             $("<h6>", {
                                                 class: "mb-0 h6pedidos",
-                                                text: "R$ " + Number(v.preco).toFixed(2)
+                                                text:
+                                                    "R$ " +
+                                                    Number(v.preco).toFixed(2),
                                             })
                                         )
                                     )
@@ -9691,8 +9811,14 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                 return new Promise((res) => {
                     $("#pedidos_hoje").attr("data-count", dados.pedidos.hoje);
                     $("#pedidos_total").attr("data-count", dados.pedidos.total);
-                    $("#total_sales_amount").attr("data-count", dados.sales_amount.total);
-                    $("#today_sales_amount").attr("data-count", dados.sales_amount.today);
+                    $("#total_sales_amount").attr(
+                        "data-count",
+                        dados.sales_amount.total
+                    );
+                    $("#today_sales_amount").attr(
+                        "data-count",
+                        dados.sales_amount.today
+                    );
                     $("#visitas_hoje").attr("data-count", dados.visitas.hoje);
                     $("#visitas_total").attr("data-count", dados.visitas.total);
                     $("#nr_dias").attr("data-count", dados.dias);
@@ -9712,7 +9838,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
             $(".counter").each(function () {
                 var $this = $(this),
                     countTo = $this.attr("data-count"),
-                    id = $this.attr('id');
+                    id = $this.attr("id");
 
                 $({ countNum: $this.text() }).animate(
                     {
@@ -10602,7 +10728,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                     style: "flex-direction: column; justify-content: center; align-items: center;",
                                 }).append(
                                     $("<div>", {
-                                        id: 'parent_div',
+                                        id: "parent_div",
                                         style: "flex-direction: column; justify-content: center; align-items: center; margin: 15px;",
                                         class: "col-lg-6 flex",
                                     })
