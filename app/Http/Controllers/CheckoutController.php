@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class CheckoutController extends Controller
@@ -168,7 +167,7 @@ class CheckoutController extends Controller
                     'cartao' => false
                 ];
 
-                $retorno = array_merge($req, $listaMetodosPagamento);
+                $retorno = array_merge($retorno, $listaMetodosPagamento);
             }
         } else if ($passo == 4 && $id_checkout == 1) {
             try {
@@ -317,7 +316,9 @@ class CheckoutController extends Controller
     {
         $response = $this->conexao->conectar(
             'checkout/confirmOrder',
-            ['hash' => $hash],
+            [
+                'hash' => $hash
+            ],
             'POST'
         );
 
@@ -327,7 +328,7 @@ class CheckoutController extends Controller
             dd('Error occurred!');
         }
 
-        return view('checkout.confirm-order', ['order' => $response->order]);
+        return view('checkout.confirm-order', ['shop' => $response->shop, 'order' => $response->order]);
     }
 
     public function updateCarrinho(Request $request)
