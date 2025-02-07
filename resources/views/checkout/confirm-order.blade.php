@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <img src="{{ $shop->img_loja }}" style='max-height:44px; margin:15px 0 15px 15px' alt="logo">
+                    <img src="http://{{ $shop->img_loja }}" style='max-height:44px; margin:15px 0 15px 15px' alt="logo">
                 </div>
             </div>
         </div>
