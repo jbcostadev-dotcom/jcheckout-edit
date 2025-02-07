@@ -184,8 +184,6 @@ class CheckoutController extends Controller
 
                 $req = json_decode($req, true);
 
-                dd($req);
-
                 if ($req['status'] == 200) {
                     $retorno = array_merge($retorno, $req);
 
