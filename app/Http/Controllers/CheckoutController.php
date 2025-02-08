@@ -187,7 +187,7 @@ class CheckoutController extends Controller
                     $retorno = array_merge($retorno, $req);
 
                     if ($req['payment_method'] === 'pix') {
-                        return  view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/' . 5)->with('data', $retorno);
+                        return  view('/checkout/' . $this->checkoutLayout[$id_checkout] . '/5')->with('data', $retorno);
                     }
 
                     if ($req['payment_method'] === 'card' && $req['custom_error_message'] && !in_array($retorno['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid'])) {
