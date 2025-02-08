@@ -6283,7 +6283,6 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             $("<div>", {
                                                                 class: "form-check form-switch",
                                                                 style: "margin-top: 10px; margin-bottom: 10px;",
-                                                                hidden: !isAdmin,
                                                             })
                                                                 .append(
                                                                     $(
@@ -6292,7 +6291,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             id: "redirectStatusToggle",
                                                                             class: "form-check-input",
                                                                             type: "checkbox",
-                                                                            checked: false,
+                                                                            checked: !!preferencias.redirect_status,
                                                                             change: async function (
                                                                                 e
                                                                             ) {
@@ -6372,7 +6371,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         .append(
                                                             $("<div>", {
                                                                 id: "redirectLinkInputDiv",
-                                                                class: "input-group d-none",
+                                                                class: `input-group ${preferencias.redirect_status ? '' : 'd-none'}`,
                                                             })
                                                                 .append(
                                                                     $(
