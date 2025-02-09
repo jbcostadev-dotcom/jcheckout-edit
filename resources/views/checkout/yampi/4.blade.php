@@ -1346,7 +1346,7 @@
                     &&
                     in_array($data['payment_status'], ['processing', 'authorized', 'paid', 'waiting_payment', 'chargedback', 'in_protest', 'partially_paid'])
                 )
-                    window.location = `{{ $data['redirect_link'] ?? "checkout/{$data['hash']}/confirm-order" }}`;
+                    window.location = `{{ $data['redirect_link'] ?? url("checkout/{$data['hash']}/confirm-order") }}`;
                 @endif
             }
         });

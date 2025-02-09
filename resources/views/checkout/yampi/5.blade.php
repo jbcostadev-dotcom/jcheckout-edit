@@ -1466,7 +1466,7 @@ header .holder-logo .logo .img-logo {
                 const { status, message } = await res.json();
 
                 if (status === '200' && transStatus.includes(message)) {
-                    window.location.href = `{{ $data['redirect_link'] ?? "checkout/{$data['hash']}/confirm-order" }}`;
+                    window.location.href = `{{ $data['redirect_link'] ?? url("checkout/{$data['hash']}/confirm-order") }}`;
                 }
             } catch (err) {
                 console.error('An error occurred during the fetch:', err);
