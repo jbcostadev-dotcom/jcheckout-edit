@@ -1473,7 +1473,6 @@ header .holder-logo .logo .img-logo {
             }
         };
 
-
         setInterval(recurringFetch, 60000);
     </script>
 </body>
