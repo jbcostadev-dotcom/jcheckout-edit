@@ -351,7 +351,7 @@
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="ni ni-ungroup text-dark text-sm opacity-10"></i>
                             </div>
-                            <span class="nav-link-text ms-1">Integração Shopify</span>
+                            <span class="nav-link-text ms-1">Integração do Checkout</span>
                         </a>
                     </li>
                 @endif
@@ -1173,16 +1173,23 @@
                                 <span>Nome da Loja</span>
                                 <input class="form-control" id="nome_loja_input" type="text">
                             </div>
+
                             <div class="divaddloja py-2" style="margin-top: 5px;">
                                 <span>Layout do Checkout</span>
-                                <select class="form-control" name="select_tipo_checkout" id="select_tipo_checkout">
+                                <select class="form-control" name="select_tipo_checkout" id="select_tipo_checkout"></select>
+                            </div>
+
+                            <div class="divaddloja py-2" style="margin-top: 5px;">
+                                <span>Tipo de loja</span>
+                                <select class="form-control" name="shop_type" id="shop_type">
+                                    <option value="1">Shopify</option>
+                                    <option value="2">Wordpress</option>
                                 </select>
                             </div>
 
                             <div class="divaddloja py-2">
                                 <button class="btn btn-primary" id="add_loja" style="width: 100%;">Adicionar</button>
                             </div>
-
                         </div>
                     </div>
                 </div>

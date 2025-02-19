@@ -3551,6 +3551,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     data: {
                         token: usuario.token_checkout,
                         tipo_checkout: $("#select_tipo_checkout").val(),
+                        shop_type: $("#shop_type").val(),
                         tipo_usuario: usuario.tipo_usuario,
                         id_usuario: usuario.id_usuario,
                         nome_loja: $("#nome_loja_input").val(),
