@@ -434,7 +434,7 @@ $(document).ready(function () {
                                     '<button type="button" style="margin-top: 5px;background: #b412b4;" id="orderbump_' +
                                     data.id_loja +
                                     '" class="btn btn-warning">Order Bump</button>' +
-                                    '<button type="button" style="margin-top: 5px;background: #fe8d59;" id="orderbump_general' +
+                                    '<button type="button" style="margin-top: 5px;background: #fe8d59;" id="orderbump_general_' +
                                     data.id_loja +
                                     '" class="btn btn-warning">Order Bump Gerel</button>' +
                                     // '<button type="button" style="margin-top: 5px;" id="script_' +
@@ -1166,10 +1166,12 @@ $(document).ready(function () {
             });
         },
         orderBump(idloja) {
-            $("#orderbump_" + idloja)
+            $(`#orderbump_${idloja}, #orderbump_general_${idloja}`)
                 .off("click")
                 .on("click", async function (e) {
                     e.preventDefault();
+
+                    let tag = $(this).attr('id').startsWith('orderbump_general_') ? 'orderbump_general' : 'orderbump';
 
                     let id = $("#grid_produtos_" + idloja).jqxGrid(
                         "getselectedrowindex"
@@ -1181,6 +1183,7 @@ $(document).ready(function () {
                     let produto = dados.id_produto;
 
                     $("#orderbump_" + idloja).prop("disabled", true);
+                    $("#orderbump_general_" + idloja).prop("disabled", true);
                     $("#adiciona_produto_" + idloja).prop("disabled", true);
                     $("#adiciona_variacao_" + idloja).prop("disabled", true);
                     $("#deleta_produto_" + idloja).prop("disabled", true);
@@ -1218,6 +1221,10 @@ $(document).ready(function () {
                                             click: function (e) {
                                                 $("#temp_orderbump").remove();
                                                 $("#orderbump_" + idloja).prop(
+                                                    "disabled",
+                                                    false
+                                                );
+                                                $("#orderbump_general_" + idloja).prop(
                                                     "disabled",
                                                     false
                                                 );
@@ -1280,12 +1287,14 @@ $(document).ready(function () {
                                         .append(
                                             $("<span>", {
                                                 text: "Produto Atrelado ao Order Bump",
+                                                hidden: tag === 'orderbump_general',
                                             })
                                         )
                                         .append(
                                             $("<select>", {
                                                 class: "form-control",
                                                 id: "select_orderbump",
+                                                hidden: tag === 'orderbump_general',
                                             }).append(
                                                 $("<option>", {
                                                     value: "-1",
@@ -1303,10 +1312,9 @@ $(document).ready(function () {
                                                 type: "number",
                                                 step: "0.01",
                                                 min: "0",
-                                                value: req.vl ?? "",
+                                                value: tag === 'orderbump_general' ? req.gp : req.vl,
                                                 max: "100000",
-                                                placeholder:
-                                                    "Valor, por ex: 19,90",
+                                                placeholder: "Valor, por ex: 19,90",
                                                 id: "orderbump_valor",
                                                 class: "form-control",
                                             })
@@ -1354,6 +1362,7 @@ $(document).ready(function () {
                                                                 p: p,
                                                                 o_p: o_p,
                                                                 o_vl: o_vl,
+                                                                tag,
                                                             },
                                                             "POST"
                                                         );
