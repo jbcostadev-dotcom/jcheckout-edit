@@ -5048,6 +5048,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     text: "PagShield",
                                                                 })
                                                             )
+                                                            .append(
+                                                                $("<option>", {
+                                                                    value: "brazaPay",
+                                                                    text: "BrazaPay",
+                                                                })
+                                                            )
                                                     )
                                                     .append(
                                                         $("<button>", {
@@ -5080,8 +5086,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     ).val();
 
                                                                 const isPagshieldSelected =
-                                                                    banco ===
-                                                                    "pagShield";
+                                                                    banco === "pagShield" || banco === "brazaPay";
 
                                                                 const publicKey =
                                                                     $(
@@ -12395,7 +12400,7 @@ Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
         const nonPagshieldDiv = $("#div_non_pagshield");
         const pagshieldDiv = $("#div_pagshield");
 
-        if ($(this).val() === "pagShield") {
+        if ($(this).val() === "pagShield" || $(this).val() === "brazaPay") {
             commonInput.text("Secret Key");
             nonPagshieldDiv.hide();
             pagshieldDiv.removeClass("d-none");
