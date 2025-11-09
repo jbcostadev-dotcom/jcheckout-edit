@@ -601,6 +601,20 @@ header .holder-logo .logo .img-logo {
             background-color: #00b12d;
         }
 
+        /* Tooltip feedback for copied code */
+        .js-copy-paste .tooltip-copy {
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity .2s ease, transform .2s ease;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .js-copy-paste .tooltip-copy.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /
         IMAGEM DE COMO PAGAR O PIX APÓS GERAR O PIX
 
