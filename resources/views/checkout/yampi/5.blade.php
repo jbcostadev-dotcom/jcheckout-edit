@@ -1205,7 +1205,7 @@ header .holder-logo .logo .img-logo {
 
                                 <div class="inline-block">
                                     <a
-                                        href=":javascript"
+                                        href="javascript:void(0)"
                                         id="btn_copia_mobile"
                                         class="js-copy-paste medium f15 relative mt10 flex all-center"
                                         data-copy="{{($data['status']==200 ? $data['brcode'] : 'Pagamento não configurado')}}"
