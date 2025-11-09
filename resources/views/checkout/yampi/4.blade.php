@@ -1059,7 +1059,7 @@
                 </nav>
 
                 <a
-                    href="javascript:"
+                    href="javascript:void(0)"
                     class="st-pusher"
                 >
                 </a>
