@@ -1426,28 +1426,61 @@ header .holder-logo .logo .img-logo {
             console.log("|           ^_^          |");
         })
 
-        $("#btn_copia").click(function (e) {
+        const copyPixCode = async (code) => {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(code);
+                } else {
+                    const el = document.createElement('textarea');
+                    el.value = code;
+                    el.setAttribute('readonly', '');
+                    el.style.position = 'absolute';
+                    el.style.left = '-9999px';
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                }
+                return true;
+            } catch (err) {
+                console.error('Copy to clipboard failed:', err);
+                return false;
+            }
+        };
 
-            $.post('/checkout/pixc', {
-                hash: $('[a_hash="h_checkout"]').attr('hash')
-            }, (r) => {
-                console.log(r + ' ----')
-            })
-        })
+        const showTooltip = (btn) => {
+            try {
+                const tooltip = $(btn).find('.tooltip-copy');
+                tooltip.addClass('active');
+                setTimeout(() => tooltip.removeClass('active'), 1500);
+            } catch (_) {}
+        };
 
-        $("#btn_copia_mobile").click(function (e) {
-            fbq('track', 'Purchase',
-                {
+        $("#btn_copia, #btn_copia_mobile").on('click', async function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const code = $(this).data('copy');
+            if (code && typeof code === 'string' && code.length > 10) {
+                const ok = await copyPixCode(code);
+                if (ok) showTooltip(this);
+            }
+
+            // analytics
+            try {
+                fbq('track', 'Purchase', {
                     currency: "BRL",
                     value: $("#_vl").val()
-
                 });
+            } catch (_) {}
+
+            // backend flag
             $.post('/checkout/pixc', {
                 hash: $('[a_hash="h_checkout"]').attr('hash')
             }, (r) => {
                 console.log(r + ' ----')
             })
-        })
+        });
     </script>
 
     <script>
