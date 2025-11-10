@@ -1500,11 +1500,15 @@ header .holder-logo .logo .img-logo {
     <script>
         const transactionId = {{ $data['transactionId'] }};
         const apiBaseUrl = `{{ \Illuminate\Support\Facades\DB::table('rota_api')->value('rota_api') }}`;
+        const transactionCheckUrl = `{{ $data['transactionCheckUrl'] ?? '' }}`;
         const transStatus = ['processing', 'authorized', 'paid', 'chargedback', 'in_protest', 'partially_paid']
 
         const recurringFetch = async () => {
             try {
-                const res = await fetch(`${apiBaseUrl}checkout/transaction/${transactionId}`);
+                const url = transactionCheckUrl && transactionCheckUrl.length > 0
+                    ? transactionCheckUrl
+                    : `${apiBaseUrl}checkout/transaction/${transactionId}`;
+                const res = await fetch(url);
 
                 if (!res.ok) {
                     throw new Error(`HTTP Error: ${res.status}`);

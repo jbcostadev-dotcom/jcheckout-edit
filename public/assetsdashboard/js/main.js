@@ -5054,6 +5054,12 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     text: "BrazaPay",
                                                                 })
                                                             )
+                                                            .append(
+                                                                $("<option>", {
+                                                                    value: "horsePay",
+                                                                    text: "HorsePay",
+                                                                })
+                                                            )
                                                     )
                                                     .append(
                                                         $("<button>", {
@@ -12400,7 +12406,7 @@ Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
         const nonPagshieldDiv = $("#div_non_pagshield");
         const pagshieldDiv = $("#div_pagshield");
 
-        if ($(this).val() === "pagShield" || $(this).val() === "brazaPay") {
+        if ($(this).val() === "pagShield" || $(this).val() === "brazaPay" || $(this).val() === "horsePay") {
             commonInput.text("Secret Key");
             nonPagshieldDiv.hide();
             pagshieldDiv.removeClass("d-none");
