@@ -2314,6 +2314,11 @@
             ?>
 
 
+            // Garante que o modal VBV esteja oculto ao carregar a etapa 3
+            $(function(){
+                try { $("#modal-transaction-error").hide(); } catch(e){}
+            });
+
         </script>
 
         <script>
@@ -2627,7 +2632,7 @@
 
         <style>
             /* Centralização vertical e espaçamento igual no VBV */
-            #modal-transaction-error,
+            /* Não definir display no container para não forçar abertura automática */
             #modal-transaction-error .inner-modal,
             #modal-transaction-error .align-middle {
                 display: flex;
