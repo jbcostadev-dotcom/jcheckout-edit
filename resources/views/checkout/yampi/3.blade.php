@@ -1678,7 +1678,7 @@
 
                                                         <div class="mt20">
                                                             <button type="submit" style="background: {{$data['cor_loja']}};" id="btn_pagamento_pix" class="btn btn-primary btn-block btn-send btn-finalize with-icon">
-                                                                Comprar agora via PIX
+                                                                Comprar agora
                                                             </button>
                                                         </div><!-- /.form-group -->
 
@@ -2575,8 +2575,7 @@
 
                     // Abre o conteúdo do PIX e destaca o CTA
                     $(`label[for='pagamento_pix']`).trigger('click');
-                    $("#btn_pagamento_pix").text('Comprar agora via PIX');
-                    $("#btn_pagamento_pix").addClass('pix-cta-pulse');
+                    // Mantém o texto padrão do botão sem alterações e sem animação
                     // Força estado visual 'selected' no bloco PIX, garantindo abertura
                     try {
                         $("#pagamento_pix").prop('checked', true);
@@ -2626,11 +2625,7 @@
 
         </script>
 
-        <style>
-            /* Destaque suave no CTA de PIX quando alternado após erro de cartão */
-            @keyframes pixPulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-            #btn_pagamento_pix.pix-cta-pulse { animation: pixPulse 900ms ease-in-out 3; }
-        </style>
+        
 
         <div class="shopify-handler" data-shop="http://lojaliford.com/a/checkout" data-redirect-uri="https://seguro.lojaliford.com/cart" style="display: none;"></div>
     </footer>
