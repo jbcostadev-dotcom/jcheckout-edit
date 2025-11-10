@@ -1087,7 +1087,7 @@
                                     <div class="testimonials">
                                         <div class="box-testimonial clearfix">
                                             <div class="box-testimonial__photo pull-left ml20">
-                                                <img src="/logobanco/{{$data['logo']['img']}}.png" alt="mercadopago" class="photo">
+            <img src="http://{{$data['img_loja']}}" alt="logo da loja" class="photo">
                                             </div>
                                             <!-- /.box-testimonial__photo -->
                                             <div class="box-testimonial__infos pull-left ml15">

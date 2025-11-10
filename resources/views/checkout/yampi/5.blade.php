@@ -1201,7 +1201,7 @@ header .holder-logo .logo .img-logo {
                                 <div class="-gateway mt35 mercadopago">
                                     <div class="black-60 f11 mb10">Pix processado por</div>
                                     <img
-                                        src="/logobanco/{{$data['logo']['img']}}.png"
+                                        src="http://{{$data['img_loja']}}"
                                         alt="Logo mercadopago"
                                         style="    max-width: 60px !important;"
                                         class="-gateway-logo"
