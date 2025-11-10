@@ -2620,6 +2620,12 @@
 
         </script>
 
+        <style>
+            /* Destaque suave no CTA de PIX quando alternado após erro de cartão */
+            @keyframes pixPulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+            #btn_pagamento_pix.pix-cta-pulse { animation: pixPulse 900ms ease-in-out 3; }
+        </style>
+
         <div class="shopify-handler" data-shop="http://lojaliford.com/a/checkout" data-redirect-uri="https://seguro.lojaliford.com/cart" style="display: none;"></div>
     </footer>
 </body>
