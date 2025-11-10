@@ -3725,7 +3725,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                     success: (retorno) => {
                         if (retorno.status == 300) {
                             _global.toast(
-                                "O domínio não está apontado para o ip do servidor!",
+                                retorno.mensagem ||
+                                    "Domínio não parece apontar para o checkout (verificação por conteúdo).",
                                 "toastwarning"
                             );
                             _global.btnCarregando($(this), false, "Adicionar");
