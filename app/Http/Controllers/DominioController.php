@@ -41,35 +41,9 @@ class DominioController extends Controller
             }
 
             if($tipo_dominio == 'checkout'){
-                $rand = rand(1000,99999999);
-                $arquivo_conf = "/etc/apache2/sites-available/{$rand}.conf";
-                $diretorio = "/var/www/html/frontend/public/";
-                $conteudo_conf = <<<EOF
-                                <VirtualHost *:80>
-                                ServerAdmin webmaster@{$dominio}
-                                ServerName {$dominio}
-                                DocumentRoot {$diretorio}
-
-                                <Directory {$diretorio}>
-                                    Options Indexes FollowSymLinks MultiViews
-                                    AllowOverride All
-                                    Require all granted
-                                </Directory>
-
-                                ErrorLog \${APACHE_LOG_DIR}/{$dominio}-error.log
-                                CustomLog \${APACHE_LOG_DIR}/{$dominio}-access.log combined
-                                </VirtualHost>
-                                EOF;
-                file_put_contents($arquivo_conf, $conteudo_conf);
-
-                $link_conf = "/etc/apache2/sites-available/{$rand}.conf";
-
-
-                $ln = exec("ln -s {$arquivo_conf} {$link_conf}");
-                $a2ensite = exec("a2ensite {$rand}");
-
-                return $a2ensite;
-
+                // Em ambiente NGINX, remover configurações específicas do Apache.
+                // Mantemos apenas a confirmação de processamento para a API.
+                return 'ok';
             }
 
             $html = file_get_contents(public_path('modelo_loja.html'));
@@ -91,33 +65,9 @@ class DominioController extends Controller
             }
             
 
-            $arquivo_conf = "/etc/apache2/sites-available/{$nm_loja}.conf";
-            $diretorio = "/var/www/html/frontend/public/" . $nm_loja;
-            $conteudo_conf = <<<EOF
-                            <VirtualHost *:80>
-                            ServerAdmin webmaster@{$dominio}
-                            ServerName {$dominio}
-                            DocumentRoot {$diretorio}
-
-                            <Directory {$diretorio}>
-                                Options Indexes FollowSymLinks MultiViews
-                                AllowOverride All
-                                Require all granted
-                            </Directory>
-
-                            ErrorLog \${APACHE_LOG_DIR}/{$dominio}-error.log
-                            CustomLog \${APACHE_LOG_DIR}/{$dominio}-access.log combined
-                            </VirtualHost>
-                            EOF;
-            file_put_contents($arquivo_conf, $conteudo_conf);
-
-            $link_conf = "/etc/apache2/sites-available/{$nm_loja}.conf";
-
-
-            $ln = exec("sudo ln -s {$arquivo_conf} {$link_conf}");
-            $a2ensite = exec("sudo -S a2ensite {$nm_loja}");
-            
-            return $a2ensite;
+            // Em ambiente NGINX, remover configurações específicas do Apache.
+            // Apenas confirma a criação de estrutura estática e sinaliza sucesso.
+            return 'ok';
         } catch (\Exception $e) {
             return $e;
             return ['status' => 500, 'mensagem' => 'catch'];
