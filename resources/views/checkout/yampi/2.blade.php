@@ -2084,7 +2084,7 @@ header .holder-logo .logo .img-logo {
                 </div><!-- /.inner-modal -->
             </div><!-- /.overlay-transaction -->
 
-            <div id="modal-transaction-error" class="modal overlay overlay-transaction-error">
+            <div id="modal-shipment-error" class="modal overlay overlay-transaction-error">
                 <div class="inner-modal">
                     <div class="align-middle black-60">
                         <div class="modal-content text-center">
@@ -2109,7 +2109,7 @@ header .holder-logo .logo .img-logo {
                                 <span class="js-nupay-tip">Pode ser que o pagamento não tenha sido aprovado por você não ter uma conta no Nubank, caso você tenha conta verifique seu saldo e limite e tente novamente.</span>
                             </p><!-- /.f11 -->
 
-                            <a href="#" class="modal-close" data-target="modal-transaction-error">[x] fechar</a>
+                            <a href="#" class="modal-close" data-target="modal-shipment-error">[x] fechar</a>
                         </div><!-- /.modal-content -->
                     </div><!-- /.align-middle -->
                 </div><!-- /.inner-modal -->
