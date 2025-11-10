@@ -1476,7 +1476,13 @@ $("#compraragora").click(()=>{
                 $("#modal-alert").addClass('open');
                 }, 1500)
             }else{
+                // Erro no pagamento via cartão: abrir fluxo de PIX automaticamente
                 modalErro(($("#mensagem_erro").val() == '' ? $("#mensagem_padrao").val() : $("#mensagem_erro").val()))
+                metodoPagamento = 'pix';
+                try{
+                  await atualizaMetodoPagamento();
+                }catch(e){}
+                location.href = `/checkout/3/${$("#_hash").val()}/2`;
             }
             res();
         })

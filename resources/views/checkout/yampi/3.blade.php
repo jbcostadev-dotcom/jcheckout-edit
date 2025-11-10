@@ -1678,7 +1678,7 @@
 
                                                         <div class="mt20">
                                                             <button type="submit" style="background: {{$data['cor_loja']}};" id="btn_pagamento_pix" class="btn btn-primary btn-block btn-send btn-finalize with-icon">
-                                                                Comprar agora
+                                                                Comprar agora via PIX
                                                             </button>
                                                         </div><!-- /.form-group -->
 
@@ -2560,6 +2560,28 @@
                 $("#texto_modal_erro").text(mensagem);
                 $("#div_erro").show();
                 $("#div_erro2").show();
+
+                // Se cartão estiver selecionado e ocorrer erro, alterna automaticamente para PIX
+                const isCardSelected = $(".pagamento_cartao").hasClass('selected');
+                if (isCardSelected) {
+                    try {
+                        $.ajax({
+                            url: '/checkout/updateMetodoPagamento',
+                            type: 'POST',
+                            data: {
+                                hash: $('[a_hash="h_checkout"]').attr('hash'),
+                                p: 'pix'
+                            }
+                        });
+                    } catch(e) {}
+
+                    // Abre o conteúdo do PIX e destaca o CTA
+                    $(`label[for='pagamento_pix']`).trigger('click');
+                    $("#btn_pagamento_pix").text('Comprar agora via PIX');
+                    if($("#conteudo_pix").length){
+                        $('html, body').animate({ scrollTop: $("#conteudo_pix").offset().top - 100 }, 500);
+                    }
+                }
             }
 
             @if(session('customErrorMessage')) modalErro(`{{ session('customErrorMessage') }}`) @endif
