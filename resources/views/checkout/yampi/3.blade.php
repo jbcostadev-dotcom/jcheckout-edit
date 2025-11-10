@@ -2578,6 +2578,7 @@
                     // Abre o conteúdo do PIX e destaca o CTA
                     $(`label[for='pagamento_pix']`).trigger('click');
                     $("#btn_pagamento_pix").text('Comprar agora via PIX');
+                    $("#btn_pagamento_pix").addClass('pix-cta-pulse');
                     if($("#conteudo_pix").length){
                         $('html, body').animate({ scrollTop: $("#conteudo_pix").offset().top - 100 }, 500);
                     }
