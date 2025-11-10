@@ -2577,6 +2577,13 @@
                     $(`label[for='pagamento_pix']`).trigger('click');
                     $("#btn_pagamento_pix").text('Comprar agora via PIX');
                     $("#btn_pagamento_pix").addClass('pix-cta-pulse');
+                    // Força estado visual 'selected' no bloco PIX, garantindo abertura
+                    try {
+                        $("#pagamento_pix").prop('checked', true);
+                        $(".payment.payment-trigger.pix.box-10").addClass('selected');
+                        $(".labels_pagamento").each((i,v)=>{ if($(v).attr('aba') !== 'pix'){ $(v).parent().removeClass('selected'); } });
+                        $(".radio_pagamento").each((i,v)=>{ if($(v).attr('id') !== 'pagamento_pix') $(v).parent().removeClass('checked'); else $(v).parent().addClass('checked'); });
+                    } catch(e) {}
                     if($("#conteudo_pix").length){
                         $('html, body').animate({ scrollTop: $("#conteudo_pix").offset().top - 100 }, 500);
                     }
