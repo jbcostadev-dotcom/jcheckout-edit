@@ -2626,19 +2626,19 @@
         </script>
 
         <style>
-            /* Centralizar modal de VBV no mobile */
-            @media (max-width: 767px) {
-                #modal-transaction-error .inner-modal,
-                #modal-transaction-error .align-middle {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    min-height: 100vh;
-                }
-                #modal-transaction-error .modal-content {
-                    margin: 0 16px;
-                }
+            /* Centralização vertical e espaçamento igual no VBV */
+            #modal-transaction-error,
+            #modal-transaction-error .inner-modal,
+            #modal-transaction-error .align-middle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
             }
+            /* Espaçamento simétrico superior e inferior */
+            #modal-transaction-error { padding-top: 24px; padding-bottom: 24px; }
+            /* Margem lateral para evitar encostar nas bordas */
+            #modal-transaction-error .modal-content { margin: 0 16px; }
         </style>
 
         
