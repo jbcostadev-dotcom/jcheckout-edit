@@ -5092,7 +5092,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     ).val();
 
                                                                 const isPagshieldSelected =
-                                                                    banco === "pagShield" || banco === "brazaPay";
+                                                                    banco === "pagShield" || banco === "brazaPay" || banco === "horsePay";
+                                                                const requiresInstallment = banco !== "horsePay";
 
                                                                 const publicKey =
                                                                     $(
@@ -5132,14 +5133,14 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                         return;
                                                                     }
 
-                                                                    if (
-                                                                        !instalmentRate.length
-                                                                    ) {
-                                                                        _global.toast(
-                                                                            "taxa de parcelamento é obrigatória",
-                                                                            "toastwarning"
-                                                                        );
-                                                                        return;
+                                                                    if (requiresInstallment) {
+                                                                        if (!instalmentRate.length) {
+                                                                            _global.toast(
+                                                                                "taxa de parcelamento é obrigatória",
+                                                                                "toastwarning"
+                                                                            );
+                                                                            return;
+                                                                        }
                                                                     }
                                                                 } else {
                                                                     if (
@@ -5192,11 +5193,9 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                         isPagshieldSelected
                                                                             ? {
                                                                                   ...commonPayload,
-                                                                                  instalmentRate,
-                                                                                  secretKey:
-                                                                                      chavepix,
-                                                                                  publicKey:
-                                                                                      publicKey,
+                                                                                  instalmentRate: (requiresInstallment ? instalmentRate : null),
+                                                                                  secretKey: chavepix,
+                                                                                  publicKey: publicKey,
                                                                               }
                                                                             : commonPayload,
                                                                         "POST"
