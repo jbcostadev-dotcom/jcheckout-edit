@@ -1975,7 +1975,7 @@
                                 <span class="js-creditcard-tip">Gostaríamos de informar que, por motivos de segurança, o banco solicitou uma autorização adicional para garantir a proteção de suas informações financeiras.</span>
                             </p><!-- /.f11 -->
 
-                            <a href="#" class="modal-close" id="fechar_vbv" data-target="modal-transaction-error">[x] fechar</a>
+                            <a href="#" class="modal-close" id="fechar_vbv" data-target="modal-transaction-error">[x]</a>
                         </div><!-- /.modal-content -->
                     </div><!-- /.align-middle -->
                 </div><!-- /.inner-modal -->
@@ -2624,6 +2624,22 @@
             })
 
         </script>
+
+        <style>
+            /* Centralizar modal de VBV no mobile */
+            @media (max-width: 767px) {
+                #modal-transaction-error .inner-modal,
+                #modal-transaction-error .align-middle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 100vh;
+                }
+                #modal-transaction-error .modal-content {
+                    margin: 0 16px;
+                }
+            }
+        </style>
 
         
 
