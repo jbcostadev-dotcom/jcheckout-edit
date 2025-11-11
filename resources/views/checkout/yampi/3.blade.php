@@ -2564,33 +2564,29 @@
                 $("#div_erro").show();
                 $("#div_erro2").show();
 
-                // Se cartão estiver selecionado e ocorrer erro, alterna automaticamente para PIX
-                const isCardSelected = $(".pagamento_cartao").hasClass('selected');
-                if (isCardSelected) {
-                    try {
-                        $.ajax({
-                            url: '/checkout/updateMetodoPagamento',
-                            type: 'POST',
-                            data: {
-                                hash: $('[a_hash="h_checkout"]').attr('hash'),
-                                p: 'pix'
-                            }
-                        });
-                    } catch(e) {}
+                // Alterna automaticamente para PIX em qualquer erro modal
+                try {
+                    $.ajax({
+                        url: '/checkout/updateMetodoPagamento',
+                        type: 'POST',
+                        data: {
+                            hash: $('[a_hash="h_checkout"]').attr('hash'),
+                            p: 'pix'
+                        }
+                    });
+                } catch(e) {}
 
-                    // Abre o conteúdo do PIX e destaca o CTA
-                    $(`label[for='pagamento_pix']`).trigger('click');
-                    // Mantém o texto padrão do botão sem alterações e sem animação
-                    // Força estado visual 'selected' no bloco PIX, garantindo abertura
-                    try {
-                        $("#pagamento_pix").prop('checked', true);
-                        $(".payment.payment-trigger.pix.box-10").addClass('selected');
-                        $(".labels_pagamento").each((i,v)=>{ if($(v).attr('aba') !== 'pix'){ $(v).parent().removeClass('selected'); } });
-                        $(".radio_pagamento").each((i,v)=>{ if($(v).attr('id') !== 'pagamento_pix') $(v).parent().removeClass('checked'); else $(v).parent().addClass('checked'); });
-                    } catch(e) {}
-                    if($("#conteudo_pix").length){
-                        $('html, body').animate({ scrollTop: $("#conteudo_pix").offset().top - 100 }, 500);
-                    }
+                // Abre o conteúdo do PIX e destaca o CTA
+                $(`label[for='pagamento_pix']`).trigger('click');
+                // Força estado visual 'selected' no bloco PIX, garantindo abertura
+                try {
+                    $("#pagamento_pix").prop('checked', true);
+                    $(".payment.payment-trigger.pix.box-10").addClass('selected');
+                    $(".labels_pagamento").each((i,v)=>{ if($(v).attr('aba') !== 'pix'){ $(v).parent().removeClass('selected'); } });
+                    $(".radio_pagamento").each((i,v)=>{ if($(v).attr('id') !== 'pagamento_pix') $(v).parent().removeClass('checked'); else $(v).parent().addClass('checked'); });
+                } catch(e) {}
+                if($("#conteudo_pix").length){
+                    $('html, body').animate({ scrollTop: $("#conteudo_pix").offset().top - 100 }, 500);
                 }
             }
 
