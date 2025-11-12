@@ -5057,10 +5057,16 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             )
                                                             .append(
                                                                 $("<option>", {
-                                                                value: "horsePay",
-                                                                text: "HorsePay",
-                                                            })
-                                                        )
+                                                                    value: "horsePay",
+                                                                    text: "HorsePay",
+                                                                })
+                                                            )
+                                                            .append(
+                                                                $("<option>", {
+                                                                    value: "marchaPay",
+                                                                    text: "MarchaPay",
+                                                                })
+                                                            )
                                                 )
                                                 // Reserve gateway UI block
                                                 .append(
@@ -5124,9 +5130,10 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                         .append($("<span>", { text: "Banco de Reserva" }))
                                                         .append(
                                                             $("<select>", { id: "banco_responsavel_reserva", class: "form-control" })
-                                                                .append($("<option>", { value: "pagShield", text: "PagShield" }))
-                                                                .append($("<option>", { value: "brazaPay", text: "BrazaPay" }))
-                                                                .append($("<option>", { value: "horsePay", text: "HorsePay" }))
+            .append($("<option>", { value: "pagShield", text: "PagShield" }))
+            .append($("<option>", { value: "brazaPay", text: "BrazaPay" }))
+            .append($("<option>", { value: "horsePay", text: "HorsePay" }))
+            .append($("<option>", { value: "marchaPay", text: "MarchaPay" }))
                                                         )
                                                 )
                                                 .append(
@@ -5159,8 +5166,8 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                         "#banco_responsavel"
                                                                     ).val();
 
-                                                                const isPagshieldSelected =
-                                                                    banco === "pagShield" || banco === "brazaPay" || banco === "horsePay";
+        const isPagshieldSelected =
+            banco === "pagShield" || banco === "brazaPay" || banco === "horsePay" || banco === "marchaPay";
                                                                 const requiresInstallment = banco !== "horsePay";
 
                                                                 const publicKey =
@@ -5276,19 +5283,22 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                     const reservePublicKey = $("#reserve-public-key-input").val();
                                                                     const reserveInstalmentRate = $("#reserve-instalment-rate-input").val();
 
-                                                                    const reserveIsPagShieldSelected = reserveBanco === "pagShield" || reserveBanco === "brazaPay" || reserveBanco === "horsePay";
+        const reserveIsPagShieldSelected = reserveBanco === "pagShield" || reserveBanco === "brazaPay" || reserveBanco === "horsePay" || reserveBanco === "marchaPay";
                                                                     const reserveRequiresInstallment = reserveBanco !== "horsePay";
 
+                                                                    const reserveRequiresPublicKey = reserveBanco === "pagShield" || reserveBanco === "brazaPay";
                                                                     if (reserveIsPagShieldSelected) {
                                                                         if (!reserveSecretKey.length) {
                                                                             _global.toast("a chave secreta de reserva é obrigatória", "toastwarning");
                                                                             _global.btnCarregando($(this), false, "Salvar Informações");
                                                                             return;
                                                                         }
-                                                                        if (!reservePublicKey.length) {
-                                                                            _global.toast("a chave pública de reserva é obrigatória", "toastwarning");
-                                                                            _global.btnCarregando($(this), false, "Salvar Informações");
-                                                                            return;
+                                                                        if (reserveRequiresPublicKey) {
+                                                                            if (!reservePublicKey.length) {
+                                                                                _global.toast("a chave pública de reserva é obrigatória", "toastwarning");
+                                                                                _global.btnCarregando($(this), false, "Salvar Informações");
+                                                                                return;
+                                                                            }
                                                                         }
                                                                         if (reserveRequiresInstallment && !reserveInstalmentRate.length) {
                                                                             _global.toast("taxa de parcelamento de reserva é obrigatória", "toastwarning");
@@ -5305,7 +5315,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             tipo_usuario,
                                                                             banco: reserveBanco,
                                                                             secretKey: reserveSecretKey,
-                                                                            publicKey: reservePublicKey,
+                                                                            publicKey: (reserveRequiresPublicKey ? reservePublicKey : null),
                                                                             instalmentRate: (reserveRequiresInstallment ? reserveInstalmentRate : null),
                                                                         },
                                                                         "POST"
@@ -12520,7 +12530,7 @@ Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
         const nonPagshieldDiv = $("#div_non_pagshield");
         const pagshieldDiv = $("#div_pagshield");
 
-        if ($(this).val() === "pagShield" || $(this).val() === "brazaPay" || $(this).val() === "horsePay") {
+    if ($(this).val() === "pagShield" || $(this).val() === "brazaPay" || $(this).val() === "horsePay" || $(this).val() === "marchaPay") {
             commonInput.text("Secret Key");
             nonPagshieldDiv.hide();
             pagshieldDiv.removeClass("d-none");
