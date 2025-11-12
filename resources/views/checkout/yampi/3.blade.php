@@ -1864,9 +1864,9 @@
                                                     <i class="fa fa-star yellow"></i>
                                                     <i class="fa fa-star yellow"></i>
                                                 </div>
-                                                <strong class="infos__name  black-60">{{$data['logo']['texto']}}</strong>
+                                                <strong class="infos__name  black-60">Compra Segura</strong>
                                                 <p class="infos__text black-60">
-                                                    Nossos pagamentos são administrados por {{$data['logo']['texto']}}, lider em plataformas de pagamentos online no Brasil. Sua compra está 100% segura.</p>
+                                                    Nossos pagamentos são processados em um ambiente seguro, com criptografia de ponta a ponta. Sua compra está 100% protegida.</p>
                                             </div><!-- /.box-testimonial__infos -->
                                         </div><!-- /.box-testimonial -->
                                         <div class="box-testimonial clearfix">
