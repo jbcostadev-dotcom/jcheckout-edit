@@ -1811,6 +1811,7 @@
                                                             @endphp
 
                                                             <div class="item-row item-holder-quantity-price c-text medium">
+                                                                <span class="item-quantity f11">Quantidade: {{ $product['quantidade'] }}</span>
                                                                 <span class="item-price"> R$ {{ number_format($product['preco'], 2, ',') }}</span><br>
                                                             </div>
 
@@ -2261,7 +2262,7 @@
 
 
                                 <div class='item-row item-holder-quantity-price c-text medium'>
-                                                    <span class='item-quantity'>Quantidade: 1 Item</span>
+                                                    <span class='item-quantity f11'>Quantidade: 1</span>
                                                 <span class='item-price'> R$ ${r.preco}</span><br>
 
                                 </div>
