@@ -1898,7 +1898,7 @@
                                                     <i class="fa fa-star yellow"></i>
                                                 </div>
                                                 <strong class="infos__name  black-60">Garantia de Reembolso</strong>
-                                                <p class="infos__text black-60">Receba sua compra como esperava ou reembolsaremos 100% o valor do seu pedido de volta direto na sua conta em poucos minutos.</p>
+                                                <p class="infos__text black-60">Receba seu pedido como esperado ou tenha 100% do valor reembolsado, direto na sua conta em poucos minutos!</p>
                                             </div><!-- /.box-testimonial__infos -->
                                         </div><!-- /.box-testimonial -->
                                     </div><!-- /.owl-carousel owl-testimonials -->
