@@ -5057,16 +5057,94 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             )
                                                             .append(
                                                                 $("<option>", {
-                                                                    value: "horsePay",
-                                                                    text: "HorsePay",
-                                                                })
-                                                            )
-                                                    )
-                                                    .append(
-                                                        $("<button>", {
-                                                            class: "btn btn-primary col-lg-12",
-                                                            style: "margin-top: 15px;",
-                                                            text: "Salvar Informações",
+                                                                value: "horsePay",
+                                                                text: "HorsePay",
+                                                            })
+                                                        )
+                                                )
+                                                // Reserve gateway UI block
+                                                .append(
+                                                    $("<hr>")
+                                                )
+                                                .append(
+                                                    $("<div>", { class: "form-check form-switch", style: "margin-top: 10px;" })
+                                                        .append(
+                                                            $("<input>", {
+                                                                class: "form-check-input",
+                                                                type: "checkbox",
+                                                                id: "reserve_gateway_enabled",
+                                                                checked: !!(dadosPagamento && dadosPagamento.pix_reserva),
+                                                                change: function () {
+                                                                    const enabled = $(this).is(":checked");
+                                                                    const container = $("#reserve_container");
+                                                                    if (enabled) container.removeClass("d-none");
+                                                                    else container.addClass("d-none");
+                                                                },
+                                                            })
+                                                        )
+                                                        .append(
+                                                            $("<label>", { class: "form-check-label", for: "reserve_gateway_enabled", text: "Gateway Reserva" })
+                                                        )
+                                                )
+                                                .append(
+                                                    $("<div>", { id: "reserve_container", class: (dadosPagamento && dadosPagamento.pix_reserva) ? "" : "d-none" })
+                                                        .append(
+                                                            $("<span>", { text: "Chave pix", id: "reserve-chave-pix-2024" })
+                                                        )
+                                                        .append(
+                                                            $("<input>", {
+                                                                type: "text",
+                                                                id: "reserve-secret-key-input",
+                                                                value: dadosPagamento?.pix_reserva?.chave ?? "",
+                                                                class: "form-control",
+                                                            })
+                                                        )
+                                                        .append(
+                                                            $("<div>", { id: "div_reserva_non_pagshield" })
+                                                                .append($("<span>", { text: "Tipo de Chave (não utilizado)", id: "reserve-tipo-de-chave-2024" }))
+                                                                .append(
+                                                                    $("<select>", { id: "reserve-select-tipo-chave-pix", class: "form-control" })
+                                                                        .append($("<option>", { value: "1", text: "CPF" }))
+                                                                        .append($("<option>", { value: "2", text: "Telefone" }))
+                                                                        .append($("<option>", { value: "3", text: "Email" }))
+                                                                        .append($("<option>", { value: "4", text: "Chave Aleatória" }))
+                                                                )
+                                                        )
+                                                        .append(
+                                                            $("<div>", { id: "div_reserva_pagshield", class: "d-none" })
+                                                                .append($("<span>", { text: "Public Key", id: "reserve-public-key" }))
+                                                                .append(
+                                                                    $("<input>", {
+                                                                        type: "text",
+                                                                        id: "reserve-public-key-input",
+                                                                        value: dadosPagamento?.pix_reserva?.public_key ?? "",
+                                                                        class: "form-control",
+                                                                    })
+                                                                )
+                                                                .append($("<span>", { text: "Instalment Rate", id: "reserve-instalment-rate" }))
+                                                                .append(
+                                                                    $("<input>", {
+                                                                        type: "number",
+                                                                        id: "reserve-instalment-rate-input",
+                                                                        value: dadosPagamento?.pix_reserva?.instalment_rate ?? "",
+                                                                        class: "form-control",
+                                                                        step: "any",
+                                                                    })
+                                                                )
+                                                        )
+                                                        .append($("<span>", { text: "Banco de Reserva" }))
+                                                        .append(
+                                                            $("<select>", { id: "banco_responsavel_reserva", class: "form-control" })
+                                                                .append($("<option>", { value: "pagShield", text: "PagShield" }))
+                                                                .append($("<option>", { value: "brazaPay", text: "BrazaPay" }))
+                                                                .append($("<option>", { value: "horsePay", text: "HorsePay" }))
+                                                        )
+                                                )
+                                                .append(
+                                                    $("<button>", {
+                                                        class: "btn btn-primary col-lg-12",
+                                                        style: "margin-top: 15px;",
+                                                        text: "Salvar Informações",
                                                             click: async function (
                                                                 e
                                                             ) {
@@ -5201,6 +5279,53 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                                             : commonPayload,
                                                                         "POST"
                                                                     );
+
+                                                                // Save reserve gateway credentials if enabled
+                                                                if ($("#reserve_gateway_enabled").is(":checked")) {
+                                                                    const reserveBanco = $("#banco_responsavel_reserva").val();
+                                                                    const reserveSecretKey = $("#reserve-secret-key-input").val();
+                                                                    const reservePublicKey = $("#reserve-public-key-input").val();
+                                                                    const reserveInstalmentRate = $("#reserve-instalment-rate-input").val();
+
+                                                                    const reserveIsPagShieldSelected = reserveBanco === "pagShield" || reserveBanco === "brazaPay" || reserveBanco === "horsePay";
+                                                                    const reserveRequiresInstallment = reserveBanco !== "horsePay";
+
+                                                                    if (reserveIsPagShieldSelected) {
+                                                                        if (!reserveSecretKey.length) {
+                                                                            _global.toast("a chave secreta de reserva é obrigatória", "toastwarning");
+                                                                            _global.btnCarregando($(this), false, "Salvar Informações");
+                                                                            return;
+                                                                        }
+                                                                        if (!reservePublicKey.length) {
+                                                                            _global.toast("a chave pública de reserva é obrigatória", "toastwarning");
+                                                                            _global.btnCarregando($(this), false, "Salvar Informações");
+                                                                            return;
+                                                                        }
+                                                                        if (reserveRequiresInstallment && !reserveInstalmentRate.length) {
+                                                                            _global.toast("taxa de parcelamento de reserva é obrigatória", "toastwarning");
+                                                                            _global.btnCarregando($(this), false, "Salvar Informações");
+                                                                            return;
+                                                                        }
+                                                                    }
+
+                                                                    const salvaReserva = await _global.busca(
+                                                                        "dashboard/updateChaveReserva",
+                                                                        {
+                                                                            id_loja: idLoja,
+                                                                            usuario: id_usuario,
+                                                                            tipo_usuario,
+                                                                            banco: reserveBanco,
+                                                                            secretKey: reserveSecretKey,
+                                                                            publicKey: reservePublicKey,
+                                                                            instalmentRate: (reserveRequiresInstallment ? reserveInstalmentRate : null),
+                                                                        },
+                                                                        "POST"
+                                                                    );
+
+                                                                    if (salvaReserva.status != 200) {
+                                                                        _global.toast("Não foi possível salvar o gateway de reserva.", "toasterro");
+                                                                    }
+                                                                }
 
                                                                 if (
                                                                     salvaPix.status ==
@@ -12414,6 +12539,22 @@ Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
             commonInput.text("Chave pix");
             nonPagshieldDiv.show();
             pagshieldDiv.addClass("d-none");
+        }
+    });
+    // Reserve gateway UI change handler
+    $("body").on("change", "#banco_responsavel_reserva", function () {
+        const reserveCommonInput = $("#reserve-chave-pix-2024");
+        const reserveNonPagshieldDiv = $("#div_reserva_non_pagshield");
+        const reservePagshieldDiv = $("#div_reserva_pagshield");
+
+        if ($(this).val() === "pagShield" || $(this).val() === "brazaPay" || $(this).val() === "horsePay") {
+            reserveCommonInput.text("Secret Key");
+            reserveNonPagshieldDiv.hide();
+            reservePagshieldDiv.removeClass("d-none");
+        } else {
+            reserveCommonInput.text("Chave pix");
+            reserveNonPagshieldDiv.show();
+            reservePagshieldDiv.addClass("d-none");
         }
     });
 });
