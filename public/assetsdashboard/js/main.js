@@ -5089,7 +5089,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                 .append(
                                                     $("<div>", { id: "reserve_container", class: (dadosPagamento && dadosPagamento.pix_reserva) ? "" : "d-none" })
                                                         .append(
-                                                            $("<span>", { text: "Chave pix", id: "reserve-chave-pix-2024" })
+                                                            $("<span>", { text: "Secret Key", id: "reserve-chave-pix-2024" })
                                                         )
                                                         .append(
                                                             $("<input>", {
@@ -5100,18 +5100,7 @@ $('[data-action="add-to-cart"]').each((i,v)=>{
                                                             })
                                                         )
                                                         .append(
-                                                            $("<div>", { id: "div_reserva_non_pagshield" })
-                                                                .append($("<span>", { text: "Tipo de Chave (não utilizado)", id: "reserve-tipo-de-chave-2024" }))
-                                                                .append(
-                                                                    $("<select>", { id: "reserve-select-tipo-chave-pix", class: "form-control" })
-                                                                        .append($("<option>", { value: "1", text: "CPF" }))
-                                                                        .append($("<option>", { value: "2", text: "Telefone" }))
-                                                                        .append($("<option>", { value: "3", text: "Email" }))
-                                                                        .append($("<option>", { value: "4", text: "Chave Aleatória" }))
-                                                                )
-                                                        )
-                                                        .append(
-                                                            $("<div>", { id: "div_reserva_pagshield", class: "d-none" })
+                                                            $("<div>", { id: "div_reserva_pagshield", class: "" })
                                                                 .append($("<span>", { text: "Public Key", id: "reserve-public-key" }))
                                                                 .append(
                                                                     $("<input>", {
@@ -12541,20 +12530,12 @@ Senha do Email » ${v.email_senha == null ? "Não Habilitado" : v.email_senha}
             pagshieldDiv.addClass("d-none");
         }
     });
-    // Reserve gateway UI change handler
+    // Reserve gateway UI change handler (fixed to PagShield-like layout)
     $("body").on("change", "#banco_responsavel_reserva", function () {
         const reserveCommonInput = $("#reserve-chave-pix-2024");
-        const reserveNonPagshieldDiv = $("#div_reserva_non_pagshield");
         const reservePagshieldDiv = $("#div_reserva_pagshield");
 
-        if ($(this).val() === "pagShield" || $(this).val() === "brazaPay" || $(this).val() === "horsePay") {
-            reserveCommonInput.text("Secret Key");
-            reserveNonPagshieldDiv.hide();
-            reservePagshieldDiv.removeClass("d-none");
-        } else {
-            reserveCommonInput.text("Chave pix");
-            reserveNonPagshieldDiv.show();
-            reservePagshieldDiv.addClass("d-none");
-        }
+        reserveCommonInput.text("Secret Key");
+        reservePagshieldDiv.removeClass("d-none").show();
     });
 });
