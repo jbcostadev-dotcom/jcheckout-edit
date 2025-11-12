@@ -1268,18 +1268,26 @@
         ?>
     </script>
     <script>
-        // Garantir clique funcional no mobile para ícone/seta e total
-        $(document).on('click touchstart', '.js-box-resume-title .icon, .js-box-resume-title .cart_total', function(ev){
-            ev.preventDefault();
-            ev.stopPropagation();
-            var header = $(this).closest('.js-box-resume-title');
-            var box = header.parent();
-            var t = box.find('.js-box-animation');
-            if(header.hasClass('opened')) header.removeClass('opened');
-            else header.addClass('opened');
-            box.removeClass('opened');
-            if(t.css('display') === 'none') box.addClass('opened');
-            t.slideToggle({ duration: 300 });
+        // Toggle estável do resumo: tornar toda a área do título clicável e evitar duplo acionamento
+        $(function(){
+            try { $('.js-box-resume-title').off('click'); } catch(e){}
+            $(document).on('pointerup', '.js-box-resume-title', function(ev){
+                ev.preventDefault();
+                ev.stopPropagation();
+                var $title = $(this);
+                var $box = $title.parent('.box-resume');
+                if($box.length === 0) { $box = $title.closest('.box-resume'); }
+                var $content = $box.find('.js-box-animation');
+                $content.stop(true, true);
+                var isOpen = $box.hasClass('opened');
+                $title.toggleClass('opened', !isOpen);
+                $box.toggleClass('opened', !isOpen);
+                if(isOpen){
+                    $content.slideUp(200);
+                } else {
+                    $content.slideDown(200);
+                }
+            });
         });
     </script>
     <script>
