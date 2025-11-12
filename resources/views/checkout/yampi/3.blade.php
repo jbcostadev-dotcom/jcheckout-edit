@@ -1881,7 +1881,7 @@
                                                     <i class="fa fa-star yellow"></i>
                                                     <i class="fa fa-star yellow"></i>
                                                 </div>
-                                                <strong class="infos__name  black-60">Entrega Segura</strong>
+                                                <strong class="infos__name  black-60">Entrega Rastreável</strong>
                                                 <p class="infos__text black-60">Entrega segura e rastreável, após a compra você receberá em seu e-mail um código para acompanhar seu pedido até que receba.</p>
                                             </div><!-- /.box-testimonial__infos -->
                                         </div><!-- /.box-testimonial -->
