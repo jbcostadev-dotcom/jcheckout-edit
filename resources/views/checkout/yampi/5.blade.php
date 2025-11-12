@@ -1425,6 +1425,21 @@ header .holder-logo .logo .img-logo {
         ?>
     </script>
     <script>
+        // Garantir clique funcional no mobile para ícone/seta e total
+        $(document).on('click touchstart', '.js-box-resume-title .icon, .js-box-resume-title .cart_total', function(ev){
+            ev.preventDefault();
+            ev.stopPropagation();
+            var header = $(this).closest('.js-box-resume-title');
+            var box = header.parent();
+            var t = box.find('.js-box-animation');
+            if(header.hasClass('opened')) header.removeClass('opened');
+            else header.addClass('opened');
+            box.removeClass('opened');
+            if(t.css('display') === 'none') box.addClass('opened');
+            t.slideToggle({ duration: 300 });
+        });
+    </script>
+    <script>
         fbq('track', 'Purchase',
             {
                 currency: "BRL",
